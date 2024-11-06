@@ -12,7 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('love_story', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_story')->primary()->autoIncrement();
+            $table->integer('id_wedding');
+            $table->foreign('id_wedding')
+                  ->references('id_wedding')
+                  ->on('wedding')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+                  
+            $table->string('photo_url',255);
+            $table->date('date_story');
+            $table->string('tittle_story',50);
+            $table->text('description_story');
             $table->timestamps();
         });
     }

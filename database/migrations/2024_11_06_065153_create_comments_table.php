@@ -12,11 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_comments')->primary()->autoIncrement();
+            $table->integer('id_wedding');
+            $table->foreign('id_wedding')
+                  ->references('id_wedding')
+                  ->on('wedding')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+                  
+            $table->string('name_tamu', 50);
+            $table->text('message');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

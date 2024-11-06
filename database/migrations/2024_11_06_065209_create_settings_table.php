@@ -12,11 +12,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('settings', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_settings')->primary()->autoIncrement();
+            $table->integer('id_wedding');
+            $table->foreign('id_wedding')
+                  ->references('id_wedding')
+                  ->on('wedding')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+                  
+            $table->string('cover_photo', 255);
+            $table->string('background_music',255);
+            $table->string('theme',50);
+            $table->boolean('is_private');
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
