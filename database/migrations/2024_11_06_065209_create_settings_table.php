@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('id_wedding');
             $table->foreign('id_wedding')
                   ->references('id_wedding')
-                  ->on('wedding')
+                  ->on('weddings')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
                   
