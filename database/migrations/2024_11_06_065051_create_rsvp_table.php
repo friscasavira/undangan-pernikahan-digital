@@ -12,7 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('rsvp', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_rsvp')->primary()->autoIncrement();
+            $table->integer('id_guest');
+            $table->foreign('id_guest')
+                  ->references('id_guest')
+                  ->on('guests')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            $table->text('message');
+            $table->enum('attendance_status', ['Belum Konfirmasi', 'Hadir', 'Tidak hadir']);
+            $table->integer('total_guests');
+
             $table->timestamps();
         });
     }

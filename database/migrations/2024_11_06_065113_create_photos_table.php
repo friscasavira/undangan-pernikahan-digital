@@ -12,7 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('photos', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_photo')->primary()->autoIncrement();
+            $table->integer('id_wedding');
+            $table->foreign('id_wedding')
+                  ->references('id_wedding')
+                  ->on('weddings')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            $table->string('photo_url',255);
+            $table->text('caption');
             $table->timestamps();
         });
     }
