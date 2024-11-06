@@ -12,9 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('weddings', function (Blueprint $table) {
-            $table->integer('id')->primary()->autoIncrement();
-            $table->foreign('user_id')
-                  ->references('user_id')
+            $table->integer('id_wedding')->primary()->autoIncrement();
+            $table->integer('id_user');
+            $table->foreign('id_user')
+                  ->references('id_user')
                   ->on('users')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');

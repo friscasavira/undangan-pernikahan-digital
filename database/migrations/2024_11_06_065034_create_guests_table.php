@@ -11,8 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guests', function (Blueprint $table) {
-            $table->id();
+        Schema::create('guest', function (Blueprint $table) {
+            $table->integer('id_guest')->primary()->autoIncrement();
+            $table->integer('id_wedding');
+            $table->foreign('id_wedding')
+                  ->references('id_wedding')
+                  ->on('weddings')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
+            $table->string('name',50);
+            $table->string('email',50)->unique();
+            $table->string('phone',15);
+            $table->boolean('is_invited');
+            $table->enum('attendance_status', ['Belum Konfirmasi','Hadir','Tidak Hadir']);
             $table->timestamps();
         });
     }

@@ -12,21 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('events', function (Blueprint $table) {
-            $table->integer('id')->primary()->autoIncrement();
-            $table->foreign('wedding_id')
-                  ->references('wedding_id')
+            $table->integer('id_event')->primary()->autoIncrement();
+            $table->integer('id_wedding');
+            $table->foreign('id_wedding')
+                  ->references('id_wedding')
                   ->on('weddings')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
-            $table->string('event_name',25);
-            $table->string('bride_name',50);
-            $table->string('groom_name',50);
-            $table->date('wedding_date');
-            $table->time('wedding_time');
-            $table->text('location', 255);
-            $table->text('message', 255);
-            $table->string('unique_url', 255);
-
+            $table->string('event_name',50);
+            $table->string('event_date',50);
+            $table->date('event_date');
+            $table->time('event_time');
+            $table->text('event_location', 255);
 
             $table->timestamps();
         });
