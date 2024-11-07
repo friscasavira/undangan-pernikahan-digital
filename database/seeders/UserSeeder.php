@@ -16,43 +16,23 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-<<<<<<< HEAD
-             'username' => 'admin1',
-             'email' => 'admin1@example.com',
-             'name' => 'admincuyy',
-             'password' => Hash::make('password123'),
-             'role' => 'admin',
-            ],
-            
-             [
-             'username' => 'rill',
-             'email' => 'rill@example.com',
-             'name' => 'penggunalah',
-             'password' => Hash::make('password123'),
-             'role' => 'pengguna',
-             ]
-            ];
-            foreach ($Users as $user){
-                User::create($user);
-            }
-=======
-                'username' => 'admin1',
-                'email' => 'Admin1@example.cm',
+                'username' => 'admin',
+                'email' => 'admin@gmail.com',
                 'password' => Hash::make('password123'),
+                'name' => 'Administrator',
                 'role' => 'admin',
             ],
-
             [
-                'username' => 'admin2',
-                'email' => 'Admin2@example.com',
+                'username' => 'aril',
+                'email' => 'aril@gmail.com',
                 'password' => Hash::make('password123'),
-                'role' => 'pengguna',
+                'name' => 'Aril',
+                'role' => 'user',
             ]
         ];
 
-        foreach ($users as $user) {
+        foreach($users as $user) {
             User::create($user);
         }
->>>>>>> origin/main
     }
 }
