@@ -16,7 +16,7 @@ class user
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!Auth::check() && !Auth::user()->role == 'user') {
+        if (!Auth::check() && !Auth::user()->role === 'user') {
             return redirect()->route('user.login')->withErrors(['login_eror' => 'Silahkan login untuk melanjutkan']);
         }
         return $next($request);
