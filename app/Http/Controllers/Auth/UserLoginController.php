@@ -13,7 +13,7 @@ class UserLoginController extends Controller
         return view('auth.admin_login');
     }
 
-    public function submit(Request $request)
+    public function auth(Request $request)
     {
         $credentials = $request->validate([
             'username' => 'required',

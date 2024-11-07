@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 Route::middleware(['guest'])->group(function(){
     Route::get('/admin/login', [UserLoginController::class, 'login'])->name('admin_login');
-    Route::post('/admin/submit', [UserLoginController::class, 'submit'])->name('admin.submit');
+    Route::post('/admin/submit', [UserLoginController::class, 'auth'])->name('admin.submit');
 
 });
 
