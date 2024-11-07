@@ -20,7 +20,6 @@ return new class extends Migration
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
             $table->string('event_name',50);
-            $table->string('event_date',50);
             $table->date('event_date');
             $table->time('event_time');
             $table->text('event_location', 255);
