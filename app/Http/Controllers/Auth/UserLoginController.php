@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as RoutingController;
 use Illuminate\Support\Facades\Auth;
 
-class UserLoginController extends Controller
+class UserLoginController extends RoutingController
 {
     public function login()
     {

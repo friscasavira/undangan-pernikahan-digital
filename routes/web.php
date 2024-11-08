@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\UserLoginController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,6 @@ Route::middleware(['guest'])->group(function(){
 });
 
 Route::middleware(['admin'])->group(function() {
-    Route::get('/admin/dashboard', [SettingsController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [SettingController::class, 'dashboard'])->name('admin.dashboard');
 });
 
