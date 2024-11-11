@@ -17,6 +17,9 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $primaryKey = 'id_user';
+    
     protected $fillable = [
         'username',
         'name',
@@ -47,4 +50,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
 }

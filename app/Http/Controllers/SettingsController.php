@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SettingsController extends Controller
 {
@@ -10,4 +11,6 @@ class SettingsController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    
 }
