@@ -14,7 +14,7 @@ class SettingsController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::user()->logout();
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('admin.login');
