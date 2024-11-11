@@ -47,7 +47,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
+                    <i class="ti ti-flower"></i>
                 </span>
                 <span class="hide-menu">Weddings</span>
               </a>
@@ -55,7 +55,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:danger-circle-bold-duotone" class="fs-6"></iconify-icon>
+                <i class="ti ti-select"></i>
                 </span>
                 <span class="hide-menu">Events</span>
               </a>
@@ -63,7 +63,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:bookmark-square-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
+                <i class="ti ti-ad-2"></i>
                 </span>
                 <span class="hide-menu">Guests</span>
               </a>
@@ -206,7 +206,7 @@
                       <i class="ti ti-list-check fs-6"></i>
                       <p class="mb-0 fs-3">My Task</p>
                     </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                    <a href="{{ route('admin.logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>
               </li>
