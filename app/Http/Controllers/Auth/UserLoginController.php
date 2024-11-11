@@ -4,16 +4,17 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as RoutingController;
 use Illuminate\Support\Facades\Auth;
 
-class UserLoginController extends Controller
+class UserLoginController extends RoutingController
 {
     public function login()
     {
         return view('auth.admin_login');
     }
 
-    public function submit(Request $request)
+    public function auth(Request $request)
     {
         $credentials = $request->validate([
             'username' => 'required',
