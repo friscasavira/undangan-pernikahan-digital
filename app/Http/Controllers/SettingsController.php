@@ -12,5 +12,11 @@ class SettingsController extends Controller
         return view('admin.dashboard');
     }
 
-    
+    public function logout(Request $request)
+    {
+        Auth::user()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('admin.login');
+    }
 }
