@@ -19,8 +19,9 @@ Route::middleware(['guest:admin', 'guest:user'])->group(function(){
 });
 
 Route::middleware(['role:admin'])->group(function() {
-    Route::get('/admin/dashboard', [SettingsController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [SettingController::class, 'dashboardAdmin'])->name('admin.dashboard');
+    Route::get('/admin/profile', [SettingController::class, 'profiledAdmin'])->name('admin.profile');
 });
 Route::middleware(['role:user'])->group(function() {
-    Route::get('/user/dashboard', [SettingsController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/user/dashboard', [SettingController::class, 'dashboardUser'])->name('user.dashboard');
 });

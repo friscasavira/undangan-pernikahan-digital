@@ -16,16 +16,8 @@ class Unauthorized
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
-<<<<<<< HEAD
         if (!Auth::check()) {
-=======
-        if (Auth::check() && Auth::user()->role === 'admin') {
-            return redirect()->route('admin.dashboard');
-        }elseif (Auth::check() && Auth::user()->role === 'user') {
-            return redirect()->route('user.dashboard');
-        }
->>>>>>> origin/main
-        return $next($request);
+            return $next($request);
         }
         if (Auth::user()->role === $role) {
             return redirect()->route($role.'.dashboard');
