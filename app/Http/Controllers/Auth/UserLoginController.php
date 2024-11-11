@@ -14,7 +14,7 @@ class UserLoginController extends RoutingController
         return view('auth.admin_login');
     }
 
-    public function auth(Request $request)
+    public function submit(Request $request)
     {
         $credentials = $request->validate([
             'username' => 'required',

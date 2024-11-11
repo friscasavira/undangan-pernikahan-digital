@@ -16,13 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'guest' => Unauthorized::class,
-<<<<<<< HEAD
             'role' => user::class,
-            
-=======
-            'admin' => admin::class,
-            'user' => user::class,
->>>>>>> origin/main
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
