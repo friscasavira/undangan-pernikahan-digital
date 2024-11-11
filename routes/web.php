@@ -20,6 +20,7 @@ Route::middleware(['guest:admin', 'guest:user'])->group(function(){
 Route::middleware(['role:admin'])->group(function() {
     Route::get('/admin/dashboard', [SettingController::class, 'dashboardAdmin'])->name('admin.dashboard');
     Route::get('/admin/profile', [SettingController::class, 'profiledAdmin'])->name('admin.profile');
+    Route::get('/admin/logout', [SettingController::class, 'logoutAdmin'])->name('admin.logout');
 });
 Route::middleware(['role:user'])->group(function() {
     Route::get('/user/dashboard', [SettingController::class, 'dashboardUser'])->name('user.dashboard');
