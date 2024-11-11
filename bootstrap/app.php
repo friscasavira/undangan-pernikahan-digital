@@ -2,7 +2,7 @@
 
 
 use App\Http\Middleware\Unauthorized;
-use App\Http\Middleware\user;
+use App\Http\Middleware\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -16,7 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'guest' => Unauthorized::class,
-            'role' => user::class,
+            'role' => User::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
