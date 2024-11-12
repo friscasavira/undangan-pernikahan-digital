@@ -5,7 +5,7 @@ use App\Http\Controllers\Backend\SettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.home');
 });
 
 Route::middleware(['guest:admin', 'guest:user'])->group(function(){
