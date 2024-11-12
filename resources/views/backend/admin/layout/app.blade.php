@@ -82,7 +82,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:text-field-focus-bold-duotone" class="fs-6"></iconify-icon>
+                <i class="ti ti-photo"></i>
                 </span>
                 <span class="hide-menu">Photos</span>
               </a>
@@ -90,7 +90,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:text-field-focus-bold-duotone" class="fs-6"></iconify-icon>
+                <i class="ti ti-heart-plus"></i>
                 </span>
                 <span class="hide-menu">Love_story</span>
               </a>
@@ -98,7 +98,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:text-field-focus-bold-duotone" class="fs-6"></iconify-icon>
+                    <i class="ti ti-messages"></i>
                 </span>
                 <span class="hide-menu">Comments</span>
               </a>
@@ -106,7 +106,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:text-field-focus-bold-duotone" class="fs-6"></iconify-icon>
+                <i class="ti ti-settings"></i>
                 </span>
                 <span class="hide-menu">Settings</span>
               </a>
@@ -152,18 +152,7 @@
               </a>
             </li>
           </ul>
-          <div class="unlimited-access hide-menu bg-primary-subtle position-relative mb-7 mt-7 rounded-3"> 
-            <div class="d-flex">
-              <div class="unlimited-access-title me-3">
-                <h6 class="fw-semibold fs-4 mb-6 text-dark w-75">Upgrade to pro</h6>
-                <a href="#" target="_blank"
-                  class="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
-              </div>
-              <div class="unlimited-access-img">
-                <img src="{{ asset('asset_admin/images/backgrounds/rocket.png')}}" alt="" class="img-fluid">
-              </div>
-            </div>
-          </div>
+         
         </nav>
         <!-- End Sidebar navigation -->
       </div>
