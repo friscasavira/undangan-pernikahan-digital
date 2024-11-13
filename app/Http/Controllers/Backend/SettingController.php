@@ -9,7 +9,7 @@ class SettingController
 {
     public function dashboardAdmin()
     {
-        return view('backend.admin.layout.app');
+        return view('backend.admin.dashboard');
     }
 
     public function profileAdmin()

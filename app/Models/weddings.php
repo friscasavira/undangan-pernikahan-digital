@@ -14,7 +14,7 @@ class weddings extends Model
     protected $fillable = [
         'id_user',
         'title',
-        'bride_nama',
+        'bride_name',
         'groom_name',
         'wedding_date',
         'wedding_time',

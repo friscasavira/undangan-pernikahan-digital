@@ -84,11 +84,11 @@
                         <div class="carousel-caption">
                             <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">WE ARE GETTING MARRIED</h4>
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->title }}</h4>
                                 </div>
                                 <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">June 28 2024</h4>
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
@@ -101,11 +101,11 @@
                         <div class="carousel-caption">
                             <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">WE ARE GETTING MARRIED</h4>
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->title }}</h4>
                                 </div>
-                                <h1 class="display-1 text-capitalize text-white mb-3">Evelyn <i class="fa fa-heart text-primary"></i> Anthony</h1>
+                                <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">June 28 2024</h4>
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
@@ -118,11 +118,11 @@
                         <div class="carousel-caption">
                             <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">WE ARE GETTING MARRIED</h4>
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->title }}</h4>
                                 </div>
-                                <h1 class="display-1 text-capitalize text-white mb-3">Evelyn <i class="fa fa-heart text-primary"></i> Anthony</h1>
+                                <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">June 28 2024</h4>
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
@@ -163,7 +163,7 @@
                             <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.3s">
                                 <div class="d-flex">
                                     <div class="text-end my-auto pe-4">
-                                        <h3 class="text-primary mb-3">Evelyn</h3>
+                                        <h3 class="text-primary mb-3">{{ $wedding->groom_name }}</h3>
                                         <p class="text-dark mb-0" style="line-height: 30px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                         </p>
                                     </div>
@@ -179,7 +179,7 @@
                                 <div class="d-flex">
                                     <img src="{{ asset('asset_main/img/Groom.jpg')}}" class="img-fluid img-border" alt="">
                                     <div class="my-auto ps-4">
-                                        <h3 class="text-primary mb-3">Anthony</h3>
+                                        <h3 class="text-primary mb-3">{{ $wedding->bride_name }}</h3>
                                         <p class="text-dark mb-0" style="line-height: 30px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                         </p>
                                     </div>
@@ -232,7 +232,7 @@
                                                         <img src="{{ asset('asset_main/img/bride.jpg') }}" class="img-fluid w-100 img-border" alt="">
                                                     </div>
                                                     <div class="text-start my-auto">
-                                                        <h5 class="text-white fw-bold">Evelyn</h5>
+                                                        <h5 class="text-white fw-bold">{{ $wedding->groom_name }}</h5>
                                                         <p class="text-white mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                                         </p>
                                                         <div class="d-flex">
@@ -254,7 +254,7 @@
                                                         <img src="{{ asset('asset_main/img/Groom.jpg') }}" class="img-fluid w-100 img-border" alt="">
                                                     </div>
                                                     <div class="text-start my-auto">
-                                                        <h5 class="text-white fw-bold">Anthony</h5>
+                                                        <h5 class="text-white fw-bold">{{ $wedding->bride_name }}</h5>
                                                         <p class="text-white mb-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                                                         </p>
                                                         <div class="d-flex">
@@ -380,9 +380,9 @@
                 <div class="wedding-date text-center bg-light p-5" style="border-style: double !important; border: 15px solid rgba(253, 93, 93, 0.5);">
                     <div class="wedding-date-content">
                         <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                            <h4 class="text-dark text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">June 28, 2024</h4>
+                            <h4 class="text-dark text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
                         </div>
-                        <h1 class="display-4">We Are Getting Married</h1>
+                        <h1 class="display-4">{{ $wedding->title }}</h1>
                         <p class="text-dark fs-5">Niloy Hotel New York , 123 West 23th Street, NY</p>
                         <div class="d-flex align-items-center justify-content-center mb-5">
                             <div class="text-dark fs-2 me-4">
@@ -435,7 +435,7 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-menorah text-primary fa-3x"></i>
                                 </div>
-                                <p class="text-dark mb-0">June 28, 2024</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                                 <p class="text-primary">10:00AM - 11:00AM</p>
                                 <h3 class="text-dark">Dinner</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
@@ -446,8 +446,8 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-photo-video text-primary fa-3x"></i>
                                 </div>
-                                <p class="text-dark mb-0">June 28, 2024</p>
-                                <p class="text-primary">10:00AM - 11:00AM</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-primary">{{ $wedding->wedding_time }}</p>
                                 <h3 class="text-dark">Photoshoot</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
@@ -457,8 +457,8 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-dungeon text-primary fa-3x"></i>
                                 </div>
-                                <p class="text-dark mb-0">June 28, 2024</p>
-                                <p class="text-primary">10:00AM - 11:00AM</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-primary">{{ $wedding->wedding_time }}</p>
                                 <h3 class="text-dark">Reception</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
@@ -468,8 +468,8 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-ring text-primary fa-3x"></i>
                                 </div>
-                                <p class="text-dark mb-0">June 28, 2024</p>
-                                <p class="text-primary">10:00AM - 11:00AM</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-primary">{{ $wedding->wedding_time }}</p>
                                 <h3 class="text-dark">Ceremony</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
@@ -512,7 +512,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">June 28, 2024</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -527,7 +527,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">June 28, 2024</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -542,7 +542,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">June 28, 2024</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -557,7 +557,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">June 28, 2024</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -572,7 +572,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">June 28, 2024</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -587,7 +587,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">June 28, 2024</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -602,7 +602,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">June 28, 2024</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -617,7 +617,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">June 28, 2024</p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
