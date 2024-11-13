@@ -88,13 +88,7 @@
                                 </div>
                                 <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">
-                                        @php
-                                        \Carbon\Carbon::setlocale('id');
-                                        @endphp
-
-                                        {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                    </h4>
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
@@ -111,14 +105,7 @@
                                 </div>
                                 <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">
-                                        @php
-                                        \Carbon\Carbon::setlocale('id');
-                                        @endphp
-
-                                        {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                    </h4>
-                                    </h4>
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
@@ -135,14 +122,7 @@
                                 </div>
                                 <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">
-                                    @php
-                                        \Carbon\Carbon::setlocale('id');
-                                        @endphp
-
-                                        {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                    </h4>
-                                    </h4>
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
@@ -400,74 +380,36 @@
                 <div class="wedding-date text-center bg-light p-5" style="border-style: double !important; border: 15px solid rgba(253, 93, 93, 0.5);">
                     <div class="wedding-date-content">
                         <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                            <h4 class="text-dark text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">
-                            @php
-                            \Carbon\Carbon::setlocale('id');
-                            @endphp
-
-                            {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                            </h4>
+                            <h4 class="text-dark text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
                         </div>
                         <h1 class="display-4">{{ $wedding->title }}</h1>
-                    <p class="text-dark fs-5">Niloy Hotel New York, 123 West 23rd Street, NY</p>
-                    <div class="d-flex align-items-center justify-content-center mb-5">
-                        <div class="text-dark fs-2 me-4">
-                            <div id="days">00</div>
-                            <span>Days</span>
+                        <p class="text-dark fs-5">Niloy Hotel New York , 123 West 23th Street, NY</p>
+                        <div class="d-flex align-items-center justify-content-center mb-5">
+                            <div class="text-dark fs-2 me-4">
+                                <div>00</div>
+                                <span>Days</span>
+                            </div>
+                            <div class="text-dark fs-2 me-4">
+                                <div>00</div>
+                                <span>Hours</span>
+                            </div>
+                            <div class="text-dark fs-2 me-4">
+                                <div>00</div>
+                                <span>Mins</span>
+                            </div>
+                            <div class="text-dark fs-2 me-0">
+                                <div>00</div>
+                                <span>Secs</span>
+                            </div>
                         </div>
-                        <div class="text-dark fs-2 me-4">
-                            <div id="hours">00</div>
-                            <span>Hours</span>
-                        </div>
-                        <div class="text-dark fs-2 me-4">
-                            <div id="minutes">00</div>
-                            <span>Mins</span>
-                        </div>
-                        <div class="text-dark fs-2 me-0">
-                            <div id="seconds">00</div>
-                            <span>Secs</span>
-                        </div>
+                        <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">Book Your Attendance</a>
                     </div>
-                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">Book Your Attendance</a>
-
                     <div class="position-absolute" style="top: 15%; right: -30px; transform: rotate(320deg); opacity: 0.5; z-index: 1;">
                         <img src="img/attendance-bg.png" class="img-fluid" alt="">
                     </div>
                     <div class="position-absolute" style="top: 15%; left: -10px; transform: rotate(-320deg); opacity: 0.5; z-index: 1;">
                         <img src="img/attendance-bg.png" class="img-fluid" alt="">
                     </div>
-
-                    <script>
-                        // Set the date we're counting down to
-                        const countdownDate = new Date("2024-12-03T00:00:00").getTime();
-
-                        // Update the countdown every 1 second
-                        const countdownFunction = setInterval(() => {
-                            const now = new Date().getTime();
-                            const distance = countdownDate - now;
-
-                            // Calculate days, hours, minutes, and seconds
-                            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                            // Display the result
-                            document.getElementById("days").textContent = days;
-                            document.getElementById("hours").textContent = hours;
-                            document.getElementById("minutes").textContent = minutes;
-                            document.getElementById("seconds").textContent = seconds;
-
-                            // If the countdown is finished
-                            if (distance < 0) {
-                                clearInterval(countdownFunction);
-                                document.getElementById("days").textContent = "00";
-                                document.getElementById("hours").textContent = "00";
-                                document.getElementById("minutes").textContent = "00";
-                                document.getElementById("seconds").textContent = "00";
-                            }
-                        }, 1000);
-                    </script>
                 </div>
             </div>
         </div>
@@ -493,13 +435,7 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-menorah text-primary fa-3x"></i>
                                 </div>
-                                <p class="text-dark mb-0">
-                                @php
-                                \Carbon\Carbon::setlocale('id');
-                                @endphp
-
-                                {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                </p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                                 <p class="text-primary">10:00AM - 11:00AM</p>
                                 <h3 class="text-dark">Dinner</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
@@ -509,6 +445,14 @@
                         <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
                             <div class="mb-4 p-3 d-inline-flex">
                                 <i class="fas fa-photo-video text-primary fa-3x"></i>
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="fas fa-photo-video text-primary fa-3x"></i>
+                                </div>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-primary">{{ $wedding->wedding_time }}</p>
+                                <h3 class="text-dark">Photoshoot</h3>
+                                <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
                             
                             @php
@@ -536,13 +480,7 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-dungeon text-primary fa-3x"></i>
                                 </div>
-                                <p class="text-dark mb-0">
-                                @php
-                                \Carbon\Carbon::setlocale('id');
-                                @endphp
-
-                                {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                </p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                                 <p class="text-primary">{{ $wedding->wedding_time }}</p>
                                 <h3 class="text-dark">Reception</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
@@ -553,13 +491,7 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-ring text-primary fa-3x"></i>
                                 </div>
-                                <p class="text-dark mb-0">
-                                @php
-                                \Carbon\Carbon::setlocale('id');
-                                @endphp
-
-                                {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                </p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                                 <p class="text-primary">{{ $wedding->wedding_time }}</p>
                                 <h3 class="text-dark">Ceremony</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
@@ -603,13 +535,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">
-                                @php
-                                \Carbon\Carbon::setlocale('id');
-                                @endphp
-
-                                {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                </p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -624,13 +550,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">
-                                @php
-                                \Carbon\Carbon::setlocale('id');
-                                @endphp
-
-                                {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                </p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -645,13 +565,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">
-                                @php
-                                \Carbon\Carbon::setlocale('id');
-                                @endphp
-
-                                {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                </p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -666,13 +580,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">
-                                @php
-                                \Carbon\Carbon::setlocale('id');
-                                @endphp
-
-                                {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                </p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -687,13 +595,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">
-                                    @php
-                                    \Carbon\Carbon::setlocale('id');
-                                    @endphp
-
-                                    {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                </p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -708,13 +610,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">
-                                    @php
-                                    \Carbon\Carbon::setlocale('id');
-                                    @endphp
-
-                                    {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                </p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -729,13 +625,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">
-                                    @php
-                                    \Carbon\Carbon::setlocale('id');
-                                    @endphp
-
-                                    {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                </p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
@@ -750,13 +640,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">
-                                    @php
-                                    \Carbon\Carbon::setlocale('id');
-                                    @endphp
-
-                                    {{ \Carbon\Carbon::parse($wedding->wedding_date)->translatedformat('d F Y') }}
-                                </p>
+                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
                             </div>
                         </div>
                     </div>
