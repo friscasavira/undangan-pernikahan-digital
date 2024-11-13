@@ -11,7 +11,7 @@
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;500;600&family=Petit+Formal+Script&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;500;600&family=Petit+Formal+Script&display=swap" rel="stylesheet">
 
         <!-- Icon Font Stylesheet -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
@@ -171,7 +171,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-2 wow fadeIn" data-wow-delay="0.5s">
-                                <div class="d-flex align-items-center justify-content-center">
+                                <div class="d-flex align-items-center justify-conte~nt-center">
                                     <i class="fa fa-heart fa-5x text-primary"></i>
                                </div>
                             </div>
@@ -628,9 +628,9 @@
             </div>
         </div>
         <!-- Gallery end -->
-        
 
-        
+
+
         <!-- RSVP Form Start -->
         <div class="container-fluid RSVP-form py-5" id="weddingRsvp">
             <div class="container py-5">
@@ -745,14 +745,14 @@
                         <div class="p-4 border-secondary" style="border-style: double;">
                             <h4>Where</h4>
                             <p class="mb-0 text-dark">
-                                Niloy Hotel, 123 ranking Street, New York. 
+                                Niloy Hotel, 123 ranking Street, New York.
                             </p>
                         </div>
                     </div>
                     <div class="col-12 wow fadeIn" data-wow-delay="0.2s">
                         <div class="border-secondary" style="border-style: double;">
-                            <iframe class="w-100" 
-                            style="height: 450px; margin-bottom: -6px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd" 
+                            <iframe class="w-100"
+                            style="height: 450px; margin-bottom: -6px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd"
                             loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
@@ -808,7 +808,7 @@
             </div>
         </div>
         <!-- Footer End -->
-        
+
 
 
 
@@ -833,9 +833,9 @@
 
 
         <!-- Back to Top -->
-        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>   
+        <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
 
-        
+
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -843,7 +843,7 @@
     <script src="{{ asset('asset_main/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('asset_main/lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('asset_main/lib/lightbox/js/lightbox.min.js')}}"></script>
-    
+
 
     <!-- Template Javascript -->
     <script src="{{ asset('asset_main/js/main.js')}}"></script>
