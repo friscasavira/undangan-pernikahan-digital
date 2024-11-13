@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Mr&Mrs - Wedding Bootstrap Template</title>
+        <title>Undangan Digital</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
