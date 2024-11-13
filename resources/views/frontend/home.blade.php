@@ -191,7 +191,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-2 wow fadeIn" data-wow-delay="0.5s">
-                                <div class="d-flex align-items-center justify-conte~nt-center">
+                                <div class="d-flex align-items-center justify-content-center">
                                     <i class="fa fa-heart fa-5x text-primary"></i>
                                </div>
                             </div>
