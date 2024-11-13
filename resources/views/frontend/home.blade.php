@@ -86,7 +86,7 @@
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
                                     <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">WE ARE GETTING MARRIED</h4>
                                 </div>
-                                <h1 class="display-1 text-capitalize text-white mb-3">Evelyn <i class="fa fa-heart text-primary"></i> Anthony</h1>
+                                <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
                                     <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">June 28 2024</h4>
                                 </div>
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="img/carousel-2.jpg" class="img-fluid" alt="Image">
+                        <img src="{{ asset('asset_main/img/carousel-2.jpg') }}" class="img-fluid" alt="Image">
                         <div class="carousel-caption">
                             <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
@@ -114,7 +114,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="img/carousel-3.png" class="img-fluid bg-secondary" alt="Image">
+                        <img src="{{ asset('asset_main/img/carousel-3.png') }}" class="img-fluid bg-secondary" alt="Image">
                         <div class="carousel-caption">
                             <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
@@ -147,10 +147,10 @@
         <!-- Hello! Start -->
         <div class="container-fluid position-relative py-5" id="weddingAbout">
             <div class="position-absolute" style="top: -35px; right: 0;">
-                <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
+                <img src="{{ asset('asset_main/img/tamp-bg-1.png') }}" class="img-fluid" alt="">
             </div>
             <div class="position-absolute" style="top: -10px; left: 0; transform: rotate(150deg);">
-                <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
+                <img src="{{ asset('asset_main/img/tamp-bg-1.png') }}" class="img-fluid" alt="">
             </div>
             <div class="container position-relative py-5">
                 <div class="mx-auto text-center mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800;">
@@ -167,7 +167,7 @@
                                         <p class="text-dark mb-0" style="line-height: 30px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
                                         </p>
                                     </div>
-                                    <img src="img/bride.jpg" class="img-fluid img-border" alt="">
+                                    <img src="{{ asset('asset_main/img/bride.jpg') }}" class="img-fluid img-border" alt="">
                                 </div>
                             </div>
                             <div class="col-lg-2 wow fadeIn" data-wow-delay="0.5s">
@@ -177,7 +177,7 @@
                             </div>
                             <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.3s">
                                 <div class="d-flex">
-                                    <img src="img/Groom.jpg" class="img-fluid img-border" alt="">
+                                    <img src="{{ asset('asset_main/img/Groom.jpg')}}" class="img-fluid img-border" alt="">
                                     <div class="my-auto ps-4">
                                         <h3 class="text-primary mb-3">Anthony</h3>
                                         <p class="text-dark mb-0" style="line-height: 30px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
@@ -201,7 +201,7 @@
                 <div class="row g-5 align-items-center">
                     <div class="col-xl-6 wow fadeIn" data-wow-delay="0.1s">
                         <div class="border-white bg-primary" style="border-style: double;">
-                            <img src="img/about-1.jpg" class="img-fluid w-100" alt="">
+                            <img src="{{ asset('asset_main/img/about-1.jpg') }}" class="img-fluid w-100" alt="">
                         </div>
                     </div>
                     <div class="col-xl-6">
@@ -229,7 +229,7 @@
                                             <div class="col-12">
                                                 <div class="d-flex">
                                                     <div class="me-4">
-                                                        <img src="img/bride.jpg" class="img-fluid w-100 img-border" alt="">
+                                                        <img src="{{ asset('asset_main/img/bride.jpg') }}" class="img-fluid w-100 img-border" alt="">
                                                     </div>
                                                     <div class="text-start my-auto">
                                                         <h5 class="text-white fw-bold">Evelyn</h5>
@@ -251,7 +251,7 @@
                                             <div class="col-12">
                                                 <div class="d-flex">
                                                     <div class="me-4">
-                                                        <img src="img/Groom.jpg" class="img-fluid w-100 img-border" alt="">
+                                                        <img src="{{ asset('asset_main/img/Groom.jpg') }}" class="img-fluid w-100 img-border" alt="">
                                                     </div>
                                                     <div class="text-start my-auto">
                                                         <h5 class="text-white fw-bold">Anthony</h5>
@@ -295,10 +295,10 @@
         <!-- Story Start -->
         <div class="container-fluid story position-relative py-5" id="weddingStory">
             <div class="position-absolute" style="top: -35px; right: 0;">
-                <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
+                <img src="{{ asset('asset_main/img/tamp-bg-1.png') }}" class="img-fluid" alt="">
             </div>
             <div class="position-absolute" style="top: -15px; left: 0; transform: rotate(150deg);">
-                <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
+                <img src="{{ asset('asset_main/img/tamp-bg-1.png') }}" class="img-fluid" alt="">
             </div>
             <div class="container position-relative py-5">
                 <div class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
@@ -309,7 +309,7 @@
                     <div class="row wow fadeInUp" data-wow-delay="0.2s">
                         <div class="col-md-6 text-end border-0 border-top border-end border-secondary p-4">
                             <div class="d-inline-flex align-items-center h-100">
-                                <img src="img/story-1.jpg" class="img-fluid w-100 img-border" alt="">
+                                <img src="{{ asset('asset_main/img/story-1.jpg')}}" class="img-fluid w-100 img-border" alt="">
                             </div>
                         </div>
                         <div class="col-md-6 border-start border-top border-secondary p-4 pe-0">
@@ -330,14 +330,14 @@
                         </div>
                         <div class="col-md-6 border-start border-top border-secondary p-4">
                             <div class="d-inline-flex align-items-center h-100">
-                                <img src="img/story-2.jpg" class="img-fluid w-100 img-border" alt="">
+                                <img src="{{ asset('asset_main/img/story-2.jpg') }}" class="img-fluid w-100 img-border" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="row wow fadeInUp" data-wow-delay="0.4s">
                         <div class="col-md-6 text-end border-end border-top border-secondary p-4 ps-0">
                             <div class="d-inline-flex align-items-center h-100">
-                                <img src="img/story-3.jpg" class="img-fluid w-100 img-border" alt="">
+                                <img src="{{ asset('asset_main/img/story-3.jpg') }}" class="img-fluid w-100 img-border" alt="">
                             </div>
                         </div>
                         <div class="col-md-6 border-start border-top border-secondary p-4 pe-0">
@@ -358,7 +358,7 @@
                         </div>
                         <div class="col-md-6 border border-end-0 border-secondary p-4">
                             <div class="d-inline-flex align-items-center h-100">
-                                <img src="img/story-4.jpg" class="img-fluid w-100 img-border" alt="">
+                                <img src="{{ asset('asset_main/img/story-4.jpg') }}" class="img-fluid w-100 img-border" alt="">
                             </div>
                         </div>
                     </div>
@@ -435,6 +435,7 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-menorah text-primary fa-3x"></i>
                                 </div>
+                                <p class="text-dark mb-0">June 28, 2024</p>
                                 <p class="text-primary">10:00AM - 11:00AM</p>
                                 <h3 class="text-dark">Dinner</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
@@ -445,6 +446,7 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-photo-video text-primary fa-3x"></i>
                                 </div>
+                                <p class="text-dark mb-0">June 28, 2024</p>
                                 <p class="text-primary">10:00AM - 11:00AM</p>
                                 <h3 class="text-dark">Photoshoot</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
@@ -455,6 +457,7 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-dungeon text-primary fa-3x"></i>
                                 </div>
+                                <p class="text-dark mb-0">June 28, 2024</p>
                                 <p class="text-primary">10:00AM - 11:00AM</p>
                                 <h3 class="text-dark">Reception</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
@@ -465,6 +468,7 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-ring text-primary fa-3x"></i>
                                 </div>
+                                <p class="text-dark mb-0">June 28, 2024</p>
                                 <p class="text-primary">10:00AM - 11:00AM</p>
                                 <h3 class="text-dark">Ceremony</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
@@ -486,10 +490,10 @@
         <!-- Gallery Start -->
         <div class="container-fluid gallery position-relative py-5" id="weddingGallery">
             <div class="position-absolute" style="top: -95px; right: 0;">
-                <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
+                <img src="{{ asset('asset_main/img/tamp-bg-1.png') }}" class="img-fluid" alt="">
             </div>
             <div class="position-absolute" style="top: -80px; left: 0; transform: rotate(150deg);">
-                <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
+            <img src="{{ asset('asset_main/img/tamp-bg-1.png') }}" class="img-fluid" alt="">
             </div>
             <div class="container position-relative py-5">
                 <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
@@ -500,10 +504,10 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="gallery-item">
                             <div class="gallery-img">
-                                <img class="img-fluid w-100" src="img/gallery-1.jpg" alt="">
+                                <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-1.jpg') }}" alt="">
                                 <div class="hover-style"></div>
                                 <div class="search-icon">
-                                    <a href="img/gallery-1.jpg" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
+                                    <a href="{{ asset('asset_main/img/gallery-1.jpg') }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
                                 </div>
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
@@ -515,10 +519,10 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
                         <div class="gallery-item">
                             <div class="gallery-img">
-                                <img class="img-fluid w-100" src="img/gallery-2.jpg" alt="">
+                                <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-2.jpg')}}" alt="">
                                 <div class="hover-style"></div>
                                 <div class="search-icon">
-                                    <a href="img/gallery-2.jpg" data-lightbox="Gallery-2" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
+                                    <a href="{{ asset('asset_main/img/gallery-2.jpg')}}" data-lightbox="Gallery-2" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
                                 </div>
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
@@ -530,7 +534,7 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
                         <div class="gallery-item">
                             <div class="gallery-img">
-                                <img class="img-fluid w-100" src="img/gallery-3.jpg" alt="">
+                                <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-3.jpg') }}" alt="">
                                 <div class="hover-style"></div>
                                 <div class="search-icon">
                                     <a href="img/gallery-3.jpg" data-lightbox="Gallery-3" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
@@ -545,10 +549,10 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
                         <div class="gallery-item">
                             <div class="gallery-img">
-                                <img class="img-fluid w-100" src="img/gallery-4.jpg" alt="">
+                                <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-4.jpg') }}" alt="">
                                 <div class="hover-style"></div>
                                 <div class="search-icon">
-                                    <a href="img/gallery-4.jpg" data-lightbox="Gallery-4" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
+                                    <a href="{{ asset('asset_main/img/gallery-4.jpg') }}" data-lightbox="Gallery-4" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
                                 </div>
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
@@ -560,10 +564,10 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
                         <div class="gallery-item">
                             <div class="gallery-img">
-                                <img class="img-fluid w-100" src="img/gallery-5.jpg" alt="">
+                                <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-5.jpg')}}" alt="">
                                 <div class="hover-style"></div>
                                 <div class="search-icon">
-                                    <a href="img/gallery-5.jpg" data-lightbox="Gallery-5" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
+                                    <a href="{{ asset('asset_main/img/gallery-5.jpg')}}" data-lightbox="Gallery-5" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
                                 </div>
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
@@ -575,10 +579,10 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
                         <div class="gallery-item">
                             <div class="gallery-img">
-                                <img class="img-fluid w-100" src="img/gallery-6.jpg" alt="">
+                                <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-6.jpg')}}" alt="">
                                 <div class="hover-style"></div>
                                 <div class="search-icon">
-                                    <a href="img/gallery-6.jpg" data-lightbox="Gallery-6" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
+                                    <a href="{{ asset('asset_main/img/gallery-6.jpg')}}" data-lightbox="Gallery-6" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
                                 </div>
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
@@ -590,10 +594,10 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
                         <div class="gallery-item">
                             <div class="gallery-img">
-                                <img class="img-fluid w-100" src="img/gallery-7.jpg" alt="">
+                                <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-7.jpg') }}" alt="">
                                 <div class="hover-style"></div>
                                 <div class="search-icon">
-                                    <a href="img/gallery-7.jpg" data-lightbox="Gallery-7" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
+                                    <a href="{{ asset('asset_main/img/gallery-7.jpg') }}" data-lightbox="Gallery-7" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
                                 </div>
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
@@ -605,10 +609,10 @@
                     <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
                         <div class="gallery-item">
                             <div class="gallery-img">
-                                <img class="img-fluid w-100" src="img/gallery-8.jpg" alt="">
+                                <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-8.jpg') }}" alt="">
                                 <div class="hover-style"></div>
                                 <div class="search-icon">
-                                    <a href="img/gallery-8.jpg" data-lightbox="Gallery-8" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
+                                    <a href="{{ asset('asset_main/img/gallery-8.jpg') }}" data-lightbox="Gallery-8" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
                                 </div>
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
@@ -624,250 +628,9 @@
             </div>
         </div>
         <!-- Gallery end -->
+        
 
-
-        <!--- Bridesmaids & Groomsmen start -->
-        <div class="container-fluid team position-relative py-5">
-            <div class="position-absolute" style="bottom: -80px; right: 0;">
-                <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
-            </div>
-            <div class="position-absolute" style="bottom: -90px; left: 0; transform: rotate(150deg);">
-                <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
-            </div>
-            <div class="position-absolute" style="top: -100px; right: 0;">
-                <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
-            </div>
-            <div class="position-absolute" style="top: -80px; left: 0; transform: rotate(150deg);">
-                <img src="img/tamp-bg-1.png" class="img-fluid" alt="">
-            </div>
-            <div class="container py-5">
-                <div class="mb-5 text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
-                    <h1 class="display-2 text-dark">Bridesmaids & Groomsmen</h1>
-                    <p class="fs-5 text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting Ipsum is simply dummy text of the printing and typesetting Ipsum is simply dummy text of the printing and typesetting</p>
-                </div>
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <div class="team-img-main">
-                                    <img src="img/bridesmaid-1.png" class="img-fluid w-100" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <div class="d-flex flex-column p-4">
-                                    <h5 class="text-white display-6 mb-1">Amelia Alex</h5>
-                                    <h5 class="text-white fs-5 mb-0">Bridesmaid</h5>
-                                </div>
-                            </div>
-                            <div class="team-social d-flex flex-column">
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <div class="team-img-main">
-                                    <img src="img/bridesmaid-team-2.png" class="img-fluid w-100" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <div class="d-flex flex-column p-4">
-                                    <h5 class="text-white display-6 mb-1">Amelia Alex</h5>
-                                    <h5 class="text-white fs-5 mb-0">Bridesmaid</h5>
-                                </div>
-                            </div>
-                            <div class="team-social d-flex flex-column">
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <div class="team-img-main">
-                                    <img src="img/bridesmaid-3.png" class="img-fluid w-100" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <div class="d-flex flex-column p-4">
-                                    <h5 class="text-white display-6 mb-1">Amelia Alex</h5>
-                                    <h5 class="text-white fs-5 mb-0">Bridesmaid</h5>
-                                </div>
-                            </div>
-                            <div class="team-social d-flex flex-column">
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <div class="team-img-main">
-                                    <img src="img/bridesmaid-4.png" class="img-fluid w-100" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <div class="d-flex flex-column p-4">
-                                    <h5 class="text-white display-6 mb-1">Amelia Alex</h5>
-                                    <h5 class="text-white fs-5 mb-0">Bridesmaid</h5>
-                                </div>
-                            </div>
-                            <div class="team-social d-flex flex-column">
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <div class="team-img-main">
-                                    <img src="img/Groomsmen-1.png" class="img-fluid w-100" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <div class="d-flex flex-column p-4">
-                                    <h5 class="text-white display-6 mb-1">David John</h5>
-                                    <h5 class="text-white fs-5 mb-0">Groomsmen</h5>
-                                </div>
-                            </div>
-                            <div class="team-social d-flex flex-column">
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <div class="team-img-main">
-                                    <img src="img/Groomsmen-2.png" class="img-fluid w-100" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <div class="d-flex flex-column p-4">
-                                    <h5 class="text-white display-6 mb-1">David John</h5>
-                                    <h5 class="text-white fs-5 mb-0">Groomsmen</h5>
-                                </div>
-                            </div>
-                            <div class="team-social d-flex flex-column">
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <div class="team-img-main">
-                                    <img src="img/Groomsmen-3.png" class="img-fluid w-100" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <div class="d-flex flex-column p-4">
-                                    <h5 class="text-white display-6 mb-1">David John</h5>
-                                    <h5 class="text-white fs-5 mb-0">Groomsmen</h5>
-                                </div>
-                            </div>
-                            <div class="team-social d-flex flex-column">
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                        <div class="team-item">
-                            <div class="team-img">
-                                <div class="team-img-main">
-                                    <img src="img/Groomsmen-4.png" class="img-fluid w-100" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -30px; left: -100px; transform: rotate(50deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                                <div class="team-img-bg position-absolute" style="bottom: -40px; right: -120px; transform: rotate(-30deg); z-index: 1;">
-                                    <img src="img/team-1-bg.png" class="img-fluid" alt="">
-                                </div>
-                            </div>
-                            <div class="team-content">
-                                <div class="d-flex flex-column p-4">
-                                    <h5 class="text-white display-6 mb-1">David John</h5>
-                                    <h5 class="text-white fs-5 mb-0">Groomsmen</h5>
-                                </div>
-                            </div>
-                            <div class="team-social d-flex flex-column">
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-light btn-light-outline-0 mb-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                                <a class="btn btn-light btn-light-outline-0" href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Bridesmaids & Groomsmen End -->
-
-
+        
         <!-- RSVP Form Start -->
         <div class="container-fluid RSVP-form py-5" id="weddingRsvp">
             <div class="container py-5">

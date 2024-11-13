@@ -2,11 +2,10 @@
 
 use App\Http\Controllers\Auth\UserLoginController;
 use App\Http\Controllers\Backend\SettingController;
+use App\Http\Controllers\Frontend\WeddingController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+Route::get('/', [WeddingController::class, 'home'])->name('home');
 
 Route::middleware(['guest:admin', 'guest:user'])->group(function(){
     Route::get('/admin/login', [UserLoginController::class, 'login'])->name('admin.login');
