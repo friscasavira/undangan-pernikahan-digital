@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">Tambah Wedding</h6>
-                <form action="{{route('admin.weddings_store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('user.weddings_store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="title" class="form-label">TITLE</label>

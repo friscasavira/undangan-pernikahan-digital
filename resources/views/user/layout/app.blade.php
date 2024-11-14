@@ -113,7 +113,7 @@
     @if(count($data->gallery) > 0)
     <section class="w-full h-auto min-h-screen flex flex-col px-10 py-20 bg-fixed bg-cover bg-no-repeat bg-center items-center" style="background-image: url({{ asset('images/theme_01_bg_profile.webp') }})">
       <span class="font-berkshire text-6xl">Couple Gallery</span>
-      
+
       <div
         @class([
           'grid h-auto gap-5 px-10 mt-10',
@@ -135,7 +135,7 @@
     @if(count($data->journey) > 0)
     <section class="w-full h-auto min-h-screen flex flex-col px-10 py-20 bg-fixed bg-cover bg-no-repeat bg-center items-center" style="background-image: url({{ asset('images/theme_01_bg_profile.webp') }})">
       <span class="font-berkshire text-6xl">Our Journey</span>
-      
+
       <div class="flex flex-col px-10 mt-10 items-center w-full font-light">
         <div class="w-5 h-5 rounded-full bg-slate-500"></div>
         <div class="w-1 h-10 bg-slate-500"></div>
@@ -146,9 +146,9 @@
               <div class="w-1/3 text-end text-xl font-medium">
                 {{ formatDate($item['date'], 'M Y') }}
               </div>
-              
+
               <div class="w-1 min-w-1 h-auto bg-slate-500 mx-5"></div>
-              
+
               <div class="w-1/3 h-fit text-xl bg-white flex flex-col rounded-md p-5 mb-10 -mt-5">
                 <span class="font-medium">{{ $item['title'] }}</span>
                 <span>{{ $item['story'] }}</span>
@@ -158,7 +158,7 @@
                 <span class="font-medium">{{ $item['title'] }}</span>
                 <span>{{ $item['story'] }}</span>
               </div>
-              
+
               <div class="w-1 min-w-1 h-auto bg-slate-500 mx-5"></div>
 
               <div class="w-1/3 text-xl font-medium">
@@ -167,7 +167,7 @@
             @endif
           </div>
         @endforeach
-        
+
         <div class="w-5 h-5 rounded-full bg-slate-500"></div>
       </div>
     </section>
@@ -177,8 +177,8 @@
     <!-- Doa Section -->
     <section class="w-full h-screen bg-white flex flex-col items-center bg-fixed bg-cover bg-no-repeat bg-center" style="background-image: url({{ asset('images/theme_01_bg_doa.webp') }})">
       <div class="bg-white bg-opacity-90 w-full h-screen absolute">
-      </div>  
-      
+      </div>
+
       <div class="z-10 flex flex-col w-2/3 h-full items-center justify-center">
         <img src="{{ asset('images/doa.webp') }}" alt='Doa' class="w-fit" />
 

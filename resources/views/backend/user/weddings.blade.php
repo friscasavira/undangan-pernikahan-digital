@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                <a href="{{route('admin.weddings_tambah')}}" class="btn btn-primary btn-sm">Tambah</a>
+                <a href="{{route('user.weddings_tambah')}}" class="btn btn-primary btn-sm">Tambah</a>
                     <table class="table text-nowrap align-middle mb-0" id="weddings" >
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0">
