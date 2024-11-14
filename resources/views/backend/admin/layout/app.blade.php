@@ -111,9 +111,7 @@
                 <span class="hide-menu">Settings</span>
               </a>
             </li>
-           
-           
-         
+                    
         </nav>
         <!-- End Sidebar navigation -->
       </div>
