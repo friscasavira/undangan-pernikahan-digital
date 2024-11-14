@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WeddingController::class, 'home'])->name('home');
 
+
 Route::middleware(['guest:admin', 'guest:user'])->group(function(){
     Route::get('/admin/login', [UserLoginController::class, 'login'])->name('admin.login');
     Route::post('/admin/submit', [UserLoginController::class, 'submit'])->name('admin.submit');
