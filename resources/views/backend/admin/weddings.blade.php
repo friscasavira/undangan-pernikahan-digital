@@ -28,17 +28,17 @@
 
                         <tr>
                         <th scope="row">{{$loop->iteration}}</th>
-                        <td>{{$wedding->title}}</td>
-                        <td>{{$wedding->bride_name}}</td>
-                        <td>{{$wedding->groom_name}}</td>
-                        <td>{{$wedding->wedding_date}}</td>
-                        <td>{{$wedding->wedding_time}}</td>
-                        <td>{{$wedding->location}}</td>
-                        <td>{{$wedding->message}}</td>
-                        <td>{{$wedding->unique_url}}</td>
+                        <td  class="text-center">{{$wedding->title}}</td>
+                        <td  class="text-center">{{$wedding->bride_name}}</td>
+                        <td  class="text-center">{{$wedding->groom_name}}</td>
+                        <td  class="text-center">{{$wedding->wedding_date}}</td>
+                        <td  class="text-center">{{$wedding->wedding_time}}</td>
+                        <td  class="text-center">{{$wedding->location}}</td>
+                        <td  class="text-center">{{$wedding->message}}</td>
+                        <td  class="text-center">{{$wedding->unique_url}}</td>
                         <td>
-                            <a href="" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>
+                            <a href="{{route('admin.edit_weddings', $wedding->id_wedding)}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{route('admin.delete_weddings', $wedding->id_wedding)}}" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>
                         </td>
 
                     </tr>
