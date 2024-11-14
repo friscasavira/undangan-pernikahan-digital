@@ -88,8 +88,13 @@
                                 </div>
                                 <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
-                                </div>
+                                @php
+                                    \Carbon\Carbon::setLocale('id');
+                                    $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
+                                    $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
+                                @endphp 
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
+                                </div> 
                                 <div class="d-flex align-items-center justify-content-center">
                                     <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
                                 </div>
@@ -105,7 +110,12 @@
                                 </div>
                                 <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
+                                @php
+                                    \Carbon\Carbon::setLocale('id');
+                                    $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
+                                    $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
+                                @endphp 
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
@@ -122,7 +132,12 @@
                                 </div>
                                 <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
                                 <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
+                                @php
+                                    \Carbon\Carbon::setLocale('id');
+                                    $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
+                                    $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
+                                @endphp 
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center">
                                     <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
@@ -306,6 +321,7 @@
                     <h1 class="display-4">Our Love Story</h1>
                 </div>
                 <div class="story-timeline">
+                @foreach ($love_storys as $love_story)
                     <div class="row wow fadeInUp" data-wow-delay="0.2s">
                         <div class="col-md-6 text-end border-0 border-top border-end border-secondary p-4">
                             <div class="d-inline-flex align-items-center h-100">
@@ -314,18 +330,18 @@
                         </div>
                         <div class="col-md-6 border-start border-top border-secondary p-4 pe-0">
                             <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
-                                <h4 class="mb-2 text-dark">First Meet</h4>
-                                <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">01 Jan 2050</p>
-                                <p class="m-0 fs-5">Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.</p>
+                                <h4 class="mb-2 text-dark">{{ $love_story->tittle_story }}</h4>
+                                <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</p>
+                                <p class="m-0 fs-5">{{ $love_story->description_story}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="row flex-column-reverse flex-md-row wow fadeInUp" data-wow-delay="0.3s">
                         <div class="col-md-6 text-end border-end border-top border-secondary p-4 ps-0">
                             <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
-                                <h4 class="text-dark mb-2">First Date</h4>
-                                <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">01 Jan 2050</p>
-                                <p class="m-0 fs-5">Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.</p>
+                                <h4 class="text-dark mb-2">{{ $love_story->tittle_story }}</h4>
+                                <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</p>
+                                <p class="m-0 fs-5">{{ $love_story->description_story}}</p>
                             </div>
                         </div>
                         <div class="col-md-6 border-start border-top border-secondary p-4">
@@ -334,34 +350,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row wow fadeInUp" data-wow-delay="0.4s">
-                        <div class="col-md-6 text-end border-end border-top border-secondary p-4 ps-0">
-                            <div class="d-inline-flex align-items-center h-100">
-                                <img src="{{ asset('asset_main/img/story-3.jpg') }}" class="img-fluid w-100 img-border" alt="">
-                            </div>
-                        </div>
-                        <div class="col-md-6 border-start border-top border-secondary p-4 pe-0">
-                            <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
-                                <h4 class="text-dark mb-2">Proposal</h4>
-                                <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">01 Jan 2050</p>
-                                <p class="m-0 fs-5">Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row flex-column-reverse flex-md-row wow fadeInUp" data-wow-delay="0.5s">
-                        <div class="col-md-6 text-end border border-start-0 border-secondary p-4 ps-0">
-                            <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
-                                <h4 class="text-dark mb-2">Enagagement</h4>
-                                <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">01 Jan 2050</p>
-                                <p class="m-0 fs-5">Lorem elitr magna stet rebum dolores sed. Est stet labore est lorem lorem at amet sea, eos tempor rebum, labore amet ipsum sea lorem, stet rebum eirmod amet. Kasd clita kasd stet amet est dolor elitr.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 border border-end-0 border-secondary p-4">
-                            <div class="d-inline-flex align-items-center h-100">
-                                <img src="{{ asset('asset_main/img/story-4.jpg') }}" class="img-fluid w-100 img-border" alt="">
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -379,28 +368,33 @@
             <div class="container py-5 wow zoomIn" data-wow-delay="0.1s">
                 <div class="wedding-date text-center bg-light p-5" style="border-style: double !important; border: 15px solid rgba(253, 93, 93, 0.5);">
                     <div class="wedding-date-content">
+                    @php
+                        \Carbon\Carbon::setLocale('id');
+                        $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
+                        $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
+                    @endphp
                         <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                            <h4 class="text-dark text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->wedding_date }}</h4>
+                            <h4 class="text-dark text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
                         </div>
                         <h1 class="display-4">{{ $wedding->title }}</h1>
                         <p class="text-dark fs-5">Niloy Hotel New York , 123 West 23th Street, NY</p>
                         <div class="d-flex align-items-center justify-content-center mb-5">
-                            <div class="text-dark fs-2 me-4">
-                                <div>00</div>
-                                <span>Days</span>
-                            </div>
-                            <div class="text-dark fs-2 me-4">
-                                <div>00</div>
-                                <span>Hours</span>
-                            </div>
-                            <div class="text-dark fs-2 me-4">
-                                <div>00</div>
-                                <span>Mins</span>
-                            </div>
-                            <div class="text-dark fs-2 me-0">
-                                <div>00</div>
-                                <span>Secs</span>
-                            </div>
+                        <div class="text-dark fs-2 me-4">
+                            <div id="days">00</div>
+                            <span>Days</span>
+                        </div>
+                        <div class="text-dark fs-2 me-4">
+                            <div id="hours">00</div>
+                            <span>Hours</span>
+                        </div>
+                        <div class="text-dark fs-2 me-4">
+                            <div id="minutes">00</div>
+                            <span>Mins</span>
+                        </div>
+                        <div class="text-dark fs-2 me-0">
+                            <div id="seconds">00</div>
+                            <span>Secs</span>
+                        </div>
                         </div>
                         <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">Book Your Attendance</a>
                     </div>
@@ -435,53 +429,30 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-menorah text-primary fa-3x"></i>
                                 </div>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
                                 <p class="text-primary">10:00AM - 11:00AM</p>
                                 <h3 class="text-dark">Dinner</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
                         </div>
                         <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
-                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="mb-4 p-3 d-inline-flex">
-                                <i class="fas fa-photo-video text-primary fa-3x"></i>
                             <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-photo-video text-primary fa-3x"></i>
                                 </div>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
-                                <p class="text-primary">{{ $wedding->wedding_time }}</p>
+                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
+                                <p class="text-primary">10:00AM - 11:00AM</p>
                                 <h3 class="text-dark">Photoshoot</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
-                            
-                            @php
-                                \Carbon\Carbon::setLocale('id');
-                                $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date)->translatedFormat('d F Y');
-                                $startTime = isset($wedding->start_time) ? \Carbon\Carbon::parse($wedding->start_time)->format('H:i A') : null;
-                                $endTime = isset($wedding->end_time) ? \Carbon\Carbon::parse($wedding->end_time)->format('H:i A') : null;
-                            @endphp
-
-                            <p class="text-dark mb-0">{{ $weddingDate }}</p>
-                            
-                            @if ($startTime && $endTime)
-                                <p class="text-primary">{{ $startTime }} - {{ $endTime }}</p>
-                            @else
-                                <p class="text-primary">Waktu belum ditentukan</p>
-                            @endif
-
-                            <h3 class="text-dark">Photoshoot</h3>
-                            <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                         </div>
-                    </div>
-
                         <div class="col-6 col-md-6 col-xl-3 border border-bottom-0 border-end-0">
                             <div class="text-center p-3 wow fadeIn" data-wow-delay="0.5s">
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-dungeon text-primary fa-3x"></i>
                                 </div>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
-                                <p class="text-primary">{{ $wedding->wedding_time }}</p>
+                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
+                                <p class="text-primary">10:00AM - 11:00AM</p>
                                 <h3 class="text-dark">Reception</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
@@ -491,8 +462,8 @@
                                 <div class="mb-4 p-3 d-inline-flex">
                                     <i class="fas fa-ring text-primary fa-3x"></i>
                                 </div>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
-                                <p class="text-primary">{{ $wedding->wedding_time }}</p>
+                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
+                                <p class="text-primary">10:00AM - 11:00AM</p>
                                 <h3 class="text-dark">Ceremony</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
@@ -535,7 +506,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                             </div>
                         </div>
                     </div>
@@ -550,7 +521,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                             </div>
                         </div>
                     </div>
@@ -565,7 +536,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                             </div>
                         </div>
                     </div>
@@ -580,7 +551,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                             </div>
                         </div>
                     </div>
@@ -595,7 +566,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                             </div>
                         </div>
                     </div>
@@ -610,7 +581,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                             </div>
                         </div>
                     </div>
@@ -625,7 +596,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                             </div>
                         </div>
                     </div>
@@ -640,7 +611,7 @@
                             </div>
                             <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
                                 <h5>Wedding on the beach</h5>
-                                <p class="text-dark mb-0">{{ $wedding->wedding_date }}</p>
+                                <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                             </div>
                         </div>
                     </div>
@@ -870,6 +841,38 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('asset_main/js/main.js')}}"></script>
+
+    <script>
+        // Ambil tanggal pernikahan dari PHP ke JavaScript
+        const weddingDate = new Date("{{ $weddingDate->format('Y-m-d H:i:s') }}").getTime();
+
+            // Fungsi hitungan mundur
+            const countdownFunction = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = weddingDate - now;
+
+                // Hitung hari, jam, menit, dan detik
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Tampilkan hasil
+                document.getElementById("days").textContent = days;
+                document.getElementById("hours").textContent = hours;
+                document.getElementById("minutes").textContent = minutes;
+                document.getElementById("seconds").textContent = seconds;
+
+                // Jika waktu habis, hentikan hitungan mundur
+                if (distance < 0) {
+                    clearInterval(countdownFunction);
+                    document.getElementById("days").textContent = "00";
+                    document.getElementById("hours").textContent = "00";
+                    document.getElementById("minutes").textContent = "00";
+                    document.getElementById("seconds").textContent = "00";
+                }
+            }, 1000);
+        </script>
     </body>
 
 </html>
