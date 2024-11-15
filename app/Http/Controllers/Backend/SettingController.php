@@ -14,6 +14,11 @@ class SettingController
         return view('backend.admin.dashboard');
     }
 
+    public function dashboardUser()
+    {
+        return view('user.dashboard');
+    }
+
     public function profileAdmin()
     {
 

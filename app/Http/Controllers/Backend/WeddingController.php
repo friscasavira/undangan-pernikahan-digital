@@ -74,7 +74,7 @@ class WeddingController
         if(!$wedding){
             return back();
         }
-        return view('admin.edit_weddings', compact('wedding'));
+        return view('backend.admin.edit_weddings', compact('wedding'));
     }
 
     /**
@@ -83,8 +83,8 @@ class WeddingController
     public function update(Request $request, string $id)
     {
         $wedding = weddings::find($id);
+        $id_user = Auth::user()->id_user;
         $request->validate([
-            'id_user'=>'required',
            'title' => 'required',
             'bride_name' => 'required',
             'groom_name' => 'required',
@@ -92,11 +92,11 @@ class WeddingController
             'wedding_time' => 'required',
             'location' => 'required',
             'message' => 'required',
-            'unique_url' => 'required|unique:wedding,unique_url,' . $wedding->id_wedding . ',id_wedding'
+            'unique_url' => 'required|unique:weddings,unique_url,' . $wedding->id_wedding . ',id_wedding'
             
         ]);
         $wedding->update([
-            'id_user'=> $request->id_user,
+            'id_user'=> $id_user,
            'title' => $request->title,
             'bride_name' => $request->bride_name,
             'groom_name' => $request->groom_name,
@@ -107,7 +107,7 @@ class WeddingController
             'unique_url' => $request->unique_url,
         ]);
 
-        return redirect()->route('admin.Weddings')->with('success', 'Data Weddings Berhasil di Edit');
+        return redirect()->route('admin.weddings')->with('success', 'Data Weddings Berhasil di Edit');
     }
 
 

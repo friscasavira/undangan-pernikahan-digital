@@ -22,3 +22,4 @@ class User
         return redirect()->route($role . '.login')->withErrors(['login_error' => 'Silahkan Login Untuk Melanjutkan']);
     }
 }
+    

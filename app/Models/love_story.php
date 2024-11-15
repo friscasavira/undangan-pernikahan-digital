@@ -15,8 +15,7 @@ class love_story extends Model
         'id_wedding',
         'photo_url',
         'date',
-        'title',
+        'tittle_story',
         'description'
-
     ];
 }
