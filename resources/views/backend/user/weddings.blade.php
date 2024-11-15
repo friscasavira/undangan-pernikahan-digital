@@ -37,8 +37,8 @@
                         <td>{{$wedding->message}}</td>
                         <td>{{$wedding->unique_url}}</td>
                         <td>
-                            <a href="" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>
+                            <a href="{{route('user.edit_weddings', $wedding->id_wedding)}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{route('user.delete_weddings', $wedding->id_wedding)}}" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>
                         </td>
 
                     </tr>

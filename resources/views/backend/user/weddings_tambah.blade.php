@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="bride_name" class="form-label">NAMA MEMPELAI WANITA</label>
+                        <label for="bride_name" class="form-label">Nama Mempelai Wanita</label>
                         <input type="text" class="form-control" id="bride_name" name="bride_name">
                         <div class="text-danger">
                         @error('bride_name')
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="groom_name" class="form-label">NAMA MEMPELAI PRIA</label>
+                        <label for="groom_name" class="form-label">Nama Mempelai Pria</label>
                         <input type="text" class="form-control" id="groom_name" name="groom_name">
                         <div class="text-danger">
                         @error('groom_name')
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="wedding_date" class="form-label">TANGGAL PERNIKAHAN</label>
+                        <label for="wedding_date" class="form-label">Tanggal Pernikahan</label>
                         <input type="date" class="form-control" id="wedding_date" name="wedding_date">
                         <div class="text-danger">
                         @error('wedding_date')
@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="wedding_time" class="form-label">WAKTU PERNIKAHAN</label>
+                        <label for="wedding_time" class="form-label">Waktu Pernikahan</label>
                         <input type="time" class="form-control" id="wedding_time" name="wedding_time">
                         <div class="text-danger">
                         @error('wedding_time')
@@ -62,7 +62,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="location" class="form-label">ALAMAT PERNIKAHAN</label>
+                        <label for="location" class="form-label">Alamat Pernikahan</label>
                         <input type="text" class="form-control" id="location" name="location">
                         <div class="text-danger">
                         @error('location')
@@ -72,7 +72,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="message" class="form-label">PESAN</label>
+                        <label for="message" class="form-label">Pesan</label>
                         <input type="text" class="form-control" id="message" name="message">
                         <div class="text-danger">
                         @error('message')
@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="unique_url" class="form-label">LINK</label>
+                        <label for="unique_url" class="form-label">Link</label>
                         <input type="text" class="form-control" id="unique_url" name="unique_url">
                         <div class="text-danger">
                         @error('unique_url')

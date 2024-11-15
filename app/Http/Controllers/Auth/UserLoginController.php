@@ -41,7 +41,7 @@ class UserLoginController extends RoutingController
     public function submitUser(Request $request)
     {
         $credentials = $request->validate([
-            'email' => 'required',
+            'username' => 'required',
             'password' => 'required',
         ]);
 
@@ -54,7 +54,7 @@ class UserLoginController extends RoutingController
             }
         }
 
-        return back()->withErrors(['login_error' => 'email atau Password Salah.']) ->onlyInput('email');
+        return back()->withErrors(['login_error' => 'username atau Password Salah.']) ->onlyInput('username');
     }
 
 }
