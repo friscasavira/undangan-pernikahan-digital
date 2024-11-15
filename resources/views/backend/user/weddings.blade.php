@@ -11,16 +11,16 @@
                     <table class="table text-nowrap align-middle mb-0" id="weddings" >
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0">
-                                <th scope="col" class="ps-0">NO</th>
+                                <th scope="col" class="ps-0">No</th>
                                 <th scope="col">Tittle</th>
-                                <th scope="col" class="text-center">NAMA PENGANTIN WANITA</th>
-                                <th scope="col" class="text-center">NAMA PENGANTIN PRIA</th>
-                                <th scope="col" class="text-center">TANGGAL PERNIKAHAN</th>
-                                <th scope="col" class="text-center">WAKTU PERNIKAHAN</th>
-                                <th scope="col" class="text-center">LOKASI PERNIKAHAN</th>
-                                <th scope="col" class="text-center">PESAN</th>
-                                <th scope="col" class="text-center">LINK</th>
-                                <th scope="col" class="text-center">ACTIONS</th>
+                                <th scope="col" class="text-center">Nama Pengantin Wanita</th>
+                                <th scope="col" class="text-center">Nama Pengantin Pria</th>
+                                <th scope="col" class="text-center">Tanggal Pernikahan</th>
+                                <th scope="col" class="text-center">Waktu Pernikahan</th>
+                                <th scope="col" class="text-center">Lokasi Pernikahan</th>
+                                <th scope="col" class="text-center">Pesan</th>
+                                <th scope="col" class="text-center">Link</th>
+                                <th scope="col" class="text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
@@ -31,7 +31,7 @@
                         <td>{{$wedding->title}}</td>
                         <td>{{$wedding->bride_name}}</td>
                         <td>{{$wedding->groom_name}}</td>
-                        <td>{{$wedding->wedding_date}}</td>
+                        <td class="text-start">{{$wedding->wedding_date}}</td>
                         <td>{{$wedding->wedding_time}}</td>
                         <td>{{$wedding->location}}</td>
                         <td>{{$wedding->message}}</td>

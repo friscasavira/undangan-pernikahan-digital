@@ -12,7 +12,7 @@
                 <form action="{{route('user.weddings_store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="title" class="form-label">TITLE</label>
+                        <label for="title" class="form-label">Title</label>
                         <input type="text" class="form-control" id="title" name="title">
                         <div class="text-danger">
                             @error('title')

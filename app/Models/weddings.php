@@ -21,6 +21,11 @@ class weddings extends Model
         'location',
         'message',
         'unique_url'
-        
+
     ];
+
+    public function events()
+    {
+        return $this->hasMany(events::class, 'id_event', 'id_event');
+    }
 }
