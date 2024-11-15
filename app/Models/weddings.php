@@ -23,4 +23,9 @@ class weddings extends Model
         'unique_url'
         
     ];
+
+    public function event()
+        {
+            return $this->hasMany(events::class, 'id_wedding', 'id_wedding');
+        }
 }

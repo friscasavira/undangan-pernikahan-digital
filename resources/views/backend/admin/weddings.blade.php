@@ -12,7 +12,7 @@
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0">
                                 <th scope="col" class="ps-0">NO</th>
-                                <th scope="col">Tittle</th>
+                                <th scope="col" class="text-center">TITTLE</th>
                                 <th scope="col" class="text-center">NAMA PENGANTIN WANITA</th>
                                 <th scope="col" class="text-center">NAMA PENGANTIN PRIA</th>
                                 <th scope="col" class="text-center">TANGGAL PERNIKAHAN</th>
