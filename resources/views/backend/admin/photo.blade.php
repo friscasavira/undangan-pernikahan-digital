@@ -22,14 +22,22 @@
                         </head>
 
                         <body>
+
                             <div class="container mt-5">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="https://via.placeholder.com/300" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <p class="card-text text-center">Ini adalah caption untuk gambar.</p>
+                                <div class="row">
+                                    @foreach ($photos as $photo)
+                                    <div class="col-md-4 mb-4"> <!-- Setiap foto mengambil 4 kolom -->
+                                        <div class="card" style="width: 100%;"> <!-- Atur width agar sesuai kolom -->
+                                            <img src="{{ asset('storage/' . $photo->photo_url) }}" class="card-img-top" alt="Image">
+                                            <div class="card-body">
+                                                <p class="card-text text-center">{{ $photo->caption }}</p>
+                                            </div>
+                                        </div>
                                     </div>
+                                    @endforeach
                                 </div>
                             </div>
+
 
                             <!-- Bootstrap JS (Optional) -->
                             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

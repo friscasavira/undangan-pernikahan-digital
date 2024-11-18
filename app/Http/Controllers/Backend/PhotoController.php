@@ -41,14 +41,14 @@ class PhotoController
         if($request->hasFile('photo_url')){
             $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
 
-            $request->file('photo_url')->storeAs('photo_url_pernikahan', $uniqueField, 'public');
+            $request->file('photo_url')->storeAs('photo_pernikahan', $uniqueField, 'public');
 
-            $photo_url = 'photo_url_pernikahan/' . $uniqueField;
+            $photo_url = 'photo_pernikahan/' . $uniqueField;
         }
        
         photos::create([
             'id_wedding'=> $request->id_wedding,
-            'photo_url' => $request->photo_url,
+            'photo_url' => $photo_url,
             'caption' => $request->caption,
         ]);
 

@@ -28,10 +28,20 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="photo" class="form-label">FOTO</label>
-                        <input type="file" class="form-control" id="photo" name="photo">
+                        <label for="photo_url" class="form-label">FOTO</label>
+                        <input type="file" class="form-control" id="photo_url" name="photo_url">
                         <div class="text-danger">
-                        @error('photo')
+                        @error('photo_url')
+                        {{$message}}
+                        @enderror
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="caption" class="form-label">CAPTION</label>
+                        <input type="text" class="form-control" id="caption" name="caption">
+                        <div class="text-danger">
+                        @error('caption')
                         {{$message}}
                         @enderror
                         </div>
