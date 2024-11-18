@@ -12,10 +12,19 @@ class rsvp extends Model
     protected $primaryKey = 'id_rsvp';
 
     protected $fillable = [
-        'id_guest',
+        'id_wedding',
+        'name',
+        'email',
+        'phone',
         'message',
+        'is_invited',
         'attendance_status',
         'total_guest'
         
     ];
+
+    public function guests()
+    {
+    return $this->belongsTo(weddings::class, 'id_wedding', 'id_wedding');
+    }
 }

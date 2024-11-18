@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('rsvp', function (Blueprint $table) {
             $table->integer('id_rsvp')->primary()->autoIncrement();
-            $table->integer('id_guest');
-            $table->foreign('id_guest')
-                  ->references('id_guest')
-                  ->on('guests')
+            $table->integer('id_wedding');
+            $table->foreign('id_wedding')
+                  ->references('id_wedding')
+                  ->on('weddings')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
-            $table->text('message');
-            $table->enum('attendance_status', ['Belum Konfirmasi', 'Hadir', 'Tidak hadir']);
+                  $table->string('name',50);
+                  $table->string('email',50)->unique();
+                  $table->string('phone',15);
+                  $table->string('message',255);
+                  $table->enum('attendance_status', ['Belum Konfirmasi','Hadir','Tidak Hadir']);
             $table->integer('total_guests');
 
             $table->timestamps();

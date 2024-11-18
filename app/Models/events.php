@@ -9,7 +9,7 @@ class events extends Model
 {
     use HasFactory;
     protected $table = 'events';
-    protected $primaryKey = 'id_ivent';
+    protected $primaryKey = 'id_event';
 
     protected $fillable = [
         'id_wedding',
@@ -18,4 +18,10 @@ class events extends Model
         'event_time',
         'event_location'
     ];
+
+
+    public function wedding()
+    {
+    return $this->belongsTo(weddings::class, 'id_wedding', 'id_wedding');
+    }
 }

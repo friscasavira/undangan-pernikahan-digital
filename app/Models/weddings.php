@@ -21,6 +21,6 @@ class weddings extends Model
         'location',
         'message',
         'unique_url'
-        
+
     ];
 }
