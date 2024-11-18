@@ -321,36 +321,41 @@
                     <h1 class="display-4">Our Love Story</h1>
                 </div>
                 <div class="story-timeline">
-                @foreach ($love_storys as $love_story)
-                    <div class="row wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="col-md-6 text-end border-0 border-top border-end border-secondary p-4">
-                            <div class="d-inline-flex align-items-center h-100">
-                                <img src="{{ asset('asset_main/img/story-1.jpg')}}" class="img-fluid w-100 img-border" alt="">
+                @foreach ($love_storys as $index => $love_story)
+                    @if($index % 2 == 0)
+                        <!-- Even index: Image on the left, Text on the right -->
+                        <div class="row wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="col-md-6 border-0 border-top border-end border-secondary p-4 text-end">
+                                <div class="d-inline-flex align-items-center h-100">
+                                    <img src="{{ asset('asset_main/img/story-1.jpg')}}" class="img-fluid w-100 img-border" alt="">
+                                </div>
+                            </div>
+                            <div class="col-md-6 border-start border-top border-secondary p-4 pe-0">
+                                <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
+                                    <h4 class="mb-2 text-dark">{{ $love_story->tittle_story }}</h4>
+                                    <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</p>
+                                    <p class="m-0 fs-5">{{ $love_story->description_story }}</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 border-start border-top border-secondary p-4 pe-0">
-                            <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
-                                <h4 class="mb-2 text-dark">{{ $love_story->tittle_story }}</h4>
-                                <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</p>
-                                <p class="m-0 fs-5">{{ $love_story->description_story}}</p>
+                    @else
+                        <!-- Odd index: Text on the left, Image on the right -->
+                        <div class="row wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="col-md-6 border-end border-top border-secondary p-4 ps-0">
+                                <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
+                                    <h4 class="text-dark mb-2">{{ $love_story->tittle_story }}</h4>
+                                    <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</p>
+                                    <p class="m-0 fs-5">{{ $love_story->description_story }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 border-start border-top border-secondary p-4">
+                                <div class="d-inline-flex align-items-center h-100">
+                                    <img src="{{ asset('asset_main/img/story-1.jpg') }}" class="img-fluid w-100 img-border" alt="">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row flex-column-reverse flex-md-row wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="col-md-6 text-end border-end border-top border-secondary p-4 ps-0">
-                            <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
-                                <h4 class="text-dark mb-2">{{ $love_story->tittle_story }}</h4>
-                                <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</p>
-                                <p class="m-0 fs-5">{{ $love_story->description_story}}</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 border-start border-top border-secondary p-4">
-                            <div class="d-inline-flex align-items-center h-100">
-                                <img src="{{ asset('asset_main/img/story-2.jpg') }}" class="img-fluid w-100 img-border" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+                    @endif
+                @endforeach
                 </div>
             </div>
         </div>
@@ -430,7 +435,8 @@
                                     <i class="fas fa-menorah text-primary fa-3x"></i>
                                 </div>
                                 <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                                <p class="text-primary">10:00AM - 11:00AM</p>
+                                <p class="text-primary">
+                                {{ \Carbon\Carbon::parse($love_story->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_story->end_time)->format('h:i A') }}</p>
                                 <h3 class="text-dark">Dinner</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
@@ -441,7 +447,8 @@
                                     <i class="fas fa-photo-video text-primary fa-3x"></i>
                                 </div>
                                 <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                                <p class="text-primary">10:00AM - 11:00AM</p>
+                                <p class="text-primary">
+                                {{ \Carbon\Carbon::parse($love_story->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_story->end_time)->format('h:i A') }}</p>
                                 <h3 class="text-dark">Photoshoot</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
@@ -452,7 +459,7 @@
                                     <i class="fas fa-dungeon text-primary fa-3x"></i>
                                 </div>
                                 <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                                <p class="text-primary">10:00AM - 11:00AM</p>
+                                <p class="text-primary">{{ \Carbon\Carbon::parse($love_story->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_story->end_time)->format('h:i A') }}</p></p>
                                 <h3 class="text-dark">Reception</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
@@ -463,7 +470,7 @@
                                     <i class="fas fa-ring text-primary fa-3x"></i>
                                 </div>
                                 <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                                <p class="text-primary">10:00AM - 11:00AM</p>
+                                <p class="text-primary">{{ \Carbon\Carbon::parse($love_story->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_story->end_time)->format('h:i A') }}</p></p>
                                 <h3 class="text-dark">Ceremony</h3>
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
@@ -649,12 +656,6 @@
                                         <div class="form-group">
                                             <label for="Examplename" class="form-label text-dark">Last Name</label>
                                             <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Last Name">
-                                          </div>
-                                    </div>
-                                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                                        <div class="form-group">
-                                            <label for="Examplename" class="form-label text-dark">Enter Your Email</label>
-                                            <input type="email" class="form-control py-3 border-0" id="Examplename" placeholder="Enter Your Email">
                                           </div>
                                     </div>
                                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
