@@ -3,10 +3,8 @@
 use App\Http\Controllers\Auth\UserLoginController;
 use App\Http\Controllers\Backend\CommentController;
 use App\Http\Controllers\Backend\EventController;
-use App\Http\Controllers\Backend\GuestController;
 use App\Http\Controllers\Backend\Love_storyController;
 use App\Http\Controllers\Backend\PhotoController;
-use App\Http\Controllers\backend\RspvController;
 use App\Http\Controllers\backend\RsvpController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\WeddingController;
@@ -50,6 +48,13 @@ Route::middleware(['role:admin'])->group(function() {
     Route::get('/admin/rsvp/edit/{id}', [RsvpController::class, 'edit'])->name('admin.edit_rsvp');
     Route::put('/admin/rsvp/update/{id}', [RsvpController::class, 'update'])->name('admin.rsvp_update');
     Route::get('/admin/rsvp/delete/{id}', [RsvpController::class, 'delete'])->name('admin.delete_rsvp'); 
+
+    Route::get('/admin/photo', [photoController::class, 'photo'])->name('admin.photo');
+    Route::get('/admin/photo/tambah', [photoController::class, 'create'])->name('admin.photo_tambah');
+    Route::post('/admin/photo/tambah', [photoController::class, 'store'])->name('admin.photo_store');
+    Route::get('/admin/photo/edit/{id}', [photoController::class, 'edit'])->name('admin.edit_photo');
+    Route::put('/admin/photo/update/{id}', [photoController::class, 'update'])->name('admin.photo_update');
+    Route::get('/admin/photo/delete/{id}', [photoController::class, 'delete'])->name('admin.delete_photo'); 
 
     Route::get('/admin/love_story', [Love_storyController::class, 'love_story'])->name('admin.love_story');
     Route::get('/admin/love_story/tambah', [Love_storyController::class, 'create'])->name('admin.love_story_tambah');

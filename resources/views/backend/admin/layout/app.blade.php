@@ -72,7 +72,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="admin.photo" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('admin.photo')}}" aria-expanded="false">
                 <span>
                 <i class="ti ti-photo"></i>
                 </span>

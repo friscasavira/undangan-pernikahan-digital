@@ -16,4 +16,9 @@ class photos extends Model
         'photo_url',
         'caption'
     ];
+
+    public function wedding()
+    {
+    return $this->belongsTo(weddings::class, 'id_wedding', 'id_wedding');
+    }
 }
