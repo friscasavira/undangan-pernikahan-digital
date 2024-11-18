@@ -64,15 +64,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-                <span>
-                <i class="ti ti-ad-2"></i>
-                </span>
-                <span class="hide-menu">Guests</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('user.rsvp')}}" aria-expanded="false">
                 <span>
                   <iconify-icon icon="solar:file-text-bold-duotone" class="fs-6"></iconify-icon>
                 </span>
@@ -88,7 +80,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('user.love_story')}}" aria-expanded="false">
                 <span>
                 <i class="ti ti-heart-plus"></i>
                 </span>
@@ -96,7 +88,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('user.comment')}}" aria-expanded="false">
                 <span>
                     <i class="ti ti-messages"></i>
                 </span>

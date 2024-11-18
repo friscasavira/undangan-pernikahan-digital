@@ -20,7 +20,7 @@ class events extends Model
     ];
 
 
-    public function wedding()
+    public function weddings()
     {
     return $this->belongsTo(weddings::class, 'id_wedding', 'id_wedding');
     }
