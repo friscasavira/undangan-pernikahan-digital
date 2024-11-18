@@ -441,6 +441,8 @@
                                 <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
                             </div>
                         </div>
+
+                        
                         <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
                             <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
                                 <div class="mb-4 p-3 d-inline-flex">
