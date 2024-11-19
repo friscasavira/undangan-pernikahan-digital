@@ -16,4 +16,9 @@ class comments extends Model
         'name',
         'message'
     ];
+
+    public function weddings()
+    {
+    return $this->belongsTo(weddings::class, 'id_wedding', 'id_wedding');
+    }
 }

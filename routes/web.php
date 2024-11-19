@@ -47,7 +47,7 @@ Route::middleware(['role:admin'])->group(function() {
     Route::post('/admin/rsvp/tambah', [RsvpController::class, 'store'])->name('admin.rsvp_store');
     Route::get('/admin/rsvp/edit/{id}', [RsvpController::class, 'edit'])->name('admin.edit_rsvp');
     Route::put('/admin/rsvp/update/{id}', [RsvpController::class, 'update'])->name('admin.rsvp_update');
-    Route::get('/admin/rsvp/delete/{id}', [RsvpController::class, 'delete'])->name('admin.delete_rsvp'); 
+    Route::get('/admin/rsvp/delete/{id}', [RsvpController::class, 'delete'])->name('admin.delete_rsvp');
 
     Route::get('/admin/photo', [photoController::class, 'photo'])->name('admin.photo');
     Route::get('/admin/photo/tambah', [photoController::class, 'create'])->name('admin.photo_tambah');
@@ -99,4 +99,23 @@ Route::middleware(['role:user'])->group(function() {
     Route::get('/user/events/edit/{id}', [EventController::class, 'editUser'])->name('user.edit_events');
     Route::put('/user/events/update/{id}', [EventController::class, 'updateUser'])->name('user.events_update');
     Route::get('/user/events/delete/{id}', [EventController::class, 'deleteUser'])->name('user.delete_events');
+
+    Route::get('/user/rsvp', [RsvpController::class, 'rsvpUser'])->name('user.rsvp');
+
+    Route::get('/user/love_story', [Love_storyController::class, 'love_storyUser'])->name('user.love_story');
+    Route::get('/user/love_story/tambah', [Love_storyController::class, 'createUser'])->name('user.love_story_tambah');
+    Route::post('/user/love_story/tambah', [Love_storyController::class, 'storeUser'])->name('user.love_story_store');
+    Route::get('/user/love_story/edit/{id}', [Love_storyController::class, 'editUser'])->name('user.edit_love_story');
+    Route::put('/user/love_story/update/{id}', [Love_storyController::class, 'updateUser'])->name('user.love_story_update');
+    Route::get('/user/love_story/delete/{id}', [Love_storyController::class, 'deleteUser'])->name('user.delete_love_story');
+
+    Route::get('/user/comment', [CommentController::class, 'commentUser'])->name('user.comment');
+
+    Route::get('/user/setting', [SettingController::class, 'settingUser'])->name('user.setting');
+    Route::get('/user/setting/tambah', [SettingController::class, 'createUser'])->name('user.setting_tambah');
+    Route::post('/user/setting/tambah', [SettingController::class, 'storeUser'])->name('user.setting_store');
+    Route::get('/user/setting/edit/{id}', [SettingController::class, 'editUser'])->name('user.edit_setting');
+    Route::put('/user/setting/update/{id}', [SettingController::class, 'updateUser'])->name('user.setting_update');
+    Route::get('/user/setting/delete/{id}', [SettingController::class, 'deleteUser'])->name('user.delete_setting');
+
 });

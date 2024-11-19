@@ -1,6 +1,6 @@
 @extends('backend.user.layout.app')
 
-@section('title','Weddings')
+@section('title','Events')
 
 @section('content')
 <div class="col-lg-12">
