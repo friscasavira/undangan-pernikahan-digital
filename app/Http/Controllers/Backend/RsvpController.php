@@ -35,7 +35,7 @@ class RsvpController
             'phone' => 'required',
             'attendance_status' => 'required',
         ]);
-       
+
         rsvp::create([
             'id_wedding'=> $request->id_wedding,
             'name' => $request->name,
@@ -44,7 +44,7 @@ class RsvpController
             'attendance_status' => $request->attendance_status,
         ]);
 
-        return redirect()->route('admin.rsvp')->with('success','Data rsvp Berhasil di Tambah'); 
+        return redirect()->route('admin.rsvp')->with('success','Data rsvp Berhasil di Tambah');
 }
 
     /**
@@ -81,7 +81,7 @@ class RsvpController
             'phone' => 'required',
             'attendance_status' => 'required',
         ]);
-            
+
 
         $rsvp->update([
             'id_wedding'=> $request->id_wedding,
@@ -98,12 +98,52 @@ class RsvpController
     public function delete($id)
     {
         $rsvp = rsvp::find($id);
-        
+
 
          $rsvp->delete();
 
         return redirect()->back()->with('success', 'Data rsvp Berhasil diHapus');
-    
+
 
     }
+
+    public function rsvpUser()
+    {
+        $rsvps = rsvp::all();
+        return view('backend.user.rsvp', compact('rsvps'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function createUser()
+    {
+        $weddings = weddings::all();
+        return view('backend.user.tambah_rsvp',compact('weddings'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function storeUser(Request $request)
+    {
+        $request->validate([
+            'id_wedding' => 'required',
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'attendance_status' => 'required',
+        ]);
+
+        rsvp::create([
+            'id_wedding'=> $request->id_wedding,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'attendance_status' => $request->attendance_status,
+        ]);
+
+        return redirect()->route('user.rsvp')->with('success','Data rsvp Berhasil di Tambah');
+    }
+
 }
