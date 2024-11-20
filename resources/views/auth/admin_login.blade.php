@@ -19,7 +19,12 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">Login #10</h2>
+					<h2 class="heading-section">Login Min</h2>
+					@if ($errors->has('login_error'))
+                        <div class="alert alert-danger" style="border-radius:40px 40px 40px 40px;">
+                            {{ $errors->first('login_error')}}
+                        </div>
+                        @endif
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -31,10 +36,20 @@
 							<div class="form-group">
 								<input type="text" class="form-control" name="username" placeholder="Username" required>
 							</div>
+							<div class="text-danger">
+                                @error('username')
+                                {{$message}}
+                                @enderror
+                            </div>
 							<div class="form-group">
 								<input id="password-field" type="password" class="form-control" name="password" placeholder="Password" required>
 								<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 							</div>
+							<div class="text-danger">
+                                @error('password')
+                                {{$message}}
+                                @enderror
+                            </div>
 							<div class="form-group">
 								<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
 							</div>

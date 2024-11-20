@@ -415,78 +415,69 @@
     <!-- Wedding Date -->
 
 
-    <!-- Wedding Timeline start -->
-    <div class="container-fluid wedding-timeline bg-secondary position-relative overflow-hidden py-5" id="weddingTimeline">
-        <div class="position-absolute" style="top: 50%; left: -100px; transform: translateY(-50%); opacity: 0.5;">
-            <img src="img/wedding-bg.png" class="img-fluid" alt="">
-        </div>
-        <div class="position-absolute" style="top: 50%; right: -160px; transform: translateY(-50%); opacity: 0.5; rotate: 335deg;">
-            <img src="img/wedding-bg.png" class="img-fluid" alt="">
-        </div>
-        <div class="container py-5">
-            <div class="text-center mb-5">
-                <h1 class="display-4 text-white">Wedding Planing Timeline</h1>
+        <!-- Wedding Timeline start -->
+        <div class="container-fluid wedding-timeline bg-secondary position-relative overflow-hidden py-5" id="weddingTimeline">
+            <div class="position-absolute" style="top: 50%; left: -100px; transform: translateY(-50%); opacity: 0.5;">
+                <img src="img/wedding-bg.png" class="img-fluid" alt="">
             </div>
-            <div class="position-relative wedding-content">
-                <div class="row g-4">
-                    <div class="col-6 col-md-6 col-xl-3 border border-bottom-0">
-                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.1s">
-                            <div class="mb-4 p-3 d-inline-flex">
-                                <i class="fas fa-menorah text-primary fa-3x"></i>
-                            </div>
-                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                            <p class="text-primary">
-                                {{ \Carbon\Carbon::parse($love_storys->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_storys->end_time)->format('h:i A') }}
-                            </p>
-                            <h3 class="text-dark">Dinner</h3>
-                            <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-                        </div>
-                    </div>
-
-
-                    <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
-                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="mb-4 p-3 d-inline-flex">
-                                <i class="fas fa-photo-video text-primary fa-3x"></i>
-                            </div>
-                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                            <p class="text-primary">
-                                {{ \Carbon\Carbon::parse($love_storys->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_storys->end_time)->format('h:i A') }}
-                            </p>
-                            <h3 class="text-dark">Photoshoot</h3>
-                            <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-xl-3 border border-bottom-0 border-end-0">
-                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.5s">
-                            <div class="mb-4 p-3 d-inline-flex">
-                                <i class="fas fa-dungeon text-primary fa-3x"></i>
-                            </div>
-                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                            <p class="text-primary">{{ \Carbon\Carbon::parse($love_storys->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_storys->end_time)->format('h:i A') }}</p>
-                            </p>
-                            <h3 class="text-dark">Reception</h3>
-                            <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-xl-3 border border-top-0">
-                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.7s">
-                            <div class="mb-4 p-3 d-inline-flex">
-                                <i class="fas fa-ring text-primary fa-3x"></i>
-                            </div>
-                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                            <p class="text-primary">{{ \Carbon\Carbon::parse($love_storys->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_storys->end_time)->format('h:i A') }}</p>
-                            </p>
-                            <h3 class="text-dark">Ceremony</h3>
-                            <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-                        </div>
-                    </div>
+            <div class="position-absolute" style="top: 50%; right: -160px; transform: translateY(-50%); opacity: 0.5; rotate: 335deg;">
+                <img src="img/wedding-bg.png" class="img-fluid" alt="">
+            </div>
+            <div class="container py-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-4 text-white">Wedding Planing Timeline</h1>
                 </div>
-                <div class="position-absolute heart-circle " style="bottom: 0; left: -18px;">
-                    <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
-                </div>
-                <div class="position-absolute heart-circle" style="top: 18px; right: -17px;">
-                    <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                <div class="position-relative wedding-content">
+                    <div class="row g-4">
+
+                    @foreach ($events as $index => $event)
+                    @if($index % 2 == 0)
+                        <div class="col-6 col-md-6 col-xl-3 border border-bottom-0">
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="fas fa-menorah text-primary fa-3x"></i>
+                                </div>
+                                @php
+                                    \Carbon\Carbon::setLocale('id');
+                                    $eventDate = \Carbon\Carbon::parse($event->event_date);
+                                    $eventDateFormatted = $eventDate->translatedFormat('d F Y');
+                                @endphp
+                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
+                                <p class="text-primary">
+                                {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
+                                <p class="text-success">{{ $event->event_location}}</p>
+                                <h3 class="text-dark">{{ $event->event_name}}</h3>
+                                <p class="text-dark">{{ $event->event_description}}</p>
+                            </div>
+                        </div>
+                        @else
+                        <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="fas fa-photo-video text-primary fa-3x"></i>
+                                </div>
+                                @php
+                                    \Carbon\Carbon::setLocale('id');
+                                    $Date = \Carbon\Carbon::parse($event->event_date);
+                                    $eventDateFormatted = $eventDate->translatedFormat('d F Y');
+                                @endphp
+                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
+                                <p class="text-primary">
+                                {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
+                                <p class="text-success">{{ $event->event_location}}</p>
+                                <h3 class="text-dark">{{ $event->event_name}}</h3>
+                                <p class="text-dark">{{ $event->event_description}}</p>
+                            </div>
+                        </div>
+                        @endif
+                    @endforeach
+                    </div>
+                    <div class="position-absolute heart-circle " style="bottom: 0; left: -18px;">
+                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                    </div>
+                    <div class="position-absolute heart-circle" style="top: 18px; right: -17px;">
+                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -654,39 +645,49 @@
                             <div class="row gx-4 gy-3">
                                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                     <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">First Name</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="First Name">
-                                    </div>
+                                        <label for="Examplename" class="form-label text-dark">Name</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Name">
+                                        </div>
                                 </div>
                                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                     <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">Last Name</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Last Name">
-                                    </div>
+                                        <label for="Examplename" class="form-label text-dark">Email</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Email">
+                                        </div>
                                 </div>
                                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                     <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">Enter Your Phone</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Enter Your Phone">
-                                    </div>
+                                        <label for="Examplename" class="form-label text-dark">Phone</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Phone">
+                                        </div>
                                 </div>
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="form-group">
-                                        <label for="exampleselect" class="form-label text-dark">Number Of Guests</label>
-                                        <select class="form-control bg-white text-dark py-3 border-0" id="exampleselect" placeholder="Number Of Guests">
-                                            <option>Only Me</option>
-                                            <option>02 Guests</option>
-                                            <option>03 Guests</option>
-                                            <option>04 Guests</option>
-                                        </select>
-                                    </div>
-                                </div>
+                            </div>
                                 <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
                                     <div class="form-group">
                                         <label for="exampletextarea" class="form-label text-dark">Message</label>
                                         <textarea name="text" class="form-control border-0" id="exampletextarea" cols="30" rows="5" placeholder="Message"></textarea>
                                     </div>
                                 </div>
+                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                    <div class="form-group">
+                                        <label for="Examplename" class="form-label text-dark">is_invited</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="is_invited">
+                                        </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                    <div class="form-group">
+                                        <label for="Examplename" class="form-label text-dark">attendance_status</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="attendance_status">
+                                        </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                    <div class="form-group">
+                                        <label for="Examplename" class="form-label text-dark">total_guest</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="total_guest">
+                                        </div>
+                                </div>
+                                
+                                
                                 <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
                                     <div class="text-center border border-secondary p-4 my-4 position-relative">
                                         <div class="fw-bold text-primary bg-white d-flex align-items-center justify-content-center position-absolute border-secondary p-2" style="width: 50%; border-style: double; top: 0; left: 50%; transform: translate(-50%, -50%);">
