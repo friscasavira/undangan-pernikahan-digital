@@ -178,8 +178,8 @@
                         <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.3s">
                             <div class="d-flex">
                                 <div class="text-end my-auto pe-4">
-                                    <h3 class="text-primary mb-3">{{ $wedding->groom_name }}</h3>
-                                    <p class="text-dark mb-0" style="line-height: 30px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                    <h3 class="text-primary mb-3">{{ $wedding->bride_name }}</h3>
+                                    <p class="text-dark mb-0" style="line-height: 30px;">{{ $wedding->message}}
                                     </p>
                                 </div>
                                 <img src="{{ asset('asset_main/img/bride.jpg') }}" class="img-fluid img-border" alt="">
@@ -194,8 +194,8 @@
                             <div class="d-flex">
                                 <img src="{{ asset('asset_main/img/Groom.jpg')}}" class="img-fluid img-border" alt="">
                                 <div class="my-auto ps-4">
-                                    <h3 class="text-primary mb-3">{{ $wedding->bride_name }}</h3>
-                                    <p class="text-dark mb-0" style="line-height: 30px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                    <h3 class="text-primary mb-3">{{ $wedding->groom_name }}</h3>
+                                    <p class="text-dark mb-0" style="line-height: 30px;">{{ $wedding->message}}
                                     </p>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@
 
 
     <!-- About Start -->
-    <div class="container-fluid position-relative overflow-hidden bg-secondary py-5">
+    <!-- <div class="container-fluid position-relative overflow-hidden bg-secondary py-5">
         <img src="img/bg-flower.png" class="img-fluid position-absolute top-0" style="right: -15px; transform: rotate(270deg); opacity: 0.5;" alt="">
         <img src="img/bg-flower.png" class="img-fluid position-absolute" style="bottom: 10px; left: -15px; transform: rotate(90deg); opacity: 0.5;" alt="">
         <div class="container py-5 position-relative">
@@ -303,7 +303,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- About End -->
 
 
@@ -448,7 +448,7 @@
                                 <p class="text-success">{{ $event->event_location}}</p>
                                 <h3 class="text-dark">{{ $event->event_name}}</h3>
                                 <p class="text-dark">{{ $event->event_description}}</p>
-                            </div>
+                            </div>  
                         </div>
                         @else
                         <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
@@ -496,7 +496,6 @@
         <div class="container position-relative py-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                 <h1 class="display-2 text-dark">Wedding Gallery</h1>
-                <p class="fs-5 text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
@@ -509,7 +508,7 @@
                             </div>
                         </div>
                         <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
+                            <h5>{{ $event->event_location}}</h5>
                             <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                         </div>
                     </div>
@@ -524,7 +523,7 @@
                             </div>
                         </div>
                         <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
+                            <h5>{{ $event->event_location}}</h5>
                             <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                         </div>
                     </div>
@@ -539,7 +538,7 @@
                             </div>
                         </div>
                         <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
+                            <h5>{{ $event->event_location}}</h5>
                             <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                         </div>
                     </div>
@@ -554,7 +553,7 @@
                             </div>
                         </div>
                         <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
+                            <h5>{{ $event->event_location}}</h5>
                             <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                         </div>
                     </div>
@@ -569,7 +568,7 @@
                             </div>
                         </div>
                         <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
+                            <h5>{{ $event->event_location}}</h5>
                             <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                         </div>
                     </div>
@@ -584,7 +583,7 @@
                             </div>
                         </div>
                         <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
+                            <h5>{{ $event->event_location}}</h5>
                             <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                         </div>
                     </div>
@@ -599,7 +598,7 @@
                             </div>
                         </div>
                         <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
+                            <h5>{{ $event->event_location}}</h5>
                             <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                         </div>
                     </div>
@@ -614,7 +613,7 @@
                             </div>
                         </div>
                         <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
+                            <h5>{{ $event->event_location}}</h5>
                             <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                         </div>
                     </div>

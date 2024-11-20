@@ -16,11 +16,12 @@ class events extends Model
         'event_name',
         'event_date',
         'event_time',
-        'event_location'
+        'event_location',
+        'event_description'
     ];
 
 
-    public function weddings()
+    public function wedding()
     {
     return $this->belongsTo(weddings::class, 'id_wedding', 'id_wedding');
     }
