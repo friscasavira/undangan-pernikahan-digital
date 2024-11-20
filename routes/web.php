@@ -54,7 +54,7 @@ Route::middleware(['role:admin'])->group(function() {
     Route::post('/admin/photo/tambah', [photoController::class, 'store'])->name('admin.photo_store');
     Route::get('/admin/photo/edit/{id}', [photoController::class, 'edit'])->name('admin.edit_photo');
     Route::put('/admin/photo/update/{id}', [photoController::class, 'update'])->name('admin.photo_update');
-    Route::get('/admin/photo/delete/{id}', [photoController::class, 'delete'])->name('admin.delete_photo'); 
+    Route::get('/admin/photo/delete/{id}', [photoController::class, 'delete'])->name('admin.delete_photo');
 
     Route::get('/admin/love_story', [Love_storyController::class, 'love_story'])->name('admin.love_story');
     Route::get('/admin/love_story/tambah', [Love_storyController::class, 'create'])->name('admin.love_story_tambah');
@@ -101,6 +101,13 @@ Route::middleware(['role:user'])->group(function() {
     Route::get('/user/events/delete/{id}', [EventController::class, 'deleteUser'])->name('user.delete_events');
 
     Route::get('/user/rsvp', [RsvpController::class, 'rsvpUser'])->name('user.rsvp');
+
+    Route::get('/user/photo', [photoController::class, 'photoUser'])->name('user.photo');
+    Route::get('/user/photo/tambah', [photoController::class, 'createUser'])->name('user.photo_tambah');
+    Route::post('/user/photo/tambah', [photoController::class, 'storeUser'])->name('user.photo_store');
+    Route::get('/user/photo/edit/{id}', [photoController::class, 'editUser'])->name('user.edit_photo');
+    Route::put('/user/photo/update/{id}', [photoController::class, 'updateUser'])->name('user.photo_update');
+    Route::get('/user/photo/delete/{id}', [photoController::class, 'deleteUser'])->name('user.delete_photo');
 
     Route::get('/user/love_story', [Love_storyController::class, 'love_storyUser'])->name('user.love_story');
     Route::get('/user/love_story/tambah', [Love_storyController::class, 'createUser'])->name('user.love_story_tambah');
