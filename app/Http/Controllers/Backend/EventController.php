@@ -35,6 +35,7 @@ class EventController
             'event_date' => 'required',
             'event_time' => 'required',
             'event_location' => 'required',
+            'event_description' => 'required',
         ]);
 
         events::create([
@@ -43,6 +44,7 @@ class EventController
             'event_date' => $request->event_date,
             'event_time' => $request->event_time,
             'event_location' => $request->event_location,
+            'event_description' => $request->event_description,
         ]);
 
         return redirect()->route('admin.events')->with('success','Data Events Berhasil di Tambah');
@@ -81,6 +83,7 @@ class EventController
             'event_date' => 'required',
             'event_time' => 'required',
             'event_location' => 'required',
+            'event_description' => 'required',
         ]);
 
 
@@ -90,6 +93,7 @@ class EventController
             'event_date' => $request->event_date,
             'event_time' => $request->event_time,
             'event_location' => $request->event_location,
+            'event_description' => $request->event_description,
         ]);
 
         return redirect()->route('admin.events')->with('success', 'Data Events Berhasil di Edit');

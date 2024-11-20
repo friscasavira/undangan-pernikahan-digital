@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('event_name',50);
             $table->date('event_date');
             $table->time('event_time');
-            $table->text('event_location', 255);
+            $table->text('event_location');
+            $table->text('event_description');
 
             $table->timestamps();
         });
