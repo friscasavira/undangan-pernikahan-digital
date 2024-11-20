@@ -14,8 +14,13 @@ class love_story extends Model
     protected $fillable = [
         'id_wedding',
         'photo_url',
-        'date',
+        'date_story',
         'tittle_story',
-        'description'
+        'description_story'
     ];
+
+    public function wedding()
+    {
+    return $this->belongsTo(weddings::class, 'id_wedding', 'id_wedding');
+    }
 }
