@@ -154,9 +154,9 @@ class PhotoController
         if ($request->hasFile('photo_url')){
             $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
 
-            $request->file('photo_url')->storeAs('photo_pernikahan', $uniqueField, 'public');
+            $request->file('photo_url')->storeAs('photo', $uniqueField, 'public');
 
-            $photo_url = 'photo_pernikahan/' . $uniqueField;
+            $photo_url = 'photo/' . $uniqueField;
         }
 
         photos::create([
@@ -171,11 +171,11 @@ class PhotoController
     public function editUser(string $id)
     {
         $weddings = weddings::all();
-        $photo_url = photos::find($id);
-        if(!$photo_url){
+        $photo = photos::find($id);
+        if(!$photo){
             return back();
         }
-        return view('backend.user.edit_photo', compact('photo_url','weddings'));
+        return view('backend.user.edit_photo', compact('photo','weddings'));
     }
 
     /**
@@ -183,35 +183,34 @@ class PhotoController
      */
     public function updateUser(Request $request, string $id)
     {
-        $photo_url = photos::find($id);
+        $photo = photos::find($id);
         $request->validate([
             'id_wedding' => 'required',
             'photo_url' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'caption' => 'required',
         ]);
 
-        $foto_url = $photo_url->foto;
+        $foto = $photo->photo_url;
         if($request->hasFile('photo_url')){
-            if ($foto_url){
-                Storage::disk('public')->delete($foto_url);
+            if ($foto){
+                Storage::disk('public')->delete($foto);
             }
             $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
 
-            $request->file('photo_url')->storeAs('foto_pernikahan',  $uniqueField, 'public');
+            $request->file('photo_url')->storeAs('photo',  $uniqueField, 'public');
 
-            $foto_url = 'foto_pernikahan/' . $uniqueField;
+            $foto = 'photo/' . $uniqueField;
         }
 
 
-        $photo_url->update([
+        $photo->update([
             'id_wedding'=> $request->id_wedding,
-            'photo_url' => $request->photo_url,
+            'photo_url' => $foto,
             'caption' => $request->caption,
         ]);
 
         return redirect()->route('user.photo')->with('success', 'Data photo Berhasil di Edit');
     }
-
 
     public function deleteUser($id)
     {

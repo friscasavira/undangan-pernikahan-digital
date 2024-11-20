@@ -7,7 +7,7 @@
     <div class="col-12">
         <div class="bg-light rounded h-100 p-4">
             <h6 class="mb-4">Edit Love story</h6>
-            <form action="{{ route('user.edit_love_story',$love_story->id_story) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('user.love_story_update',$love_story->id_story) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
