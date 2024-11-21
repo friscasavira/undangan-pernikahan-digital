@@ -13,19 +13,28 @@
                 <div class="mb-3">
                     <label for="id_wedding" class="form-label">Judul</label>
                     <select name="id_wedding" id="id_wedding" class="form-select">
-                    <option value="">Pilih</option>
-                    @foreach($weddings as $wedding)
-                    <option value="{{ $wedding->id_wedding }}">{{$wedding->title}}</option>
-                    @endforeach
+                        <option value="">Pilih</option>
+                        @foreach($weddings as $wedding)
+                        <option value="{{ $wedding->id_wedding }}"
+                            {{ $wedding->id_wedding == $setting->id_wedding ? 'selected' : '' }}>
+                            {{ $wedding->title }}
+                        </option>
+                        @endforeach
                     </select>
                     <div class="text-danger">
                         @error('id_wedding')
-                        {{$message}}
+                            {{ $message }}
                         @enderror
                     </div>
+                </div>
                 <div class="mb-3">
                     <label for="cover_photo" class="form-label">Cover Photo</label>
                     <input type="file" class="form-control" id="cover_photo" name="cover_photo">
+                    @if ($setting->cover_photo)
+                        <div class="mt-2">
+                            <img src="{{ asset('storage/' . $setting->cover_photo) }}" alt="Cover Photo Saat Ini" height="100">
+                        </div>
+                    @endif
                     <div class="text-danger">
                         @error('cover_photo')
                             {{ $message }}
@@ -35,12 +44,18 @@
                 <div class="mb-3">
                     <label for="background_music" class="form-label">Background Music</label>
                     <input type="file" class="form-control" id="background_music" name="background_music">
+                    @if ($setting->background_music)
+                        <div class="mt-2">
+                            <p>File saat ini: {{ basename($setting->background_music) }}</p>
+                        </div>
+                    @endif
                     <div class="text-danger">
                         @error('background_music')
                             {{ $message }}
                         @enderror
                     </div>
                 </div>
+
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </form>
         </div>

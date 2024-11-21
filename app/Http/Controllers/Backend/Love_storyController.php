@@ -74,39 +74,46 @@ class Love_storyController
      */
     public function updateUser(Request $request, string $id)
     {
-        $love_storys = love_story::find($id);
-        $request->validate([
-            'id_wedding' => 'required',
-            'photo_url' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
-            'date_story' => 'required',
-            'tittle_story' => 'required',
-            'description_story' => 'required',
-        ]);
+    // Ambil data love story berdasarkan ID
+    $love_story = love_story::findOrFail($id);
 
-        $foto = $love_storys->foto;
-        if($request->hasFile('photo_url')){
-            if ($foto){
-                Storage::disk('public')->delete($foto);
-            }
-            $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
+    // Validasi input
+    $request->validate([
+        'id_wedding' => 'required',
+        'photo_url' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+        'date_story' => 'required|date',
+        'tittle_story' => 'required|string|max:255',
+        'description_story' => 'required|string',
+    ]);
 
-            $request->file('photo_url')->storeAs('foto_love_story',  $uniqueField, 'public');
+    // Simpan foto lama
+    $foto = $love_story->photo_url;
 
-            $foto = 'foto_love_story/' . $uniqueField;
+    // Jika ada file baru diunggah
+    if ($request->hasFile('photo_url')) {
+        // Hapus foto lama jika ada
+        if ($foto && Storage::disk('public')->exists($foto)) {
+            Storage::disk('public')->delete($foto);
         }
 
+        // Simpan foto baru
+        $uniqueFileName = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
+        $request->file('photo_url')->storeAs('foto_love_story', $uniqueFileName, 'public');
 
-        $love_storys->update([
-            'id_wedding'=> $request->id_wedding,
-            'photo_url' => $foto,
-            'date_story' => $request->date_story,
-            'tittle_story' => $request->tittle_story,
-            'description_story' => $request->description_story,
-        ]);
-
-        return redirect()->route('user.love_story')->with('success', 'Data photo Berhasil di Edit');
+        // Update path foto
+        $foto = 'foto_love_story/' . $uniqueFileName;
     }
 
+    $love_story->update([
+        'id_wedding' => $request->id_wedding,
+        'photo_url' => $foto,
+        'date_story' => $request->date_story,
+        'tittle_story' => $request->tittle_story,
+        'description_story' => $request->description_story,
+    ]);
+
+    return redirect()->route('user.love_story')->with('success', 'Data Love Story berhasil diedit!');
+    }
 
     public function deleteUser($id)
     {
