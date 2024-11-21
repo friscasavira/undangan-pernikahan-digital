@@ -84,13 +84,13 @@ class Love_storyController
         ]);
 
         $foto = $love_storys->foto;
-        if($request->hasFile('foto')){
+        if($request->hasFile('photo_url')){
             if ($foto){
                 Storage::disk('public')->delete($foto);
             }
-            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
+            $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
 
-            $request->file('foto')->storeAs('foto_love_story',  $uniqueField, 'public');
+            $request->file('photo_url')->storeAs('foto_love_story',  $uniqueField, 'public');
 
             $foto = 'foto_love_story/' . $uniqueField;
         }
@@ -98,8 +98,8 @@ class Love_storyController
 
         $love_storys->update([
             'id_wedding'=> $request->id_wedding,
-            'photo_url' => $request->photo_url,
-            'date_story' => $foto,
+            'photo_url' => $foto,
+            'date_story' => $request->date_story,
             'tittle_story' => $request->tittle_story,
             'description_story' => $request->description_story,
         ]);

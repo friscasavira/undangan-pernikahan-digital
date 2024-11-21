@@ -40,4 +40,10 @@ class weddings extends Model
     {
     return $this->hasMany(love_story::class, 'id_wedding', 'id_wedding');
     }
+    public function setting()
+    {
+    return $this->hasMany(settings::class, 'id_wedding', 'id_wedding');
+    }
+
+
 }

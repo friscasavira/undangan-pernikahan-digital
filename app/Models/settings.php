@@ -9,12 +9,15 @@ class settings extends Model
 {
     use HasFactory;
     protected $table = 'settings';
-    protected $primaryKey = 'id_setting';
+    protected $primaryKey = 'id_settings';
 
     protected $fillable = [
         'id_wedding',
-        'cover_photo_url',
-        'background_music_url',
-        'theme',
+        'cover_photo',
+        'background_music',
     ];
+    public function wedding()
+    {
+    return $this->belongsTo(weddings::class, 'id_wedding', 'id_wedding');
+    }
 }
