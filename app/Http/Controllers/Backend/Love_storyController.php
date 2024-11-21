@@ -43,9 +43,9 @@ class Love_storyController
         if ($request->hasFile('photo_url')){
             $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
 
-            $request->file('photo_url')->storeAs('photo_pernikahan', $uniqueField, 'public');
+            $request->file('photo_url')->storeAs('photo_love_story', $uniqueField, 'public');
 
-            $photo_url = 'photo_pernikahan/' . $uniqueField;
+            $photo_url = 'photo_love_story/' . $uniqueField;
         }
 
         love_story::create([
@@ -62,11 +62,11 @@ class Love_storyController
     public function editUser(string $id)
     {
         $weddings = weddings::all();
-        $photo_url = love_story::find($id);
-        if(!$photo_url){
+        $love_story = love_story::find($id);
+        if(!$love_story){
             return back();
         }
-        return view('backend.user.edit_photo', compact('photo_url','weddings'));
+        return view('backend.user.edit_love_story', compact('love_story','weddings'));
     }
 
     /**
@@ -74,37 +74,37 @@ class Love_storyController
      */
     public function updateUser(Request $request, string $id)
     {
-        $photo_url = love_story::find($id);
+        $love_storys = love_story::find($id);
         $request->validate([
             'id_wedding' => 'required',
-            'photo_url' => 'required',
+            'photo_url' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
             'date_story' => 'required',
             'tittle_story' => 'required',
             'description_story' => 'required',
         ]);
 
-        $foto = $photo_url->foto;
-        if($request->hasFile('photo_url')){
+        $foto = $love_storys->foto;
+        if($request->hasFile('foto')){
             if ($foto){
                 Storage::disk('public')->delete($foto);
             }
-            $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
+            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
 
-            $request->file('photo_url')->storeAs('foto_pernikahan',  $uniqueField, 'public');
+            $request->file('foto')->storeAs('foto_love_story',  $uniqueField, 'public');
 
-            $foto = 'foto_pernikahan/' . $uniqueField;
+            $foto = 'foto_love_story/' . $uniqueField;
         }
 
 
-        $photo_url->update([
+        $love_storys->update([
             'id_wedding'=> $request->id_wedding,
-            'photo_url' => $photo_url,
-            'date_story' => $request->date_story,
+            'photo_url' => $request->photo_url,
+            'date_story' => $foto,
             'tittle_story' => $request->tittle_story,
             'description_story' => $request->description_story,
         ]);
 
-        return redirect()->route('user.photo')->with('success', 'Data photo Berhasil di Edit');
+        return redirect()->route('user.love_story')->with('success', 'Data photo Berhasil di Edit');
     }
 
 

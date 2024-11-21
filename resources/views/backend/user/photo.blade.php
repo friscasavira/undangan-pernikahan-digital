@@ -32,7 +32,7 @@
                             <th scope="row">{{ $loop->iteration}}</th>
                             <td>{{$photo->wedding->title}}</td>
                             <td>
-                                <img src="{{ asset('storage/'. $photo->foto) }}" alt="" height="30">
+                                <img src="{{ asset('storage/'. $photo->photo_url) }}" alt="" height="30">
                             </td>
                             <td>{{ $photo->caption}}</td>
                             <td>

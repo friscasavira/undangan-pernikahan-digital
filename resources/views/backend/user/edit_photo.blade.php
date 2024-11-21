@@ -25,7 +25,7 @@
                         @enderror
                     </div>
                 <div class="mb-3">
-                    <label for="foto" class="form-label">Foto</label>
+                    <label for="photo_url" class="form-label">Foto</label>
                     <input type="file" class="form-control" id="photo_url" name="photo_url">
                     <div class="text-danger">
                         @error('photo_url')

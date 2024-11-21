@@ -16,6 +16,5 @@ class settings extends Model
         'cover_photo_url',
         'background_music_url',
         'theme',
-        'is_private'
     ];
 }
