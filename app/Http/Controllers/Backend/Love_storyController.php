@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class Love_storyController
 {
-<<<<<<< HEAD
     public function love_story()
     {
         $love_storys = love_story::all();
@@ -112,14 +111,8 @@ class Love_storyController
 
     public function love_storyUser()
     {
-        $love_story = love_story::all();
-        return view('backend.user.love_story', compact('love_story'));
-=======
-    public function love_storyUser()
-    {
         $love_storys = love_story::all();
         return view('backend.user.love_story', compact('love_storys'));
->>>>>>> 1db6e1ccb6bbaaf28f19b62b7238803221838536
     }
 
     /**
@@ -127,13 +120,8 @@ class Love_storyController
      */
     public function createUser()
     {
-<<<<<<< HEAD
         $love_story = love_story::all();
         return view('backend.user.love_story_tambah',compact('love_story'));
-=======
-        $weddings = weddings::all();
-        return view('backend.user.tambah_love_story',compact('weddings'));
->>>>>>> 1db6e1ccb6bbaaf28f19b62b7238803221838536
     }
 
     /**
@@ -143,23 +131,6 @@ class Love_storyController
     {
         $request->validate([
             'id_wedding' => 'required',
-<<<<<<< HEAD
-            'event_name' => 'required',
-            'event_date' => 'required',
-            'event_time' => 'required',
-            'event_location' => 'required',
-        ]);
-
-        love_story::create([
-            'id_wedding'=> $request->id_wedding,
-            'event_name' => $request->event_name,
-            'event_date' => $request->event_date,
-            'event_time' => $request->event_time,
-            'event_location' => $request->event_location,
-        ]);
-
-        return redirect()->route('user.love_story')->with('success','Data love_story Berhasil di Tambah');
-=======
             'photo_url' => 'required',
             'date_story' => 'required',
             'tittle_story' => 'required',
@@ -185,26 +156,16 @@ class Love_storyController
         ]);
 
         return redirect()->route('user.love_story')->with('success','Data Love Story Berhasil di Tambah');
->>>>>>> 1db6e1ccb6bbaaf28f19b62b7238803221838536
     }
 
     public function editUser(string $id)
     {
-<<<<<<< HEAD
-        $love_story = love_story::all();
-        $event = love_story::find($id);
-        if(!$event){
-            return back();
-        }
-        return view('backend.user.edit_love_story', compact('event','love_story'));
-=======
         $weddings = weddings::all();
         $love_story = love_story::find($id);
         if(!$love_story){
             return back();
         }
         return view('backend.user.edit_love_story', compact('love_story','weddings'));
->>>>>>> 1db6e1ccb6bbaaf28f19b62b7238803221838536
     }
 
     /**
@@ -212,41 +173,6 @@ class Love_storyController
      */
     public function updateUser(Request $request, string $id)
     {
-<<<<<<< HEAD
-        $event = love_story::find($id);
-        $request->validate([
-            'id_wedding' => 'required',
-            'event_name' => 'required',
-            'event_date' => 'required',
-            'event_time' => 'required',
-            'event_location' => 'required',
-        ]);
-
-
-        $event->update([
-            'id_wedding'=> $request->id_wedding,
-            'event_name' => $request->event_name,
-            'event_date' => $request->event_date,
-            'event_time' => $request->event_time,
-            'event_location' => $request->event_location,
-        ]);
-
-        return redirect()->route('user.love_story')->with('success', 'Data love_story Berhasil di Edit');
-    }
-
-
-    public function deleteUser($id)
-    {
-        $event = love_story::find($id);
-
-
-         $event->delete();
-
-        return redirect()->back()->with('success', 'Data love_story Berhasil diHapus');
-
-
-    }
-=======
     // Ambil data love story berdasarkan ID
     $love_story = love_story::findOrFail($id);
 
@@ -299,5 +225,4 @@ class Love_storyController
 
     }
 
->>>>>>> 1db6e1ccb6bbaaf28f19b62b7238803221838536
 }

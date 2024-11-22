@@ -115,29 +115,15 @@ class PhotoController
 
     public function delete($id)
     {
-<<<<<<< HEAD
-        $photos = photos::find($id);
-        
-=======
         $photo = photos::find($id);
 
->>>>>>> 1db6e1ccb6bbaaf28f19b62b7238803221838536
 
-         $photos->delete();
+         $photo->delete();
 
         return redirect()->back()->with('success', 'Data photo Berhasil diHapus');
 
     }
 
-<<<<<<< HEAD
-    
-        $photos = photos::find($id);
-        $foto = $photos->foto;
-
-        if($photos->foto) {
-            if(Storage::disk('public')->exists($foto)){
-               Storage::disk('public')->delete($foto);
-=======
     public function photoUser()
     {
         $photos = photos::all();
@@ -216,7 +202,6 @@ class PhotoController
             $request->file('photo_url')->storeAs('photo',  $uniqueField, 'public');
 
             $foto = 'photo/' . $uniqueField;
->>>>>>> 1db6e1ccb6bbaaf28f19b62b7238803221838536
         }
 
 
@@ -233,8 +218,7 @@ class PhotoController
     {
         $photo = photos::find($id);
 
-
-         $photos->delete();
+        $photo->delete();
 
         return redirect()->back()->with('success', 'Data photo Berhasil diHapus');
 

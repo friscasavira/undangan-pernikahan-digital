@@ -53,16 +53,10 @@ Route::middleware(['role:admin'])->group(function() {
     Route::get('/admin/wedding/photo/{id}', [photoController::class, 'photo'])->name('admin.photo');
     Route::get('/admin/photo/tambah', [photoController::class, 'create'])->name('admin.photo_tambah');
     Route::post('/admin/photo/tambah', [photoController::class, 'store'])->name('admin.photo_store');
-<<<<<<< HEAD
     Route::get('/admin/wedding/photo/{id_wedding}/edit/{id}', [photoController::class, 'edit'])->name('admin.edit_photo');
     Route::put('/admin/wedding/photo/{id_wedding}/update/{id}', [photoController::class, 'update'])->name('admin.photo_update');
     Route::get('/admin/photo/delete/{id}', [photoController::class, 'delete'])->name('admin.delete_photo'); 
     Route::get('/admin/photo/foto/{id}', [photoController::class, 'foto'])->name('admin.foto_photo'); 
-=======
-    Route::get('/admin/photo/edit/{id}', [photoController::class, 'edit'])->name('admin.edit_photo');
-    Route::put('/admin/photo/update/{id}', [photoController::class, 'update'])->name('admin.photo_update');
-    Route::get('/admin/photo/delete/{id}', [photoController::class, 'delete'])->name('admin.delete_photo');
->>>>>>> 1db6e1ccb6bbaaf28f19b62b7238803221838536
 
     Route::get('/admin/love_story', [Love_storyController::class, 'love_story'])->name('admin.love_story');
     Route::get('/admin/love_story/tambah', [Love_storyController::class, 'create'])->name('admin.love_story_tambah');

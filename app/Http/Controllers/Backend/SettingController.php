@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-<<<<<<< HEAD
 use App\Models\comments;
 use App\Models\rsvp;
-=======
 use App\Models\settings;
->>>>>>> 1db6e1ccb6bbaaf28f19b62b7238803221838536
 use App\Models\User;
 use App\Models\weddings;
 use Illuminate\Http\Request;
@@ -186,8 +183,7 @@ class SettingController
     {
         $setting = settings::find($id);
 
-
-         $setting->delete();
+        $setting->delete();
 
         return redirect()->back()->with('success', 'Data setting Berhasil diHapus');
 
