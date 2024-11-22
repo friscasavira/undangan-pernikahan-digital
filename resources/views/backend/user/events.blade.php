@@ -26,7 +26,7 @@
 
                         <tr>
                         <th scope="row">{{$loop->iteration}}</th>
-                        <td>{{$event->weddings->title}}</td>
+                        <td>{{$event->wedding->title}}</td>
                         <td>{{$event->event_name}}</td>
                         <td>{{$event->event_date}}</td>
                         <td>{{$event->event_time}}</td>

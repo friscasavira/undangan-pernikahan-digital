@@ -63,7 +63,16 @@
                                     {{$message}}
                                     @enderror
                                 </div>
+                            </div>
 
+                            <div class="mb-3">
+                                <label for="event_description" class="form-label">DESKRIPSI</label>
+                                <input type="text" class="form-control" id="event_description" name="event_description" >
+                                <div class="text-danger">
+                                    @error('event_description')
+                                    {{$message}}
+                                    @enderror
+                                </div>
                             </div>
 
                             <button type="submit" class="btn btn-primary">SAVE</button>

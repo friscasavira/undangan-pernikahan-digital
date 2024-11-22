@@ -72,7 +72,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('user.photo')}}" aria-expanded="false">
                 <span>
                 <i class="ti ti-photo"></i>
                 </span>
@@ -96,7 +96,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{route('user.setting')}}" aria-expanded="false">
                 <span>
                 <i class="ti ti-settings"></i>
                 </span>

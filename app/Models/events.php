@@ -16,7 +16,8 @@ class events extends Model
         'event_name',
         'event_date',
         'event_time',
-        'event_location'
+        'event_location',
+        'event_description'
     ];
 
 

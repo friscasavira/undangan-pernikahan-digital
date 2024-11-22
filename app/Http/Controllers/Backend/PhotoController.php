@@ -33,7 +33,7 @@ class PhotoController
             'id_wedding' => 'required',
             'photo_url' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
             'caption' => 'required',
-            
+
         ]);
 
         $photo_url = null;
@@ -45,14 +45,14 @@ class PhotoController
 
             $photo_url = 'photo_pernikahan/' . $uniqueField;
         }
-       
+
         photos::create([
             'id_wedding'=> $request->id_wedding,
             'photo_url' => $photo_url,
             'caption' => $request->caption,
         ]);
 
-        return redirect()->route('admin.photo')->with('success','Data photo Berhasil di Tambah'); 
+        return redirect()->route('admin.photo')->with('success','Data photo Berhasil di Tambah');
 }
 
     /**
@@ -101,7 +101,7 @@ class PhotoController
 
             $foto = 'foto_pernikahan/' . $uniqueField;
         }
-            
+
 
         $photos->update([
             'id_wedding'=> $request->id_wedding,
@@ -115,16 +115,21 @@ class PhotoController
 
     public function delete($id)
     {
+<<<<<<< HEAD
         $photos = photos::find($id);
         
+=======
+        $photo = photos::find($id);
+
+>>>>>>> 1db6e1ccb6bbaaf28f19b62b7238803221838536
 
          $photos->delete();
 
         return redirect()->back()->with('success', 'Data photo Berhasil diHapus');
-    
 
-    
+    }
 
+<<<<<<< HEAD
     
         $photos = photos::find($id);
         $foto = $photos->foto;
@@ -132,15 +137,107 @@ class PhotoController
         if($photos->foto) {
             if(Storage::disk('public')->exists($foto)){
                Storage::disk('public')->delete($foto);
+=======
+    public function photoUser()
+    {
+        $photos = photos::all();
+        return view('backend.user.photo', compact('photos'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function createUser()
+    {
+        $weddings = weddings::all();
+        return view('backend.user.photo_tambah',compact('weddings'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function storeUser(Request $request)
+    {
+        $request->validate([
+            'id_wedding' => 'required',
+            'photo_url' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'caption' => 'required',
+
+        ]);
+
+        $photo_url = null;
+
+        if ($request->hasFile('photo_url')){
+            $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
+
+            $request->file('photo_url')->storeAs('photo', $uniqueField, 'public');
+
+            $photo_url = 'photo/' . $uniqueField;
+        }
+
+        photos::create([
+            'id_wedding'=> $request->id_wedding,
+            'photo_url' => $photo_url,
+            'caption' => $request->caption,
+        ]);
+
+        return redirect()->route('user.photo')->with('success','Data Photo Berhasil di Tambah');
+    }
+
+    public function editUser(string $id)
+    {
+        $weddings = weddings::all();
+        $photo = photos::find($id);
+        if(!$photo){
+            return back();
+        }
+        return view('backend.user.edit_photo', compact('photo','weddings'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function updateUser(Request $request, string $id)
+    {
+        $photo = photos::find($id);
+        $request->validate([
+            'id_wedding' => 'required',
+            'photo_url' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'caption' => 'required',
+        ]);
+
+        $foto = $photo->photo_url;
+        if($request->hasFile('photo_url')){
+            if ($foto){
+                Storage::disk('public')->delete($foto);
+            }
+            $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
+
+            $request->file('photo_url')->storeAs('photo',  $uniqueField, 'public');
+
+            $foto = 'photo/' . $uniqueField;
+>>>>>>> 1db6e1ccb6bbaaf28f19b62b7238803221838536
         }
 
 
-        }
+        $photo->update([
+            'id_wedding'=> $request->id_wedding,
+            'photo_url' => $foto,
+            'caption' => $request->caption,
+        ]);
+
+        return redirect()->route('user.photo')->with('success', 'Data photo Berhasil di Edit');
+    }
+
+    public function deleteUser($id)
+    {
+        $photo = photos::find($id);
+
 
          $photos->delete();
 
-        return redirect()->back()->with('Success', 'Data Guru Berhasil diHapus');
-    }
+        return redirect()->back()->with('success', 'Data photo Berhasil diHapus');
 
+    }
 
 }

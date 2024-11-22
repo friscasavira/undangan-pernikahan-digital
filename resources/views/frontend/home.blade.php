@@ -72,90 +72,61 @@
 
     <!-- Carousel Start -->
     <div class="container-fluid carousel-header px-0">
-        <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#carouselId" data-bs-slide-to="1"></li>
-                <li data-bs-target="#carouselId" data-bs-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img src="{{ asset('asset_main/img/carousel-1.jpg')}}" class="img-fluid" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
-                            <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->title }}</h4>
-                            </div>
-                            <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
-                            <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
-                                @php
-                                \Carbon\Carbon::setLocale('id');
-                                $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
-                                $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
-                                @endphp
-                                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
-                            </div>
-                        </div>
+    <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+        <!-- Carousel Indicators -->
+        <ol class="carousel-indicators">
+            @foreach($photos as $index => $photo)
+                <li data-bs-target="#carouselId" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+            @endforeach
+        </ol>
+
+        <!-- Carousel Items -->
+        <div class="carousel-inner" role="listbox">
+    @foreach($photos as $index => $photo)
+        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+            <img src="{{ asset('storage/' . $photo->photo_url) }}" class="img-fluid" alt="Photo for Wedding">
+            <div class="carousel-caption">
+                <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
+                    <!-- Title -->
+                    <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
+                        <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->title }}</h4>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('asset_main/img/carousel-2.jpg') }}" class="img-fluid" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
-                            <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
-                                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->title }}</h4>
-                            </div>
-                            <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
-                            <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                @php
-                                \Carbon\Carbon::setLocale('id');
-                                $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
-                                $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
-                                @endphp
-                                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
-                            </div>
-                        </div>
+                    <!-- Groom and Bride -->
+                    <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} 
+                        <i class="fa fa-heart text-primary"></i> {{ $wedding->bride_name }}
+                    </h1>
+                    <!-- Wedding Date -->
+                    <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
+                        @php
+                            \Carbon\Carbon::setLocale('id');
+                            $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
+                            $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
+                        @endphp
+                        <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset('asset_main/img/carousel-3.png') }}" class="img-fluid bg-secondary" alt="Image">
-                    <div class="carousel-caption">
-                        <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
-                            <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->title }}</h4>
-                            </div>
-                            <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} <i class="fa fa-heart text-primary"></i>{{ $wedding->bride_name }}</h1>
-                            <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                                @php
-                                \Carbon\Carbon::setLocale('id');
-                                $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
-                                $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
-                                @endphp
-                                <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
-                            </div>
-                        </div>
+                    <!-- RSVP Button -->
+                    <div class="d-flex align-items-center justify-content-center">
+                        <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
                     </div>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
+    @endforeach
+</div>
+
+
+        <!-- Navigation Buttons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+</div>
+
     <!-- Carousel End -->
 
 
@@ -178,8 +149,8 @@
                         <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.3s">
                             <div class="d-flex">
                                 <div class="text-end my-auto pe-4">
-                                    <h3 class="text-primary mb-3">{{ $wedding->groom_name }}</h3>
-                                    <p class="text-dark mb-0" style="line-height: 30px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                    <h3 class="text-primary mb-3">{{ $wedding->bride_name }}</h3>
+                                    <p class="text-dark mb-0" style="line-height: 30px;">{{ $wedding->message}}
                                     </p>
                                 </div>
                                 <img src="{{ asset('asset_main/img/bride.jpg') }}" class="img-fluid img-border" alt="">
@@ -194,8 +165,8 @@
                             <div class="d-flex">
                                 <img src="{{ asset('asset_main/img/Groom.jpg')}}" class="img-fluid img-border" alt="">
                                 <div class="my-auto ps-4">
-                                    <h3 class="text-primary mb-3">{{ $wedding->bride_name }}</h3>
-                                    <p class="text-dark mb-0" style="line-height: 30px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                    <h3 class="text-primary mb-3">{{ $wedding->groom_name }}</h3>
+                                    <p class="text-dark mb-0" style="line-height: 30px;">{{ $wedding->message}}
                                     </p>
                                 </div>
                             </div>
@@ -209,7 +180,7 @@
 
 
     <!-- About Start -->
-    <div class="container-fluid position-relative overflow-hidden bg-secondary py-5">
+    <!-- <div class="container-fluid position-relative overflow-hidden bg-secondary py-5">
         <img src="img/bg-flower.png" class="img-fluid position-absolute top-0" style="right: -15px; transform: rotate(270deg); opacity: 0.5;" alt="">
         <img src="img/bg-flower.png" class="img-fluid position-absolute" style="bottom: 10px; left: -15px; transform: rotate(90deg); opacity: 0.5;" alt="">
         <div class="container py-5 position-relative">
@@ -303,7 +274,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- About End -->
 
 
@@ -415,78 +386,69 @@
     <!-- Wedding Date -->
 
 
-    <!-- Wedding Timeline start -->
-    <div class="container-fluid wedding-timeline bg-secondary position-relative overflow-hidden py-5" id="weddingTimeline">
-        <div class="position-absolute" style="top: 50%; left: -100px; transform: translateY(-50%); opacity: 0.5;">
-            <img src="img/wedding-bg.png" class="img-fluid" alt="">
-        </div>
-        <div class="position-absolute" style="top: 50%; right: -160px; transform: translateY(-50%); opacity: 0.5; rotate: 335deg;">
-            <img src="img/wedding-bg.png" class="img-fluid" alt="">
-        </div>
-        <div class="container py-5">
-            <div class="text-center mb-5">
-                <h1 class="display-4 text-white">Wedding Planing Timeline</h1>
+        <!-- Wedding Timeline start -->
+        <div class="container-fluid wedding-timeline bg-secondary position-relative overflow-hidden py-5" id="weddingTimeline">
+            <div class="position-absolute" style="top: 50%; left: -100px; transform: translateY(-50%); opacity: 0.5;">
+                <img src="img/wedding-bg.png" class="img-fluid" alt="">
             </div>
-            <div class="position-relative wedding-content">
-                <div class="row g-4">
-                    <div class="col-6 col-md-6 col-xl-3 border border-bottom-0">
-                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.1s">
-                            <div class="mb-4 p-3 d-inline-flex">
-                                <i class="fas fa-menorah text-primary fa-3x"></i>
-                            </div>
-                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                            <p class="text-primary">
-                                {{ \Carbon\Carbon::parse($love_storys->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_storys->end_time)->format('h:i A') }}
-                            </p>
-                            <h3 class="text-dark">Dinner</h3>
-                            <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-                        </div>
-                    </div>
-
-
-                    <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
-                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="mb-4 p-3 d-inline-flex">
-                                <i class="fas fa-photo-video text-primary fa-3x"></i>
-                            </div>
-                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                            <p class="text-primary">
-                                {{ \Carbon\Carbon::parse($love_storys->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_storys->end_time)->format('h:i A') }}
-                            </p>
-                            <h3 class="text-dark">Photoshoot</h3>
-                            <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-xl-3 border border-bottom-0 border-end-0">
-                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.5s">
-                            <div class="mb-4 p-3 d-inline-flex">
-                                <i class="fas fa-dungeon text-primary fa-3x"></i>
-                            </div>
-                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                            <p class="text-primary">{{ \Carbon\Carbon::parse($love_storys->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_storys->end_time)->format('h:i A') }}</p>
-                            </p>
-                            <h3 class="text-dark">Reception</h3>
-                            <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6 col-xl-3 border border-top-0">
-                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.7s">
-                            <div class="mb-4 p-3 d-inline-flex">
-                                <i class="fas fa-ring text-primary fa-3x"></i>
-                            </div>
-                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                            <p class="text-primary">{{ \Carbon\Carbon::parse($love_storys->start_time)->format('h:i A') }} - {{ \Carbon\Carbon::parse($love_storys->end_time)->format('h:i A') }}</p>
-                            </p>
-                            <h3 class="text-dark">Ceremony</h3>
-                            <p class="text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</p>
-                        </div>
-                    </div>
+            <div class="position-absolute" style="top: 50%; right: -160px; transform: translateY(-50%); opacity: 0.5; rotate: 335deg;">
+                <img src="img/wedding-bg.png" class="img-fluid" alt="">
+            </div>
+            <div class="container py-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-4 text-white">Wedding Planing Timeline</h1>
                 </div>
-                <div class="position-absolute heart-circle " style="bottom: 0; left: -18px;">
-                    <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
-                </div>
-                <div class="position-absolute heart-circle" style="top: 18px; right: -17px;">
-                    <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                <div class="position-relative wedding-content">
+                    <div class="row g-4">
+
+                    @foreach ($events as $index => $event)
+                    @if($index % 2 == 0)
+                        <div class="col-6 col-md-6 col-xl-3 border border-bottom-0">
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="fas fa-menorah text-primary fa-3x"></i>
+                                </div>
+                                @php
+                                    \Carbon\Carbon::setLocale('id');
+                                    $eventDate = \Carbon\Carbon::parse($event->event_date);
+                                    $eventDateFormatted = $eventDate->translatedFormat('d F Y');
+                                @endphp
+                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
+                                <p class="text-primary">
+                                {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
+                                <p class="text-success">{{ $event->event_location}}</p>
+                                <h3 class="text-dark">{{ $event->event_name}}</h3>
+                                <p class="text-dark">{{ $event->event_description}}</p>
+                            </div>  
+                        </div>
+                        @else
+                        <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
+                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
+                                <div class="mb-4 p-3 d-inline-flex">
+                                    <i class="fas fa-photo-video text-primary fa-3x"></i>
+                                </div>
+                                @php
+                                    \Carbon\Carbon::setLocale('id');
+                                    $Date = \Carbon\Carbon::parse($event->event_date);
+                                    $eventDateFormatted = $eventDate->translatedFormat('d F Y');
+                                @endphp
+                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
+                                <p class="text-primary">
+                                {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
+                                <p class="text-success">{{ $event->event_location}}</p>
+                                <h3 class="text-dark">{{ $event->event_name}}</h3>
+                                <p class="text-dark">{{ $event->event_description}}</p>
+                            </div>
+                        </div>
+                        @endif
+                    @endforeach
+                    </div>
+                    <div class="position-absolute heart-circle " style="bottom: 0; left: -18px;">
+                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                    </div>
+                    <div class="position-absolute heart-circle" style="top: 18px; right: -17px;">
+                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -505,129 +467,27 @@
         <div class="container position-relative py-5">
             <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                 <h1 class="display-2 text-dark">Wedding Gallery</h1>
-                <p class="fs-5 text-dark">Lorem Ipsum is simply dummy text of the printing and typesetting</p>
             </div>
+           
             <div class="row g-4">
+                @foreach($photos as $photo)
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
                     <div class="gallery-item">
                         <div class="gallery-img">
-                            <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-1.jpg') }}" alt="">
+                            <img class="img-fluid w-100" src="{{ asset('storage/' . $photo->photo_url) }}" alt="" style="height: 300px; object-fit: cover;">
                             <div class="hover-style"></div>
                             <div class="search-icon">
-                                <a href="{{ asset('asset_main/img/gallery-1.jpg') }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
+                                <a href="{{ asset('storage/' . $photo->photo_url) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
                             </div>
                         </div>
                         <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
-                            <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
+                        <h5>{{ $event->event_location}}</h5>
+                        <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="gallery-item">
-                        <div class="gallery-img">
-                            <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-2.jpg')}}" alt="">
-                            <div class="hover-style"></div>
-                            <div class="search-icon">
-                                <a href="{{ asset('asset_main/img/gallery-2.jpg')}}" data-lightbox="Gallery-2" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
-                            <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="gallery-item">
-                        <div class="gallery-img">
-                            <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-3.jpg') }}" alt="">
-                            <div class="hover-style"></div>
-                            <div class="search-icon">
-                                <a href="img/gallery-3.jpg" data-lightbox="Gallery-3" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
-                            <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                    <div class="gallery-item">
-                        <div class="gallery-img">
-                            <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-4.jpg') }}" alt="">
-                            <div class="hover-style"></div>
-                            <div class="search-icon">
-                                <a href="{{ asset('asset_main/img/gallery-4.jpg') }}" data-lightbox="Gallery-4" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
-                            <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.2s">
-                    <div class="gallery-item">
-                        <div class="gallery-img">
-                            <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-5.jpg')}}" alt="">
-                            <div class="hover-style"></div>
-                            <div class="search-icon">
-                                <a href="{{ asset('asset_main/img/gallery-5.jpg')}}" data-lightbox="Gallery-5" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
-                            <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="gallery-item">
-                        <div class="gallery-img">
-                            <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-6.jpg')}}" alt="">
-                            <div class="hover-style"></div>
-                            <div class="search-icon">
-                                <a href="{{ asset('asset_main/img/gallery-6.jpg')}}" data-lightbox="Gallery-6" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
-                            <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.6s">
-                    <div class="gallery-item">
-                        <div class="gallery-img">
-                            <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-7.jpg') }}" alt="">
-                            <div class="hover-style"></div>
-                            <div class="search-icon">
-                                <a href="{{ asset('asset_main/img/gallery-7.jpg') }}" data-lightbox="Gallery-7" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
-                            <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.8s">
-                    <div class="gallery-item">
-                        <div class="gallery-img">
-                            <img class="img-fluid w-100" src="{{ asset('asset_main/img/gallery-8.jpg') }}" alt="">
-                            <div class="hover-style"></div>
-                            <div class="search-icon">
-                                <a href="{{ asset('asset_main/img/gallery-8.jpg') }}" data-lightbox="Gallery-8" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
-                            </div>
-                        </div>
-                        <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                            <h5>Wedding on the beach</h5>
-                            <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+               
                 <div class="col-12 text-center wow fadeIn" data-wow-delay="0.2s">
                     <a class="btn btn-primary btn-primary-outline-0 py-3 px-5 me-2" href="#">View All <i class="fas fa-arrow-right"></i></a>
                 </div>
@@ -654,39 +514,49 @@
                             <div class="row gx-4 gy-3">
                                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                     <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">First Name</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="First Name">
-                                    </div>
+                                        <label for="Examplename" class="form-label text-dark">Name</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Name">
+                                        </div>
                                 </div>
                                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                     <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">Last Name</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Last Name">
-                                    </div>
+                                        <label for="Examplename" class="form-label text-dark">Email</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Email">
+                                        </div>
                                 </div>
                                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                     <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">Enter Your Phone</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Enter Your Phone">
-                                    </div>
+                                        <label for="Examplename" class="form-label text-dark">Phone</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Phone">
+                                        </div>
                                 </div>
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="form-group">
-                                        <label for="exampleselect" class="form-label text-dark">Number Of Guests</label>
-                                        <select class="form-control bg-white text-dark py-3 border-0" id="exampleselect" placeholder="Number Of Guests">
-                                            <option>Only Me</option>
-                                            <option>02 Guests</option>
-                                            <option>03 Guests</option>
-                                            <option>04 Guests</option>
-                                        </select>
-                                    </div>
-                                </div>
+                            </div>
                                 <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
                                     <div class="form-group">
                                         <label for="exampletextarea" class="form-label text-dark">Message</label>
                                         <textarea name="text" class="form-control border-0" id="exampletextarea" cols="30" rows="5" placeholder="Message"></textarea>
                                     </div>
                                 </div>
+                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                    <div class="form-group">
+                                        <label for="Examplename" class="form-label text-dark">is_invited</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="is_invited">
+                                        </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                    <div class="form-group">
+                                        <label for="Examplename" class="form-label text-dark">attendance_status</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="attendance_status">
+                                        </div>
+                                </div>
+                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                    <div class="form-group">
+                                        <label for="Examplename" class="form-label text-dark">total_guest</label>
+                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="total_guest">
+                                        </div>
+                                </div>
+                                
+                                
                                 <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
                                     <div class="text-center border border-secondary p-4 my-4 position-relative">
                                         <div class="fw-bold text-primary bg-white d-flex align-items-center justify-content-center position-absolute border-secondary p-2" style="width: 50%; border-style: double; top: 0; left: 50%; transform: translate(-50%, -50%);">
