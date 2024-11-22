@@ -23,7 +23,7 @@ class rsvp extends Model
         
     ];
 
-    public function guests()
+    public function wedding()
     {
     return $this->belongsTo(weddings::class, 'id_wedding', 'id_wedding');
     }

@@ -32,7 +32,8 @@
                         <td class="text-center">{{$rsvp->email}}</td>
                         <td class="text-center">{{$rsvp->phone}}</td>
                         <td class="text-center">{{$rsvp->message}}</td>
-                        <td class="text-center">{{$rsvp->total_guest}}</td>
+                        <td class="text-center">{{$rsvp->attendance_status}}</td>
+                        <td class="text-center">{{$rsvp->total_guests}}</td>
                         <td>
                             <a href="{{route('admin.edit_rsvp', $rsvp->id_rsvp)}}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{route('admin.delete_rsvp', $rsvp->id_rsvp)}}" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>

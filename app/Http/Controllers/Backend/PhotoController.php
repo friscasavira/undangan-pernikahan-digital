@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Storage;
 
 class PhotoController
 {
-    public function photo()
+    public function photo($id)
     {
-        $photos = photos::all();
+        $photos = photos::where('id_wedding', $id)->get();
         return view('backend.admin.photo', compact('photos'));
     }
 
@@ -69,11 +69,12 @@ class PhotoController
     public function edit(string $id)
     {
         $weddings = weddings::all();
-        $photo = photos::find($id);
-        if(!$photo){
+        $photos = photos::where('id_wedding', $id)->get();
+        // $photo = photos::find($id);
+        if(!$photos){
             return back();
         }
-        return view('backend.admin.edit_photo', compact('photo','weddings'));
+        return view('backend.admin.edit_photo', compact('photos','weddings'));
     }
 
     /**
@@ -81,14 +82,15 @@ class PhotoController
      */
     public function update(Request $request, string $id)
     {
-        $photo = photos::find($id);
+        $photos = photos::where('id_wedding', $id)->get();
+        // $photo = photos::find($id);
         $request->validate([
             'id_wedding' => 'required',
             'photo_url' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'caption' => 'required',
         ]);
 
-        $foto = $photo->foto;
+        $foto = $photos->foto;
         if($request->hasFile('foto')){
             if ('foto'){
                 Storage::disk('public')->delete($foto);
@@ -101,7 +103,7 @@ class PhotoController
         }
             
 
-        $photo->update([
+        $photos->update([
             'id_wedding'=> $request->id_wedding,
             'photo_url' => $request->photo_url,
             'caption' => $request->caption,
@@ -113,10 +115,10 @@ class PhotoController
 
     public function delete($id)
     {
-        $photo = photos::find($id);
+        $photos = photos::find($id);
         
 
-         $photo->delete();
+         $photos->delete();
 
         return redirect()->back()->with('success', 'Data photo Berhasil diHapus');
     
@@ -124,10 +126,10 @@ class PhotoController
     
 
     
-        $photo = photos::find($id);
-        $foto = $photo->foto;
+        $photos = photos::find($id);
+        $foto = $photos->foto;
 
-        if($photo->foto) {
+        if($photos->foto) {
             if(Storage::disk('public')->exists($foto)){
                Storage::disk('public')->delete($foto);
         }
@@ -135,7 +137,7 @@ class PhotoController
 
         }
 
-         $photo->delete();
+         $photos->delete();
 
         return redirect()->back()->with('Success', 'Data Guru Berhasil diHapus');
     }

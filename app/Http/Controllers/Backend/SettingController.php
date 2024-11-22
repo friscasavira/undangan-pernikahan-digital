@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\comments;
+use App\Models\rsvp;
 use App\Models\User;
+use App\Models\weddings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +14,9 @@ class SettingController
 {
     public function dashboardAdmin()
     {
-        return view('backend.admin.dashboard');
+        $weddings = weddings::all();
+        $comments = comments::all();
+        return view('backend.admin.dashboard',compact('weddings','comments'));
     }
 
     public function profileAdmin()

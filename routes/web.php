@@ -29,6 +29,7 @@ Route::middleware(['role:admin'])->group(function() {
     Route::get('/admin/logout', [SettingController::class, 'logoutAdmin'])->name('admin.logout');
 
     Route::get('/admin/weddings', [weddingController::class, 'weddings'])->name('admin.weddings');
+    Route::get('/admin/weddings/detail/{id}', [weddingController::class, 'detail'])->name('admin.detail');
     Route::get('/admin/weddings/tambah', [WeddingController::class, 'create'])->name('admin.weddings_tambah');
     Route::post('/admin/weddings/tambah', [WeddingController::class, 'store'])->name('admin.weddings_store');
     Route::get('/admin/weddings/edit/{id}', [WeddingController::class, 'edit'])->name('admin.edit_weddings');
@@ -38,37 +39,38 @@ Route::middleware(['role:admin'])->group(function() {
     Route::get('/admin/events', [EventController::class, 'events'])->name('admin.events');
     Route::get('/admin/events/tambah', [EventController::class, 'create'])->name('admin.events_tambah');
     Route::post('/admin/events/tambah', [EventController::class, 'store'])->name('admin.events_store');
-    Route::get('/admin/events/edit/{id}', [EventController::class, 'edit'])->name('admin.edit_events');
-    Route::put('/admin/events/update/{id}', [EventController::class, 'update'])->name('admin.events_update');
-    Route::get('/admin/events/delete/{id}', [EventController::class, 'delete'])->name('admin.delete_events');
+    Route::get('/admin/wedding/events/{id_wedding}/edit/{id}', [EventController::class, 'edit'])->name('admin.edit_events');
+    Route::put('/admin/wedding/events/{id_wedding}/update/{id}', [EventController::class, 'update'])->name('admin.events_update');
+    Route::get('/admin/wedding/events/{id_wedding}/delete/{id}', [EventController::class, 'delete'])->name('admin.delete_events');
 
     Route::get('/admin/rsvp', [RsvpController::class, 'rsvp'])->name('admin.rsvp');
     Route::get('/admin/rsvp/tambah', [RsvpController::class, 'create'])->name('admin.rsvp_tambah');
     Route::post('/admin/rsvp/tambah', [RsvpController::class, 'store'])->name('admin.rsvp_store');
     Route::get('/admin/rsvp/edit/{id}', [RsvpController::class, 'edit'])->name('admin.edit_rsvp');
-    Route::put('/admin/rsvp/update/{id}', [RsvpController::class, 'update'])->name('admin.rsvp_update');
+    Route::get('/admin/rsvp/update/{id}', [RsvpController::class, 'update'])->name('admin.rsvp_update');
     Route::get('/admin/rsvp/delete/{id}', [RsvpController::class, 'delete'])->name('admin.delete_rsvp');
 
-    Route::get('/admin/photo', [photoController::class, 'photo'])->name('admin.photo');
+    Route::get('/admin/wedding/photo/{id}', [photoController::class, 'photo'])->name('admin.photo');
     Route::get('/admin/photo/tambah', [photoController::class, 'create'])->name('admin.photo_tambah');
     Route::post('/admin/photo/tambah', [photoController::class, 'store'])->name('admin.photo_store');
-    Route::get('/admin/photo/edit/{id}', [photoController::class, 'edit'])->name('admin.edit_photo');
-    Route::put('/admin/photo/update/{id}', [photoController::class, 'update'])->name('admin.photo_update');
+    Route::get('/admin/wedding/photo/{id_wedding}/edit/{id}', [photoController::class, 'edit'])->name('admin.edit_photo');
+    Route::put('/admin/wedding/photo/{id_wedding}/update/{id}', [photoController::class, 'update'])->name('admin.photo_update');
     Route::get('/admin/photo/delete/{id}', [photoController::class, 'delete'])->name('admin.delete_photo'); 
+    Route::get('/admin/photo/foto/{id}', [photoController::class, 'foto'])->name('admin.foto_photo'); 
 
     Route::get('/admin/love_story', [Love_storyController::class, 'love_story'])->name('admin.love_story');
     Route::get('/admin/love_story/tambah', [Love_storyController::class, 'create'])->name('admin.love_story_tambah');
     Route::post('/admin/love_story/tambah', [Love_storyController::class, 'store'])->name('admin.love_story_store');
-    Route::get('/admin/love_story/edit/{id}', [Love_storyController::class, 'edit'])->name('admin.edit_love_story');
-    Route::put('/admin/love_story/update/{id}', [Love_storyController::class, 'update'])->name('admin.love_story_update');
-    Route::get('/admin/love_story/delete/{id}', [Love_storyController::class, 'delete'])->name('admin.delete_love_story');
+    Route::get('/admin/wedding/love_story/{id_wedding}/edit/{id}', [Love_storyController::class, 'edit'])->name('admin.edit_love_story');
+    Route::put('/admin/wedding/love_story/{id_wedding}/update/{id}', [Love_storyController::class, 'update'])->name('admin.love_story_update');
+    Route::get('/admin/wedding/love_story/{id_wedding}/delete/{id}', [Love_storyController::class, 'delete'])->name('admin.delete_love_story');
 
     Route::get('/admin/comment', [CommentController::class, 'comment'])->name('admin.comment');
     Route::get('/admin/comment/tambah', [CommentController::class, 'create'])->name('admin.comment_tambah');
     Route::post('/admin/comment/tambah', [CommentController::class, 'store'])->name('admin.comment_store');
-    Route::get('/admin/comment/edit/{id}', [CommentController::class, 'edit'])->name('admin.edit_comment');
-    Route::put('/admin/comment/update/{id}', [CommentController::class, 'update'])->name('admin.comment_update');
-    Route::get('/admin/comment/delete/{id}', [CommentController::class, 'delete'])->name('admin.delete_comment');
+    Route::get('/admin/comment/photo/{id_wedding}/edit/{id}', [CommentController::class, 'edit'])->name('admin.edit_comment');
+    Route::get('/admin/comment/photo/{id_wedding}/update/{id}', [CommentController::class, 'update'])->name('admin.comment_update');
+    Route::get('/admin/comment/photo/{id_wedding}/delete/{id}', [CommentController::class, 'delete'])->name('admin.delete_comment');
 
     Route::get('/admin/setting', [SettingController::class, 'setting'])->name('admin.setting');
     Route::get('/admin/setting/tambah', [SettingController::class, 'create'])->name('admin.setting_tambah');

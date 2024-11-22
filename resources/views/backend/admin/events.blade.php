@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                <a href="{{route('admin.events_tambah')}}" class="btn btn-primary btn-sm">Tambah</a>
+                <!-- <a href="{{route('admin.events_tambah')}}" class="btn btn-primary btn-sm">Tambah</a> -->
                     <table class="table text-nowrap align-middle mb-0" id="event" >
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0">
@@ -32,7 +32,7 @@
                         <td class="text-center">{{$event->event_time}}</td>
                         <td class="text-center">{{$event->event_location}}</td>
                         <td>
-                            <a href="{{route('admin.edit_events', $event->id_event)}}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{route('admin.edit_events', ['id_wedding' => $event->id_wedding, 'id' => $event->id_event])}}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{route('admin.delete_events', $event->id_event)}}" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>
                         </td>
 
