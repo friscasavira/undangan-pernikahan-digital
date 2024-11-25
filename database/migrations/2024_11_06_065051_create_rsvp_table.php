@@ -19,11 +19,12 @@ return new class extends Migration
                   ->on('weddings')
                   ->onDelete('cascade')
                   ->onUpdate('cascade');
-                  $table->string('name',50);
-                  $table->string('email',50)->unique();
-                  $table->string('phone',15);
-                  $table->string('message',255);
-                  $table->enum('attendance_status', ['Belum Konfirmasi','Hadir','Tidak Hadir']);
+            $table->string('name',50);
+            $table->string('email',50)->unique();
+            $table->string('phone',15);
+            $table->string('message',255);
+            $table->enum('is invited', ['Ya' ,'Tidak']);
+            $table->enum('attendance_status', ['Belum Konfirmasi','Hadir','Tidak Hadir']);
             $table->integer('total_guests');
 
             $table->timestamps();

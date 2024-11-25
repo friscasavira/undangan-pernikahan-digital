@@ -83,7 +83,6 @@
 
             <!-- Carousel Items -->
             <div class="carousel-inner" role="listbox">
-                <div class="container">
 
                 <!-- Carousel -->
                 <div class="carousel-inner">
@@ -514,7 +513,7 @@
             <div class="col-md-10">
                 <div class="p-5 border-secondary position-relative" style="border-style: double;">
                     <div class="fw-bold text-primary bg-white d-flex align-items-center justify-content-center position-absolute border-secondary p-2 wow fadeIn" data-wow-delay="0.1s" style="width: 75%; border-style: double; top: 0; left: 50%; transform: translate(-50%, -50%);">
-                        Kindly respond by June 25, 2024, we look forward to celebrating with you!
+                        Harap tanggapi sebelum {{ $weddingDateFormatted }}, Kami menantikan untuk merayakan bersama Anda!
                     </div>
                     <form method="POST" action="">
                         <div class="row gx-4 gy-3">
@@ -536,6 +535,12 @@
                                     <input type="text" name="phone" class="form-control py-3 border-0" id="phone" placeholder="Phone" required>
                                 </div>
                             </div>
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="form-group">
+                                    <label for="total_guest" class="form-label text-dark">Total Guests</label>
+                                    <input type="number" name="total_guest" class="form-control py-3 border-0" id="total_guest" placeholder="Total Guests" required>
+                                </div>
+                            </div>
                             <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="form-group">
                                     <label for="message" class="form-label text-dark">Message</label>
@@ -545,50 +550,22 @@
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="form-group">
                                     <label for="is_invited" class="form-label text-dark">Is Invited</label>
-                                    <input type="text" name="is_invited" class="form-control py-3 border-0" id="is_invited" placeholder="Yes/No" required>
+                                    <select name="is_invited" class="form-select py-3 border-0" id="is_invited" required style="color: black;">
+                                        <option value="" disabled selected>-- Pilih --</option>
+                                        <option value="Yes">Ya</option>
+                                        <option value="No">Tidak</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="form-group">
                                     <label for="attendance_status" class="form-label text-dark">Attendance Status</label>
-                                    <input type="text" name="attendance_status" class="form-control py-3 border-0" id="attendance_status" placeholder="Yes/No" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                                <div class="form-group">
-                                    <label for="total_guest" class="form-label text-dark">Total Guests</label>
-                                    <input type="number" name="total_guest" class="form-control py-3 border-0" id="total_guest" placeholder="Total Guests" required>
-                                </div>
-                            </div>
-                            <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
-                                <div class="text-center border border-secondary p-4 my-4 position-relative">
-                                    <div class="fw-bold text-primary bg-white d-flex align-items-center justify-content-center position-absolute border-secondary p-2" style="width: 50%; border-style: double; top: 0; left: 50%; transform: translate(-50%, -50%);">
-                                        Will you be attending?
-                                    </div>
-                                    <div class="mt-4">
-                                        <div class="row g-4">
-                                            <div class="col-lg-6">
-                                                <div class="d-flex justify-content-center">
-                                                    <div class="form-check d-flex">
-                                                        <input class="form-check-input me-2" type="radio" name="attendance_option" value="Accepts With Pleasure" id="accept" required>
-                                                        <label class="form-check-label text-dark" for="accept">
-                                                            Accepts With Pleasure!
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="d-flex justify-content-center">
-                                                    <div class="form-check d-flex">
-                                                        <input class="form-check-input me-2" type="radio" name="attendance_option" value="Declines With Regret" id="decline">
-                                                        <label class="form-check-label text-dark" for="decline">
-                                                            Declines With Regret
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <select name="attendance_status" class="form-select py-3 border-0" id="attendance_status" required style="color: black;">
+                                        <option value="" disabled selected>-- Pilih --</option>
+                                        <option value="Pending">Belum Konfirmasi</option>
+                                        <option value="Attending">Hadir</option>
+                                        <option value="Not Attending">Tidak Hadir</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-12 text-center wow fadeIn" data-wow-delay="0.1s">
