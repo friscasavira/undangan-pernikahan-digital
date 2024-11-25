@@ -12,6 +12,8 @@ use App\Http\Controllers\Frontend\WeddingController as FrontendWeddingController
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendWeddingController::class, 'home'])->name('home');
+Route::get('/home/photo', [FrontendWeddingController::class, 'photo'])->name('home.photo');
+
 
 
 Route::middleware(['guest:admin', 'guest:user'])->group(function(){

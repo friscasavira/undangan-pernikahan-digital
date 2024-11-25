@@ -72,63 +72,74 @@
 
     <!-- Carousel Start -->
     <div class="container-fluid carousel-header px-0">
-    <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-        <!-- Carousel Indicators -->
-        <ol class="carousel-indicators">
-            @foreach($photos as $index => $photo)
-                <li data-bs-target="#carouselId" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
-            @endforeach
-        </ol>
+        <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+            <!-- Carousel Indicators -->
+            <ol class="carousel-indicators">
+                @foreach($photosThree as $index => $photo)
+                    <li data-bs-target="#carouselId" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+                @endforeach
+            </ol>
+            
 
-        <!-- Carousel Items -->
-        <div class="carousel-inner" role="listbox">
-    @foreach($photos as $index => $photo)
-        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-            <img src="{{ asset('storage/' . $photo->photo_url) }}" class="img-fluid" alt="Photo for Wedding">
-            <div class="carousel-caption">
-                <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
-                    <!-- Title -->
-                    <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                        <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->title }}</h4>
+            <!-- Carousel Items -->
+            <div class="carousel-inner" role="listbox">
+                <div class="container">
+
+                <!-- Carousel -->
+                <div class="carousel-inner">
+                    @foreach($photosThree as $index => $photo)
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                        <img src="{{ asset('storage/' . $photo->photo_url) }}" class="img-fluid" alt="Photo for Wedding">
+                        <div class="carousel-caption">
+                            <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
+                                <!-- Title -->
+                                <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->title }}</h4>
+                                </div>
+                                <!-- Groom and Bride -->
+                                <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} 
+                                    <i class="fa fa-heart text-primary"></i> {{ $wedding->bride_name }}
+                                </h1>
+                                <!-- Wedding Date -->
+                                <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
+                                    @php
+                                        \Carbon\Carbon::setLocale('id');
+                                        $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
+                                        $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
+                                    @endphp
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
+                                </div>
+                                <!-- RSVP Button -->
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Groom and Bride -->
-                    <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} 
-                        <i class="fa fa-heart text-primary"></i> {{ $wedding->bride_name }}
-                    </h1>
-                    <!-- Wedding Date -->
-                    <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
-                        @php
-                            \Carbon\Carbon::setLocale('id');
-                            $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
-                            $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
-                        @endphp
-                        <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
-                    </div>
-                    <!-- RSVP Button -->
-                    <div class="d-flex align-items-center justify-content-center">
-                        <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
-                    </div>
+                    @endforeach 
                 </div>
             </div>
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
+            <!-- Navigation Buttons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-    @endforeach
-</div>
-
-
-        <!-- Navigation Buttons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
-</div>
-
-    <!-- Carousel End -->
-
 
     <!-- Hello! Start -->
     <div class="container-fluid position-relative py-5" id="weddingAbout">
@@ -386,69 +397,68 @@
     <!-- Wedding Date -->
 
 
-        <!-- Wedding Timeline start -->
-        <div class="container-fluid wedding-timeline bg-secondary position-relative overflow-hidden py-5" id="weddingTimeline">
-            <div class="position-absolute" style="top: 50%; left: -100px; transform: translateY(-50%); opacity: 0.5;">
-                <img src="img/wedding-bg.png" class="img-fluid" alt="">
+    <!-- Wedding Timeline start -->
+    <div class="container-fluid wedding-timeline bg-secondary position-relative overflow-hidden py-5" id="weddingTimeline">
+        <div class="position-absolute" style="top: 50%; left: -100px; transform: translateY(-50%); opacity: 0.5;">
+            <img src="img/wedding-bg.png" class="img-fluid" alt="">
+        </div>
+        <div class="position-absolute" style="top: 50%; right: -160px; transform: translateY(-50%); opacity: 0.5; rotate: 335deg;">
+            <img src="img/wedding-bg.png" class="img-fluid" alt="">
+        </div>
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h1 class="display-4 text-white">Wedding Planing Timeline</h1>
             </div>
-            <div class="position-absolute" style="top: 50%; right: -160px; transform: translateY(-50%); opacity: 0.5; rotate: 335deg;">
-                <img src="img/wedding-bg.png" class="img-fluid" alt="">
-            </div>
-            <div class="container py-5">
-                <div class="text-center mb-5">
-                    <h1 class="display-4 text-white">Wedding Planing Timeline</h1>
-                </div>
-                <div class="position-relative wedding-content">
-                    <div class="row g-4">
+            <div class="position-relative wedding-content">
+                <div class="row g-4">
 
-                    @foreach ($events as $index => $event)
-                    @if($index % 2 == 0)
-                        <div class="col-6 col-md-6 col-xl-3 border border-bottom-0">
-                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.1s">
-                                <div class="mb-4 p-3 d-inline-flex">
-                                    <i class="fas fa-menorah text-primary fa-3x"></i>
-                                </div>
-                                @php
-                                    \Carbon\Carbon::setLocale('id');
-                                    $eventDate = \Carbon\Carbon::parse($event->event_date);
-                                    $eventDateFormatted = $eventDate->translatedFormat('d F Y');
-                                @endphp
-                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                                <p class="text-primary">
-                                {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
-                                <p class="text-success">{{ $event->event_location}}</p>
-                                <h3 class="text-dark">{{ $event->event_name}}</h3>
-                                <p class="text-dark">{{ $event->event_description}}</p>
-                            </div>  
-                        </div>
-                        @else
-                        <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
-                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
-                                <div class="mb-4 p-3 d-inline-flex">
-                                    <i class="fas fa-photo-video text-primary fa-3x"></i>
-                                </div>
-                                @php
-                                    \Carbon\Carbon::setLocale('id');
-                                    $Date = \Carbon\Carbon::parse($event->event_date);
-                                    $eventDateFormatted = $eventDate->translatedFormat('d F Y');
-                                @endphp
-                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                                <p class="text-primary">
-                                {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
-                                <p class="text-success">{{ $event->event_location}}</p>
-                                <h3 class="text-dark">{{ $event->event_name}}</h3>
-                                <p class="text-dark">{{ $event->event_description}}</p>
+                @foreach ($events as $index => $event)
+                @if($index % 2 == 0)
+                    <div class="col-6 col-md-6 col-xl-3 border border-bottom-0">
+                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.1s">
+                            <div class="mb-4 p-3 d-inline-flex">
+                                <i class="fas fa-menorah text-primary fa-3x"></i>
                             </div>
+                            @php
+                                \Carbon\Carbon::setLocale('id');
+                                $eventDate = \Carbon\Carbon::parse($event->event_date);
+                                $eventDateFormatted = $eventDate->translatedFormat('d F Y');
+                            @endphp
+                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
+                            <p class="text-primary">
+                            {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
+                            <p class="text-success">{{ $event->event_location}}</p>
+                            <h3 class="text-dark">{{ $event->event_name}}</h3>
+                            <p class="text-dark">{{ $event->event_description}}</p>
+                        </div>  
+                    </div>
+                    @else
+                    <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
+                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
+                            <div class="mb-4 p-3 d-inline-flex">
+                                <i class="fas fa-photo-video text-primary fa-3x"></i>
+                            </div>
+                            @php
+                                \Carbon\Carbon::setLocale('id');
+                                $Date = \Carbon\Carbon::parse($event->event_date);
+                                $eventDateFormatted = $eventDate->translatedFormat('d F Y');
+                            @endphp
+                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
+                            <p class="text-primary">
+                            {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
+                            <p class="text-success">{{ $event->event_location}}</p>
+                            <h3 class="text-dark">{{ $event->event_name}}</h3>
+                            <p class="text-dark">{{ $event->event_description}}</p>
                         </div>
-                        @endif
-                    @endforeach
                     </div>
-                    <div class="position-absolute heart-circle " style="bottom: 0; left: -18px;">
-                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
-                    </div>
-                    <div class="position-absolute heart-circle" style="top: 18px; right: -17px;">
-                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
-                    </div>
+                    @endif
+                @endforeach
+                </div>
+                <div class="position-absolute heart-circle " style="bottom: 0; left: -18px;">
+                    <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                </div>
+                <div class="position-absolute heart-circle" style="top: 18px; right: -17px;">
+                    <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
                 </div>
             </div>
         </div>
@@ -480,16 +490,12 @@
                                 <a href="{{ asset('storage/' . $photo->photo_url) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
                             </div>
                         </div>
-                        <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                        <h5>{{ $event->event_location}}</h5>
-                        <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
-                        </div>
                     </div>
                 </div>
                 @endforeach
                
                 <div class="col-12 text-center wow fadeIn" data-wow-delay="0.2s">
-                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5 me-2" href="#">View All <i class="fas fa-arrow-right"></i></a>
+                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5 me-2" href="{{ route('home.photo') }}">View All <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>

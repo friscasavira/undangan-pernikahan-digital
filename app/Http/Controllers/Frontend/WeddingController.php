@@ -16,7 +16,17 @@ class WeddingController
         $id_wedding = $wedding->id_wedding;
         $love_storys = love_story::all();
         $events = events::all();
-        $photos = photos::where('id_wedding', $id_wedding)->take(3)->get();
-        return view('frontend.home', compact('wedding', 'love_storys', 'events', 'photos'));
+        $photos = photos::where('id_wedding', $id_wedding)->take(8)->get();
+        $photosThree = photos::where('id_wedding', $id_wedding)->take(3)->get();
+        return view('frontend.home', compact('wedding', 'love_storys', 'events', 'photos', 'photosThree'));
     }
+
+    public function photo()
+{
+    $photos = photos::all();
+    return view('frontend.photo', compact('photos'));
 }
+
+}
+
+
