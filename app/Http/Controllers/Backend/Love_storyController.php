@@ -120,10 +120,9 @@ class Love_storyController
      */
     public function createUser()
     {
-        $love_story = love_story::all();
-        return view('backend.user.love_story_tambah',compact('love_story'));
+    $weddings = weddings::all();
+    return view('backend.user.tambah_love_story', compact('weddings'));
     }
-
     /**
      * Store a newly created resource in storage.
      */
