@@ -18,7 +18,6 @@
                                 <th scope="col" class="text-center">Pesan</th>
                                 <th scope="col" class="text-center">Kehadiran</th>
                                 <th scope="col" class="text-center">Total Tamu</th>
-                                <th scope="col" class="text-center">Action</th>
 
                             </tr>
                         </thead>
