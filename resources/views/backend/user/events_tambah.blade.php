@@ -8,6 +8,12 @@
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
+                @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                @endif
+            <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">Tambah event</h6>
                 <form action="{{route('user.events_store')}}" method="post" enctype="multipart/form-data">
                     @csrf
