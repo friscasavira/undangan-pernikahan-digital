@@ -13,11 +13,11 @@ class comments extends Model
 
     protected $fillable = [
         'id_wedding',
-        'name',
+        'name_tamu',
         'message'
     ];
 
-    public function weddings()
+    public function wedding()
     {
     return $this->belongsTo(weddings::class, 'id_wedding', 'id_wedding');
     }

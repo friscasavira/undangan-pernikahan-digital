@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\comments;
+use App\Models\events;
+use App\Models\love_story;
+use App\Models\photos;
 use App\Models\weddings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,8 +17,20 @@ class WeddingController
     {
         $weddings = weddings::all();
         return view('backend.admin.weddings', compact('weddings'));
+
     }
 
+
+    public function detail()
+    {
+        $details = weddings::all();
+        $events = events::all();
+        $love_storys = love_story::all();
+        $comments = comments::all();
+        $photos = photos::all();
+        return view('backend.admin.detail', compact('details','events','love_storys','comments', 'photos'));
+    }
+    
     /**
      * Show the form for creating a new resource.
      */

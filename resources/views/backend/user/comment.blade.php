@@ -17,7 +17,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                    @foreach($comment as $comment)
+                    @foreach($comments as $comment)
 
                         <tr>
                         <th scope="row">{{$loop->iteration}}</th>

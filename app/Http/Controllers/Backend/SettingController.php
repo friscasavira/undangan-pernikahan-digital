@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\comments;
+use App\Models\rsvp;
 use App\Models\settings;
 use App\Models\User;
 use App\Models\weddings;
@@ -13,7 +15,9 @@ class SettingController
 {
     public function dashboardAdmin()
     {
-        return view('backend.admin.dashboard');
+        $weddings = weddings::all();
+        $comments = comments::all();
+        return view('backend.admin.dashboard',compact('weddings','comments'));
     }
 
     public function profileAdmin()
@@ -179,8 +183,7 @@ class SettingController
     {
         $setting = settings::find($id);
 
-
-         $setting->delete();
+        $setting->delete();
 
         return redirect()->back()->with('success', 'Data setting Berhasil diHapus');
 
