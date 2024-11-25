@@ -56,43 +56,11 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('admin.events')}}" aria-expanded="false">
-                <span>
-                <i class="ti ti-select"></i>
-                </span>
-                <span class="hide-menu">Events</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('admin.rsvp')}}" aria-expanded="false">
                 <span>
                   <iconify-icon icon="solar:file-text-bold-duotone" class="fs-6"></iconify-icon>
                 </span>
                 <span class="hide-menu">Rsvp</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('admin.photo')}}" aria-expanded="false">
-                <span>
-                <i class="ti ti-photo"></i>
-                </span>
-                <span class="hide-menu">Photos</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="admin.love_story" aria-expanded="false">
-                <span>
-                <i class="ti ti-heart-plus"></i>
-                </span>
-                <span class="hide-menu">Love_story</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="admin.comment" aria-expanded="false">
-                <span>
-                    <i class="ti ti-messages"></i>
-                </span>
-                <span class="hide-menu">Comments</span>
               </a>
             </li>
             <li class="sidebar-item">

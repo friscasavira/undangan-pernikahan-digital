@@ -1,57 +1,30 @@
 @extends('backend.admin.layout.app')
 
-@section('title','Weddings')
+@section('title','photo')
 
 @section('content')
 <div class="col-lg-12">
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <a href="{{route('admin.photo_tambah')}}" class="btn btn-primary btn-sm">Tambah</a>
-                <table class="table text-nowrap align-middle mb-0" id="event">
-                    <thead>
-                        <!DOCTYPE html>
-                        <html lang="en">
-
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <title>Foto dengan Caption</title>
-                            <!-- Bootstrap CSS -->
-                            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-                        </head>
-
-                        <body>
-
+                <!-- <a href="{{route('admin.photo_tambah')}}" class="btn btn-primary btn-sm">Tambah</a> -->
+                
                             <div class="container mt-5">
-                                <div class="row">
-                                    @foreach ($photos as $photo)
-                                    <div class="col-md-4 mb-4"> <!-- Setiap foto mengambil 4 kolom -->
-                                        <div class="card" style="width: 100%;"> <!-- Atur width agar sesuai kolom -->
-                                            <img src="{{ asset('storage/' . $photo->photo_url) }}" class="card-img-top" alt="Image">
-                                            <div class="card-body">
-                                                <p class="card-text text-center">{{ $photo->caption }}</p>
-                                            </div>
-                                        </div>
+                                @foreach($photos as $photo)
+                                <div class="card" style="width: 18rem;">
+                                <a href="{{route('admin.edit_photo', ['id_wedding' => $photo->id_wedding, 'id' => $photo->id_photo])}}">
+                                        <img src="{{asset('storage/' . $photo->photo_url)}}" class="card-img-top" alt="matdash-img">
+                                    </a>
+                                    <div class="card-body">
+                                        <p class="card-text text-center">{{$photo->caption}}</p>
                                     </div>
-                                    @endforeach
                                 </div>
+                                @endforeach
                             </div>
-
 
                             <!-- Bootstrap JS (Optional) -->
                             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-                        </body>
-
-                        </html>
-
-
-
-
-
-
-                        </tbody>
-                </table>
+                        
             </div>
         </div>
     </div>
@@ -59,7 +32,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#event').DataTable();
+        $('#photo').DataTable();
     });
 </script>
 

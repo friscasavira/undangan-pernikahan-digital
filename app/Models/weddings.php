@@ -32,6 +32,12 @@ class weddings extends Model
     {
     return $this->hasMany(comments::class, 'id_wedding', 'id_wedding');
     }
+
+    public function rsvp()
+    {
+    return $this->hasOne(rsvp::class, 'id_wedding', 'id_wedding');
+    }
+
     public function photos()
     {
     return $this->hasMany(photos::class, 'id_wedding', 'id_wedding');
@@ -40,4 +46,10 @@ class weddings extends Model
     {
     return $this->hasMany(love_story::class, 'id_wedding', 'id_wedding');
     }
+    public function setting()
+    {
+    return $this->hasMany(settings::class, 'id_wedding', 'id_wedding');
+    }
+
+
 }
