@@ -19,8 +19,7 @@ class rsvp extends Model
         'message',
         'is_invited',
         'attendance_status',
-        'total_guest'
-        
+        'total_guests'
     ];
 
     public function wedding()
