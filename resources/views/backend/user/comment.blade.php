@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table text-nowrap align-middle mb-0" id="rsvp" >
+                    <table class="table text-nowrap align-middle mb-0" id="comment" >
                         <thead>
                         <tr class="border-2 border-bottom border-primary border-0">
                                 <th scope="col" class="ps-0">No</th>
