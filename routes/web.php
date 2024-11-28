@@ -25,7 +25,8 @@ Route::middleware(['guest:admin', 'guest:user'])->group(function(){
 
 Route::middleware(['role:admin'])->group(function() {
     Route::get('/admin/dashboard', [SettingController::class, 'dashboardAdmin'])->name('admin.dashboard');
-    Route::get('/admin/profile', [SettingController::class, 'profiledAdmin'])->name('admin.profile');
+    Route::get('/admin/profile', [SettingController::class, 'profileAdmin'])->name('admin.profile');
+    Route::get('/admin/profile/update', [SettingController::class, 'update'])->name('admin.profile_update');
     Route::get('/admin/logout', [SettingController::class, 'logoutAdmin'])->name('admin.logout');
 
     Route::get('/admin/weddings', [weddingController::class, 'weddings'])->name('admin.weddings');
@@ -68,9 +69,9 @@ Route::middleware(['role:admin'])->group(function() {
     Route::get('/admin/comment', [CommentController::class, 'comment'])->name('admin.comment');
     Route::get('/admin/comment/tambah', [CommentController::class, 'create'])->name('admin.comment_tambah');
     Route::post('/admin/comment/tambah', [CommentController::class, 'store'])->name('admin.comment_store');
-    Route::get('/admin/comment/photo/{id_wedding}/edit/{id}', [CommentController::class, 'edit'])->name('admin.edit_comment');
-    Route::get('/admin/comment/photo/{id_wedding}/update/{id}', [CommentController::class, 'update'])->name('admin.comment_update');
-    Route::get('/admin/comment/photo/{id_wedding}/delete/{id}', [CommentController::class, 'delete'])->name('admin.delete_comment');
+    Route::get('/admin/wedding/comment/{id_wedding}/edit/{id}', [CommentController::class, 'edit'])->name('admin.edit_comment');
+    Route::put('/admin/wedding/comment/{id_wedding}/update/{id}', [CommentController::class, 'update'])->name('admin.comment_update');
+    Route::get('/admin/wedding/comment/{id_wedding}/delete/{id}', [CommentController::class, 'delete'])->name('admin.delete_comment');
 
     Route::get('/admin/setting', [SettingController::class, 'setting'])->name('admin.setting');
     Route::get('/admin/setting/tambah', [SettingController::class, 'create'])->name('admin.setting_tambah');

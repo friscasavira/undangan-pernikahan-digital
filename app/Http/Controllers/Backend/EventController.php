@@ -9,11 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController
 {
-    public function events()
-    {
-        $events = events::all();
-        return view('backend.admin.events', compact('events'));
-    }
+   
 
     /**
      * Show the form for creating a new resource.
@@ -96,7 +92,7 @@ class EventController
             'event_description' => $request->event_description,
         ]);
 
-        return redirect()->route('admin.events')->with('success', 'Data Events Berhasil di Edit');
+        return redirect()->route('admin.detail', $id)->with('success', 'Data Events Berhasil di Edit');
     }
 
 

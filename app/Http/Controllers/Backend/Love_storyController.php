@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class Love_storyController
 {
-    public function love_story()
-    {
-        $love_storys = love_story::all();
-        return view('backend.admin.love_story', compact('love_storys'));
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -93,7 +88,7 @@ class Love_storyController
             'description_story' => $request->description_story,
         ]);
 
-        return redirect()->route('admin.love_story')->with('success', 'Data love_story Berhasil di Edit');
+        return redirect()->route('admin.detail', $id)->with('success', 'Data love_story Berhasil di Edit');
     }
 
 

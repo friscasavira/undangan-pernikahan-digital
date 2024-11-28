@@ -12,7 +12,6 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <!-- <a href="{{route('admin.events_tambah')}}" class="btn btn-primary btn-sm">Tambah</a> -->
                 <table class="table text-nowrap align-middle mb-0" id="event">
                     <thead>
                         <tr class="border-2 border-bottom border-primary border-0">
@@ -22,6 +21,7 @@
                             <th scope="col" class="text-center">TANGGAL ACARA</th>
                             <th scope="col" class="text-center">WAKTU ACARA</th>
                             <th scope="col" class="text-center">LOKASI ACARA</th>
+                            <th scope="col" class="text-center">DESKRIPSI</th>
                             <th scope="col" class="text-center">ACTION</th>
 
                         </tr>
@@ -36,9 +36,10 @@
                             <td class="text-center">{{$event->event_date}}</td>
                             <td class="text-center">{{$event->event_time}}</td>
                             <td class="text-center">{{$event->event_location}}</td>
+                            <td class="text-center">{{$event->event_description}}</td>
                             <td>
                                 <a href="{{route('admin.edit_events', ['id_wedding' => $event->id_wedding, 'id' => $event->id_event])}}" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="{route('admin.delete_events', ['id_wedding' => $event->id_wedding, 'id' => $event->id_event])}}" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>
+                                <a href="{{route('admin.delete_events', ['id_wedding' => $event->id_wedding, 'id' => $event->id_event])}}" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>
                             </td>
 
                         </tr>
@@ -62,13 +63,12 @@
     <div class="card">
         <div class="card shadow">
             <div class="card-header bg-primary ">
-                <h4 class="text-white mb-0" >love_story</h4>
+                <h4 class="text-white mb-0" >Love Story</h4>
             </div>
 
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <!-- <a href="{{route('admin.love_story_tambah')}}" class="btn btn-primary btn-sm">Tambah</a> -->
                 <table class="table text-nowrap align-middle mb-0" id="love_story">
                     <thead>
                         <tr class="border-2 border-bottom border-primary border-0">
@@ -122,7 +122,6 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <!-- <a href="{{route('admin.comment_tambah')}}" class="btn btn-primary btn-sm">Tambah</a> -->
                 <div class="table-responsive">
                     <table class="table table-hover align-middle mb-0">
                         <thead class="table-primary text-center">
@@ -183,7 +182,6 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <!-- <a href="{{route('admin.photo_tambah')}}" class="btn btn-primary btn-sm">Tambah</a> -->
                 <table>
                     @foreach($photos as $photo)
                     <div class="card" style="width: 18rem;">
