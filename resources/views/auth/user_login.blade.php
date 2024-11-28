@@ -37,7 +37,7 @@
 				<div class="col-md-6 col-lg-6">
 					<div class="login-wrap p-3">
 						<h3 class="mb-4 text-center">Pengguna Login</h3>
-						<form action="{{route('admin.submit')}}" method="post" class="signin-form">
+						<form action="{{route('user.submit')}}" method="post" class="signin-form">
 							@csrf
 							<div class="form-group">
 								<input type="text" class="form-control" name="username" placeholder="Username">
