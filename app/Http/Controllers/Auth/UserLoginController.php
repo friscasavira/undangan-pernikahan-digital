@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as RoutingController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserLoginController extends RoutingController
 {
@@ -57,4 +59,28 @@ class UserLoginController extends RoutingController
         return back()->withErrors(['login_error' => 'username atau Password Salah.']) ->onlyInput('username');
     }
 
+    public function registerUser()
+    {
+        return view('auth.user_register');
+    }
+
+
+    public function userSubmit(Request $request)
+    {
+        $credentials = $request->validate([
+            'nama' => 'required|string|max:255',
+            'username' => 'required|max:255',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
+        ]);
+
+            User::create([
+                'username' => $request->username,
+                'email'    =>$request->email,
+                'password' => Hash::make($request->password),
+            ]);
+
+        Auth::login($user);
+        return redirect()->route('login.user')->with('success', 'Register berhasil');
+    }
 }

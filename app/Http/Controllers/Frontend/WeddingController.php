@@ -32,7 +32,7 @@ class WeddingController
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:rsvp,email',
             'phone' => 'required',
             'message' => 'required',
             'attendance_status' => 'required',

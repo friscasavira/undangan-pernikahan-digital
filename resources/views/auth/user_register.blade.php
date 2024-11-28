@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Pengguna - Login</title>
+	<title>Pengguna - Register</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -25,24 +25,38 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<!-- <h2 class="heading-section">Login Min</h2> -->
-					@if ($errors->has('login_error'))
-					<div class="alert alert-danger" style="border-radius:40px 40px 40px 40px;">
-						{{ $errors->first('login_error')}}
-					</div>
-					@endif
+				
 				</div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-6">
 					<div class="login-wrap p-3">
-						<h3 class="mb-4 text-center">Pengguna Login</h3>
+						<h3 class="mb-4 text-center">Pengguna register</h3>
 						<form action="{{route('admin.submit')}}" method="post" class="signin-form">
 							@csrf
+
+                            <div class="form-group">
+								<input type="text" class="form-control" name="name" placeholder="name">
+								<div class="text-danger">
+									@error('name')
+									{{$message}}
+									@enderror
+								</div>
+							</div>
+
 							<div class="form-group">
 								<input type="text" class="form-control" name="username" placeholder="Username">
 								<div class="text-danger">
 									@error('username')
+									{{$message}}
+									@enderror
+								</div>
+							</div>
+
+                            <div class="form-group">
+								<input type="text" class="form-control" name="email" placeholder="email">
+								<div class="text-danger">
+									@error('email')
 									{{$message}}
 									@enderror
 								</div>
@@ -63,7 +77,7 @@
 							</div>
 
 							<div class="w-100 text-center mt-3">
-								<p>Belum punya akun? <a href="{{ route('user.register') }}">Daftar di sini</a></p>
+								<p>Sudah punya akun? <a href="{{ route('user.login') }}">Masuk di sini</a></p>
 							</div>
 
 						</form>

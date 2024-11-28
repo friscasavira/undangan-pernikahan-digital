@@ -23,6 +23,9 @@ Route::middleware(['guest:admin', 'guest:user'])->group(function(){
 
     Route::get('/user/login', [UserLoginController::class, 'loginUser'])->name('user.login');
     Route::post('/user/submit', [UserLoginController::class, 'submitUser'])->name('user.submit');
+    Route::get('/user/register', [UserLoginController::class, 'registerUser'])->name('user.register');
+    Route::post('/user/register', [UserLoginController::class, 'userSubmit'])->name('register.submit');
+    
 
 });
 
