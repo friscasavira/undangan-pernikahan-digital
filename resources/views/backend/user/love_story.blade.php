@@ -4,11 +4,17 @@
 
 @section('content')
 <div class="col-lg-12">
+    <div class="bg-light rounded h-100 p-4">
+        @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
                 <a href="{{route('user.love_story_tambah')}}" class="btn btn-primary btn-sm">Tambah</a>
-                    <table class="table text-nowrap align-middle mb-0" id="weddings" >
+                    <table class="table text-nowrap align-middle mb-0" id="love_story" >
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0">
                                 <th scope="col" class="ps-0">No</th>

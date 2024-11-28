@@ -12,6 +12,9 @@ use App\Http\Controllers\Frontend\WeddingController as FrontendWeddingController
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendWeddingController::class, 'home'])->name('home');
+Route::get('/home/photo', [FrontendWeddingController::class, 'photo'])->name('home.photo');
+Route::post('/home/rsvp', [FrontendWeddingController::class, 'rsvp'])->name('home.rsvp');
+
 
 
 Route::middleware(['guest:admin', 'guest:user'])->group(function(){
@@ -19,7 +22,7 @@ Route::middleware(['guest:admin', 'guest:user'])->group(function(){
     Route::post('/admin/submit', [UserLoginController::class, 'submit'])->name('admin.submit');
 
     Route::get('/user/login', [UserLoginController::class, 'loginUser'])->name('user.login');
-    Route::post('/user/submit', [UserLoginController::class, 'submitUser'])->name('user.submit');
+    Route::post('/user/submit', [UserLoginController::class, 'submit'])->name('user.submit');
 
 });
 
@@ -56,8 +59,8 @@ Route::middleware(['role:admin'])->group(function() {
     Route::post('/admin/photo/tambah', [photoController::class, 'store'])->name('admin.photo_store');
     Route::get('/admin/wedding/photo/{id_wedding}/edit/{id}', [photoController::class, 'edit'])->name('admin.edit_photo');
     Route::put('/admin/wedding/photo/{id_wedding}/update/{id}', [photoController::class, 'update'])->name('admin.photo_update');
-    Route::get('/admin/photo/delete/{id}', [photoController::class, 'delete'])->name('admin.delete_photo'); 
-    Route::get('/admin/photo/foto/{id}', [photoController::class, 'foto'])->name('admin.foto_photo'); 
+    Route::get('/admin/photo/delete/{id}', [photoController::class, 'delete'])->name('admin.delete_photo');
+    Route::get('/admin/photo/foto/{id}', [photoController::class, 'foto'])->name('admin.foto_photo');
 
     Route::get('/admin/love_story', [Love_storyController::class, 'love_story'])->name('admin.love_story');
     Route::get('/admin/love_story/tambah', [Love_storyController::class, 'create'])->name('admin.love_story_tambah');

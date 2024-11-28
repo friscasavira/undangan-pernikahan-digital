@@ -66,7 +66,9 @@ class SettingController
 
     public function dashboardUser()
     {
-        return view('backend.user.dashboard');
+        $weddings = weddings::all();
+        $comments = comments::all();
+        return view('backend.user.dashboard', compact('weddings','comments'));
     }
 
     public function profileUser(Request $request)

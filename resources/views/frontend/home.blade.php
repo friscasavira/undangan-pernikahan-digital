@@ -72,63 +72,73 @@
 
     <!-- Carousel Start -->
     <div class="container-fluid carousel-header px-0">
-    <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-        <!-- Carousel Indicators -->
-        <ol class="carousel-indicators">
-            @foreach($photos as $index => $photo)
-                <li data-bs-target="#carouselId" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
-            @endforeach
-        </ol>
+        <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+            <!-- Carousel Indicators -->
+            <ol class="carousel-indicators">
+                @foreach($photosThree as $index => $photo)
+                    <li data-bs-target="#carouselId" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+                @endforeach
+            </ol>
+            
 
-        <!-- Carousel Items -->
-        <div class="carousel-inner" role="listbox">
-    @foreach($photos as $index => $photo)
-        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-            <img src="{{ asset('storage/' . $photo->photo_url) }}" class="img-fluid" alt="Photo for Wedding">
-            <div class="carousel-caption">
-                <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
-                    <!-- Title -->
-                    <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
-                        <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->title }}</h4>
+            <!-- Carousel Items -->
+            <div class="carousel-inner" role="listbox">
+
+                <!-- Carousel -->
+                <div class="carousel-inner">
+                    @foreach($photosThree as $index => $photo)
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                        <img src="{{ asset('storage/' . $photo->photo_url) }}" class="img-fluid" alt="Photo for Wedding">
+                        <div class="carousel-caption">
+                            <div class="p-3 mx-auto animated zoomIn" style="max-width: 900px;">
+                                <!-- Title -->
+                                <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-4" style="border-style: double;">
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $wedding->title }}</h4>
+                                </div>
+                                <!-- Groom and Bride -->
+                                <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} 
+                                    <i class="fa fa-heart text-primary"></i> {{ $wedding->bride_name }}
+                                </h1>
+                                <!-- Wedding Date -->
+                                <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
+                                    @php
+                                        \Carbon\Carbon::setLocale('id');
+                                        $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
+                                        $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
+                                    @endphp
+                                    <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
+                                </div>
+                                <!-- RSVP Button -->
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- Groom and Bride -->
-                    <h1 class="display-1 text-capitalize text-white mb-3">{{ $wedding->groom_name }} 
-                        <i class="fa fa-heart text-primary"></i> {{ $wedding->bride_name }}
-                    </h1>
-                    <!-- Wedding Date -->
-                    <div class="d-inline-block border-end-0 border-start-0 border-secondary p-2 mb-5" style="border-style: double;">
-                        @php
-                            \Carbon\Carbon::setLocale('id');
-                            $weddingDate = \Carbon\Carbon::parse($wedding->wedding_date);
-                            $weddingDateFormatted = $weddingDate->translatedFormat('d F Y');
-                        @endphp
-                        <h4 class="text-white text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
-                    </div>
-                    <!-- RSVP Button -->
-                    <div class="d-flex align-items-center justify-content-center">
-                        <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
-                    </div>
+                    @endforeach 
                 </div>
             </div>
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
+            <!-- Navigation Buttons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-    @endforeach
-</div>
-
-
-        <!-- Navigation Buttons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
-</div>
-
-    <!-- Carousel End -->
-
 
     <!-- Hello! Start -->
     <div class="container-fluid position-relative py-5" id="weddingAbout">
@@ -141,7 +151,7 @@
         <div class="container position-relative py-5">
             <div class="mx-auto text-center mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800;">
                 <h1 class="text-primary display-1">Hello!</h1>
-                <h4 class="text-dark mb-0">We invite you to celebrate our wedding</h4>
+                <h4 class="text-dark mb-0">Kami mengundang anda untuk merayakan pernikahan kami</h4>
             </div>
             <div class="row">
                 <div class="col-lg-12">
@@ -386,69 +396,68 @@
     <!-- Wedding Date -->
 
 
-        <!-- Wedding Timeline start -->
-        <div class="container-fluid wedding-timeline bg-secondary position-relative overflow-hidden py-5" id="weddingTimeline">
-            <div class="position-absolute" style="top: 50%; left: -100px; transform: translateY(-50%); opacity: 0.5;">
-                <img src="img/wedding-bg.png" class="img-fluid" alt="">
+    <!-- Wedding Timeline start -->
+    <div class="container-fluid wedding-timeline bg-secondary position-relative overflow-hidden py-5" id="weddingTimeline">
+        <div class="position-absolute" style="top: 50%; left: -100px; transform: translateY(-50%); opacity: 0.5;">
+            <img src="img/wedding-bg.png" class="img-fluid" alt="">
+        </div>
+        <div class="position-absolute" style="top: 50%; right: -160px; transform: translateY(-50%); opacity: 0.5; rotate: 335deg;">
+            <img src="img/wedding-bg.png" class="img-fluid" alt="">
+        </div>
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h1 class="display-4 text-white">Wedding Planing Timeline</h1>
             </div>
-            <div class="position-absolute" style="top: 50%; right: -160px; transform: translateY(-50%); opacity: 0.5; rotate: 335deg;">
-                <img src="img/wedding-bg.png" class="img-fluid" alt="">
-            </div>
-            <div class="container py-5">
-                <div class="text-center mb-5">
-                    <h1 class="display-4 text-white">Wedding Planing Timeline</h1>
-                </div>
-                <div class="position-relative wedding-content">
-                    <div class="row g-4">
+            <div class="position-relative wedding-content">
+                <div class="row g-4">
 
-                    @foreach ($events as $index => $event)
-                    @if($index % 2 == 0)
-                        <div class="col-6 col-md-6 col-xl-3 border border-bottom-0">
-                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.1s">
-                                <div class="mb-4 p-3 d-inline-flex">
-                                    <i class="fas fa-menorah text-primary fa-3x"></i>
-                                </div>
-                                @php
-                                    \Carbon\Carbon::setLocale('id');
-                                    $eventDate = \Carbon\Carbon::parse($event->event_date);
-                                    $eventDateFormatted = $eventDate->translatedFormat('d F Y');
-                                @endphp
-                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                                <p class="text-primary">
-                                {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
-                                <p class="text-success">{{ $event->event_location}}</p>
-                                <h3 class="text-dark">{{ $event->event_name}}</h3>
-                                <p class="text-dark">{{ $event->event_description}}</p>
-                            </div>  
-                        </div>
-                        @else
-                        <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
-                            <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
-                                <div class="mb-4 p-3 d-inline-flex">
-                                    <i class="fas fa-photo-video text-primary fa-3x"></i>
-                                </div>
-                                @php
-                                    \Carbon\Carbon::setLocale('id');
-                                    $Date = \Carbon\Carbon::parse($event->event_date);
-                                    $eventDateFormatted = $eventDate->translatedFormat('d F Y');
-                                @endphp
-                                <p class="text-dark">{{ $weddingDateFormatted }}</p>
-                                <p class="text-primary">
-                                {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
-                                <p class="text-success">{{ $event->event_location}}</p>
-                                <h3 class="text-dark">{{ $event->event_name}}</h3>
-                                <p class="text-dark">{{ $event->event_description}}</p>
+                @foreach ($events as $index => $event)
+                @if($index % 2 == 0)
+                    <div class="col-6 col-md-6 col-xl-3 border border-bottom-0">
+                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.1s">
+                            <div class="mb-4 p-3 d-inline-flex">
+                                <i class="fas fa-menorah text-primary fa-3x"></i>
                             </div>
+                            @php
+                                \Carbon\Carbon::setLocale('id');
+                                $eventDate = \Carbon\Carbon::parse($event->event_date);
+                                $eventDateFormatted = $eventDate->translatedFormat('d F Y');
+                            @endphp
+                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
+                            <p class="text-primary">
+                            {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
+                            <p class="text-success">{{ $event->event_location}}</p>
+                            <h3 class="text-dark">{{ $event->event_name}}</h3>
+                            <p class="text-dark">{{ $event->event_description}}</p>
+                        </div>  
+                    </div>
+                    @else
+                    <div class="col-6 col-md-6 col-xl-3 border border-top-0 border-start-0">
+                        <div class="text-center p-3 wow fadeIn" data-wow-delay="0.3s">
+                            <div class="mb-4 p-3 d-inline-flex">
+                                <i class="fas fa-photo-video text-primary fa-3x"></i>
+                            </div>
+                            @php
+                                \Carbon\Carbon::setLocale('id');
+                                $Date = \Carbon\Carbon::parse($event->event_date);
+                                $eventDateFormatted = $eventDate->translatedFormat('d F Y');
+                            @endphp
+                            <p class="text-dark">{{ $weddingDateFormatted }}</p>
+                            <p class="text-primary">
+                            {{ \Carbon\Carbon::parse($event->event_time)->format('h:i A') }}</p>
+                            <p class="text-success">{{ $event->event_location}}</p>
+                            <h3 class="text-dark">{{ $event->event_name}}</h3>
+                            <p class="text-dark">{{ $event->event_description}}</p>
                         </div>
-                        @endif
-                    @endforeach
                     </div>
-                    <div class="position-absolute heart-circle " style="bottom: 0; left: -18px;">
-                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
-                    </div>
-                    <div class="position-absolute heart-circle" style="top: 18px; right: -17px;">
-                        <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
-                    </div>
+                    @endif
+                @endforeach
+                </div>
+                <div class="position-absolute heart-circle " style="bottom: 0; left: -18px;">
+                    <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
+                </div>
+                <div class="position-absolute heart-circle" style="top: 18px; right: -17px;">
+                    <div class="border border-2 border-primary rounded-circle p-1 bg-secondary"></div>
                 </div>
             </div>
         </div>
@@ -480,16 +489,12 @@
                                 <a href="{{ asset('storage/' . $photo->photo_url) }}" data-lightbox="Gallery-1" class="my-auto"><i class="fas fa-plus btn-primary btn-primary-outline-0 p-3"></i></a>
                             </div>
                         </div>
-                        <div class="gallery-overlay bg-light border-secondary border-top-0 p-4" style="border-style: double;">
-                        <h5>{{ $event->event_location}}</h5>
-                        <p class="text-dark mb-0">{{ $weddingDateFormatted }}</p>
-                        </div>
                     </div>
                 </div>
                 @endforeach
                
                 <div class="col-12 text-center wow fadeIn" data-wow-delay="0.2s">
-                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5 me-2" href="#">View All <i class="fas fa-arrow-right"></i></a>
+                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5 me-2" href="{{ route('home.photo') }}">View All <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -500,137 +505,116 @@
 
     <!-- RSVP Form Start -->
     <div class="container-fluid RSVP-form py-5" id="weddingRsvp">
-        <div class="container py-5">
-            <div class="mb-5 text-center mx-auto wow fadeIn" data-wow-delay="0.1s" style="max-width: 800px;">
-                <h1 class="display-2 text-primary">RSVP Form</h1>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <div class="p-5 border-secondary position-relative" style="border-style: double;">
-                        <div class="fw-bold text-primary bg-white d-flex align-items-center justify-content-center position-absolute border-secondary p-2 wow fadeIn" data-wow-delay="0.1s" style="width: 75%; border-style: double; top: 0; left: 50%; transform: translate(-50%, -50%);">
-                            Kindly respond by June 25, 2024 we look forward to celebrating with you!
-                        </div>
-                        <form>
-                            <div class="row gx-4 gy-3">
-                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">Name</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Name">
-                                        </div>
-                                </div>
-                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">Email</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Email">
-                                        </div>
-                                </div>
-                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">Phone</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="Phone">
-                                        </div>
-                                </div>
-                            </div>
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="form-group">
-                                        <label for="exampletextarea" class="form-label text-dark">Message</label>
-                                        <textarea name="text" class="form-control border-0" id="exampletextarea" cols="30" rows="5" placeholder="Message"></textarea>
+    <div class="container py-5">
+        <div class="mb-5 text-center mx-auto wow fadeIn" data-wow-delay="0.1s" style="max-width: 800px;">
+            <h1 class="display-2 text-primary">RSVP Form</h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="p-5 border-secondary position-relative" style="border-style: double;">
+                    <div class="fw-bold text-primary bg-white d-flex align-items-center justify-content-center position-absolute border-secondary p-2 wow fadeIn" data-wow-delay="0.1s" style="width: 75%; border-style: double; top: 0; left: 50%; transform: translate(-50%, -50%);">
+                        Harap tanggapi sebelum {{ $weddingDateFormatted }}, Kami menantikan untuk merayakan bersama Anda!
+                    </div>
+                    <form method="POST" action="{{ route('home.rsvp') }}">
+                        @csrf
+                        <div class="row gx-4 gy-3">
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="form-group">
+                                    <label for="name" class="form-label text-dark">Name</label>
+                                    <input type="text" name="name" class="form-control py-3 border-0" id="name" placeholder="Name">
+                                    <div class="text-danger">
+                                        @error('name')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                 </div>
-                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">is_invited</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="is_invited">
-                                        </div>
-                                </div>
-                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">attendance_status</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="attendance_status">
-                                        </div>
-                                </div>
-                                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="form-group">
-                                        <label for="Examplename" class="form-label text-dark">total_guest</label>
-                                        <input type="text" class="form-control py-3 border-0" id="Examplename" placeholder="total_guest">
-                                        </div>
-                                </div>
-                                
-                                
-                                <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
-                                    <div class="text-center border border-secondary p-4 my-4 position-relative">
-                                        <div class="fw-bold text-primary bg-white d-flex align-items-center justify-content-center position-absolute border-secondary p-2" style="width: 50%; border-style: double; top: 0; left: 50%; transform: translate(-50%, -50%);">
-                                            Will you be attending?
-                                        </div>
-                                        <div class="mt-4">
-                                            <div class="row g-4">
-                                                <div class="col-lg-6">
-                                                    <div class="d-flex justify-content-center">
-                                                        <div class="form-check d-flex">
-                                                            <input class="form-check-input me-2" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                            <label class="form-check-label text-dark" for="flexRadioDefault1">
-                                                                Accepts With Pleasure!
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="d-flex justify-content-center">
-                                                        <div class="form-check d-flex">
-                                                            <input class="form-check-input me-2" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                                            <label class="form-check-label text-dark" for="flexRadioDefault1">
-                                                                Declines With Regret
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                            </div>
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="form-group">
+                                    <label for="email" class="form-label text-dark">Email</label>
+                                    <input type="email" name="email" class="form-control py-3 border-0" id="email" placeholder="Email">
+                                    <div class="text-danger">
+                                        @error('email')
+                                        {{$message}}
+                                        @enderror
                                     </div>
                                 </div>
-                                <div class="col-12 text-center wow fadeIn" data-wow-delay="0.1s">
-                                    <button class="btn btn-primary btn-primary-outline-0 py-3 px-5">Submit Now</button>
+                            </div>
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="form-group">
+                                    <label for="phone" class="form-label text-dark">Phone</label>
+                                    <input type="text" name="phone" class="form-control py-3 border-0" id="phone" placeholder="Phone">
+                                    <div class="text-danger">
+                                        @error('phone')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-5">
-                <div class="row g-5 justify-content-center text-center">
-                    <div class="col-md-4 wow fadeIn" data-wow-delay="0.1s">
-                        <div class="p-4 border-secondary" style="border-style: double;">
-                            <h4>Call Us Now</h4>
-                            <a href="#" class="text-dark">+123 456 7890</a>
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="form-group">
+                                    <label for="total_guests" class="form-label text-dark">Total Guests</label>
+                                    <input type="number" name="total_guests" class="form-control py-3 border-0" id="total_guests" placeholder="Total Guests">
+                                    <div class="text-danger">
+                                        @error('total_guests')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="form-group">
+                                    <label for="message" class="form-label text-dark">Message</label>
+                                    <textarea name="message" class="form-control border-0" id="message" cols="30" rows="5" placeholder="Message"></textarea>
+                                    <div class="text-danger">
+                                        @error('message')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="form-group">
+                                    <label for="is_invited" class="form-label text-dark">Is Invited</label>
+                                    <select name="is_invited" class="form-select py-3 border-0" id="is_invited" style="color: black;">
+                                        <option value="" disabled selected>-- Pilih --</option>
+                                        <option value="Ya">Ya</option>
+                                        <option value="Tidak">Tidak</option>
+                                    </select>
+                                    <div class="text-danger">
+                                        @error('is_invited')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                                <div class="form-group">
+                                    <label for="attendance_status" class="form-label text-dark">Attendance Status</label>
+                                    <select name="attendance_status" class="form-select py-3 border-0" id="attendance_status" style="color: black;">
+                                        <option value="" disabled selected>-- Pilih --</option>
+                                        <option value="Belum Konfirmasi">Belum Konfirmasi</option>
+                                        <option value="Hadir">Hadir</option>
+                                        <option value="Tidak Hadir">Tidak Hadir</option>
+                                    </select>
+                                    <div class="text-danger">
+                                        @error('attendance_status')
+                                        {{$message}}
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center wow fadeIn" data-wow-delay="0.1s">
+                                <button class="btn btn-primary btn-primary-outline-0 py-3 px-5" type="submit">Submit Now</button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 wow fadeIn" data-wow-delay="0.3s">
-                        <div class="p-4 border-secondary" style="border-style: double;">
-                            <h4>When</h4>
-                            <p class="mb-0 text-dark">
-                                28. June 2024. at 7 o’clock in the evening
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 wow fadeIn" data-wow-delay="0.5s">
-                        <div class="p-4 border-secondary" style="border-style: double;">
-                            <h4>Where</h4>
-                            <p class="mb-0 text-dark">
-                                Niloy Hotel, 123 ranking Street, New York.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-12 wow fadeIn" data-wow-delay="0.2s">
-                        <div class="border-secondary" style="border-style: double;">
-                            <iframe class="w-100"
-                                style="height: 450px; margin-bottom: -6px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.33750346623!2d-73.97968099999999!3d40.6974881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1694259649153!5m2!1sen!2sbd"
-                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
     <!-- RSVP Form End -->
 
 

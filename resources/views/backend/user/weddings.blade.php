@@ -4,6 +4,12 @@
 
 @section('content')
 <div class="col-lg-12">
+    <div class="bg-light rounded h-100 p-4">
+        @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -49,7 +55,6 @@
             </div>
         </div>
     </div>
-
 <script>
     $(document).ready(function() {
         $('#weddings').DataTable();
