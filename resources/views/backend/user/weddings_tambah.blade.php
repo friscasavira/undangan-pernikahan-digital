@@ -89,16 +89,6 @@
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="unique_url" class="form-label">Link</label>
-                                <input type="text" class="form-control" id="unique_url" name="unique_url">
-                                <div class="text-danger">
-                                @error('unique_url')
-                                {{$message}}
-                                @enderror
-                                </div>
-                            </div>
-
                             <button type="submit" class="btn btn-primary">SAVE</button>
 
                         </form>
