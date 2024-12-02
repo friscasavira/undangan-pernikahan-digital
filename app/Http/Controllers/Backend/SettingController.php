@@ -13,12 +13,10 @@ use Illuminate\Support\Facades\Hash;
 
 class SettingController
 {
-
-
-    public function profilAdmin()
+    public function profileAdmin()
     {
         $profile = Auth::user();
-        return view('admin.profile', compact('profile'));
+        return view('backend.admin.profile', compact('profile'));
     }
 
     public function update(Request $request)
@@ -32,8 +30,6 @@ class SettingController
             'name' => 'required',
             
         ]);
-
-        
 
         $user->update([
             'username' => $request->username,
@@ -49,11 +45,6 @@ class SettingController
         $weddings = weddings::all();
         $comments = comments::all();
         return view('backend.admin.dashboard',compact('weddings','comments'));
-    }
-
-    public function profileAdmin()
-    {
-
     }
 
     public function logoutAdmin(Request $request)

@@ -1,6 +1,6 @@
 @extends('backend.admin.layout.app')
 
-@section('tittle','Profile')
+@section('tittle', 'Profile')
 
 @section('content')
 
