@@ -69,12 +69,12 @@ class PhotoController
     public function edit(string $id)
     {
         $weddings = weddings::all();
-        $photos = photos::where('id_wedding', $id)->get();
+        $photo = photos::where('id_wedding', $id)->first();
         // $photo = photos::find($id);
-        if(!$photos){
+        if(!$photo){
             return back();
         }
-        return view('backend.admin.edit_photo', compact('photos','weddings'));
+        return view('backend.admin.edit_photo', compact('photo','weddings'));
     }
 
     /**
@@ -109,7 +109,7 @@ class PhotoController
             'caption' => $request->caption,
         ]);
 
-        return redirect()->route('admin.photo')->with('success', 'Data photo Berhasil di Edit');
+        return redirect()->route('admin.detail', $id)->with('success', 'Data photo Berhasil di Edit');
     }
 
 
