@@ -13,16 +13,38 @@ use Illuminate\Support\Facades\Hash;
 
 class SettingController
 {
+    public function profileAdmin()
+    {
+        $profile = Auth::user();
+        return view('backend.admin.profile', compact('profile'));
+    }
+
+    public function update(Request $request)
+    {
+        $id_user = Auth::user()->id_user;
+        $user = User::find($id_user);
+
+        $request->validate([
+            'username' => 'required|unique:user,username,' . $id_user . ',id_user',
+            'password' => 'nullable|min:6',
+            'name' => 'required',
+            
+        ]);
+
+        $user->update([
+            'username' => $request->username,
+            'password' => $request->filled('password') ? Hash::make( $request->password) : $user->password,
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('admin.profile')->with('success', 'Data Admin Berhasil di Edit');
+    }
+
     public function dashboardAdmin()
     {
         $weddings = weddings::all();
         $comments = comments::all();
         return view('backend.admin.dashboard',compact('weddings','comments'));
-    }
-
-    public function profileAdmin()
-    {
-
     }
 
     public function logoutAdmin(Request $request)

@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">Edit event</h6>
-                <form action="{{route('admin.events_update', $event->id_event)}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.events_update', ['id_wedding' => $event->id_wedding, 'id' => $event->id_event])}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

@@ -10,40 +10,16 @@ class CommentController
 {
 
     
-    public function comment()
-    {
-        $comments = comments::all();
-        return view('backend.admin.comment', compact('comments'));
-    }
+    
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        $weddings = weddings::all();
-        return view('backend.admin.tambah_comment',compact('weddings'));
-    }
+    
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'id_wedding' => 'required',
-            'name'=> 'required',
-            'message'=> 'required',
-        ]);
-
-        comments::create([
-            'id_wedding'=> $request->id_wedding,
-            'name'=> $request->id_wedding,
-            'message'=> $request->id_wedding,
-        ]);
-
-        return redirect()->route('admin.comment')->with('success','Data comment Berhasil di Tambah');
-    }
 
     public function edit(string $id)
     {
@@ -52,7 +28,7 @@ class CommentController
         if(!$comments){
             return back();
         }
-        return view('backend.admin.edit_comments', compact('comments','comments'));
+        return view('backend.admin.edit_comment', compact('comments','weddings'));
     }
 
     /**
@@ -63,22 +39,18 @@ class CommentController
         $comments = comments::find($id);
         $request->validate([
             'id_wedding' => 'required',
-            'photo_url' => 'required',
-            'date_story' => 'required',
-            'tittle_story' => 'required',
-            'description_story' => 'required',
+            'name_tamu' => 'required',
+            'message' => 'required',
         ]);
 
 
         $comments->update([
             'id_wedding'=> $request->id_wedding,
-            'photo_url' => $request->photo_url,
-            'date_story' => $request->date_story,
-            'tittle_story' => $request->tittle_story,
-            'description_story' => $request->description_story,
+            'name_tamu' => $request->name_tamu,
+            'message' => $request->message,
         ]);
 
-        return redirect()->route('admin.comments')->with('success', 'Data comments Berhasil di Edit');
+        return redirect()->route('admin.detail', $id)->with('success', 'Data comments Berhasil di Edit');
     }
 
 
