@@ -14,13 +14,15 @@ class Unauthorized
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $role): Response
+    public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check()) {
             return $next($request);
         }
-        if (Auth::user()->role === $role) {
-            return redirect()->route($role . '.dashboard');
+        if (Auth::user()->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        } elseif (Auth::user()->role === 'user') {
+            return redirect()->route('user.dashboard');
         }
     }
 }
