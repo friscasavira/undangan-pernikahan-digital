@@ -94,7 +94,10 @@
                                 <input type="file" class="form-control" id="bride_photo" name="bride_photo">
                                 @if ($wedding->bride_photo)
                                     <div class="mt-2">
-                                        <img src="{{ asset('storage/' . $wedding->bride_photo) }}" alt="Foto Saat Ini" height="100">
+                                        <img src="{{ asset('storage/' . $wedding->bride_photo) }}"
+                                            class="img-fluid rounded"
+                                            style="max-width: 200px; max-height: 150px; object-fit: cover;"
+                                            alt="Bride Photo">
                                     </div>
                                 @endif
                                 <div class="text-danger">
@@ -103,12 +106,16 @@
                                     @enderror
                                 </div>
                             </div>
+
                             <div class="mb-3">
                                 <label for="groom_photo" class="form-label">Groom Photo</label>
                                 <input type="file" class="form-control" id="groom_photo" name="groom_photo">
                                 @if ($wedding->groom_photo)
                                     <div class="mt-2">
-                                        <img src="{{ asset('storage/' . $wedding->groom_photo) }}" alt="Foto Saat Ini" height="100">
+                                        <img src="{{ asset('storage/' . $wedding->groom_photo) }}"
+                                            class="img-fluid rounded"
+                                            style="max-width: 200px; max-height: 150px; object-fit: cover;"
+                                            alt="Groom Photo">
                                     </div>
                                 @endif
                                 <div class="text-danger">
