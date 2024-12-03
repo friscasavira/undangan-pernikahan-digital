@@ -82,7 +82,7 @@
                                 @enderror
 
                             <div class="mb-3">
-                                <label for="unique_url" class="form-label">L</label>
+                                <label for="unique_url" class="form-label">Link</label>
                                 <input type="text" class="form-control" id="unique_url" name="unique_url" value="{{old('unique_url', $wedding->unique_url)}}">
                                 <div class="text-danger">
                                 @error('unique_url')
