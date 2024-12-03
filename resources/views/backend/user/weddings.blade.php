@@ -44,10 +44,16 @@
                         <td>{{$wedding->location}}</td>
                         <td>{{$wedding->message}}</td>
                         <td>
-                            <img src="{{ asset('storage/' . $wedding->bride_photo) }}" alt="">
+                            <img src="{{ asset('storage/' . $wedding->bride_photo) }}"
+                                 alt="Bride Photo"
+                                 class="img-thumbnail"
+                                 style="max-width: 100px; max-height: 100px; object-fit: cover;">
                         </td>
                         <td>
-                            <img src="{{ asset('storage/' . $wedding->groom_photo) }}" alt="">
+                            <img src="{{ asset('storage/' . $wedding->groom_photo) }}"
+                                 alt="Groom Photo"
+                                 class="img-thumbnail"
+                                 style="max-width: 100px; max-height: 100px; object-fit: cover;">
                         </td>
                         <td>{{$wedding->unique_url}}</td>
                         <td>
