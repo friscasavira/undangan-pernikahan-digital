@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Pengguna - Login</title>
+	<title>Pengguna - Register</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -25,29 +25,37 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<!-- <h2 class="heading-section">Login Min</h2> -->
-					@if ($errors->has('login_error'))
-					<div class="alert alert-danger" style="border-radius:40px 40px 40px 40px;">
-						{{ $errors->first('login_error')}}
-					</div>
-					@endif
-					@if (session('success'))
-					<div class="alert alert-success" style="border-radius:40px 40px 40px 40px;">
-						{{ session('success')}}
-					</div>
-					@endif
+				
 				</div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-6">
 					<div class="login-wrap p-3">
-						<h3 class="mb-4 text-center">Pengguna Login</h3>
-						<form action="{{route('user.submit')}}" method="post" class="signin-form">
+						<h3 class="mb-4 text-center">Pengguna Register</h3>
+						<form action="{{route('register.submit')}}" method="post" class="signin-form">
 							@csrf
+                            <div class="form-group">
+								<input type="text" class="form-control" name="name" placeholder="name">
+								<div class="text-danger">
+									@error('name')
+									{{$message}}
+									@enderror
+								</div>
+							</div>
+
 							<div class="form-group">
 								<input type="text" class="form-control" name="username" placeholder="Username">
 								<div class="text-danger">
 									@error('username')
+									{{$message}}
+									@enderror
+								</div>
+							</div>
+
+                            <div class="form-group">
+								<input type="text" class="form-control" name="email" placeholder="email">
+								<div class="text-danger">
+									@error('email')
 									{{$message}}
 									@enderror
 								</div>
@@ -64,11 +72,11 @@
 							</div>
 
 							<div class="form-group">
-								<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+								<button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
 							</div>
 
 							<div class="w-100 text-center mt-3">
-								<p>Belum punya akun? <a href="{{ route('user.register') }}">Daftar di sini</a></p>
+								<p>Sudah punya akun? <a href="{{ route('user.login') }}">Masuk di sini</a></p>
 							</div>
 
 						</form>
@@ -83,5 +91,4 @@
     <script src="{{ asset('login/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('login/js/main.js') }}"></script>
 </body>
-
 </html>

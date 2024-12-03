@@ -26,6 +26,8 @@ return new class extends Migration
             $table->time('wedding_time');
             $table->text('location', 255);
             $table->text('message', 255);
+            $table->string('bride_photo', 255);
+            $table->string('groom_photo', 255);
             $table->string('unique_url', 255);
 
 

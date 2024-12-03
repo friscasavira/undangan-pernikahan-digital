@@ -20,7 +20,8 @@ class weddings extends Model
         'wedding_time',
         'location',
         'message',
-        'photo_url',
+        'bride_photo',
+        'groom_photo',
         'unique_url'
 
     ];

@@ -22,14 +22,17 @@ Route::middleware(['guest:admin', 'guest:user'])->group(function(){
     Route::post('/admin/submit', [UserLoginController::class, 'submit'])->name('admin.submit');
 
     Route::get('/user/login', [UserLoginController::class, 'loginUser'])->name('user.login');
-    Route::post('/user/submit', [UserLoginController::class, 'submit'])->name('user.submit');
+    Route::post('/user/submit', [UserLoginController::class, 'submitUser'])->name('user.submit');
+    Route::get('/user/register', [UserLoginController::class, 'registerUser'])->name('user.register');
+    Route::post('/user/register', [UserLoginController::class, 'userSubmit'])->name('register.submit');
+    
 
 });
 
 Route::middleware(['role:admin'])->group(function() {
     Route::get('/admin/dashboard', [SettingController::class, 'dashboardAdmin'])->name('admin.dashboard');
     Route::get('/admin/profile', [SettingController::class, 'profileAdmin'])->name('admin.profile');
-    Route::post('/admin/profile/update', [SettingController::class, 'update'])->name('admin.profile_update');
+    Route::put('/admin/profile/update', [SettingController::class, 'update'])->name('admin.profile_update');
     Route::get('/admin/logout', [SettingController::class, 'logoutAdmin'])->name('admin.logout');
 
     Route::get('/admin/weddings', [weddingController::class, 'weddings'])->name('admin.weddings');

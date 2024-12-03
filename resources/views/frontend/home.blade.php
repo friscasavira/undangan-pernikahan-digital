@@ -163,7 +163,7 @@
                                     <p class="text-dark mb-0" style="line-height: 30px;">{{ $wedding->message}}
                                     </p>
                                 </div>
-                                <img src="{{ asset('asset_main/img/bride.jpg') }}" class="img-fluid img-border" alt="">
+                                <img src="{{ asset('storage/' . $wedding->bride_photo) }}" class="img-fluid img-border" alt="">
                             </div>
                         </div>
                         <div class="col-lg-2 wow fadeIn" data-wow-delay="0.5s">
@@ -173,7 +173,7 @@
                         </div>
                         <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.3s">
                             <div class="d-flex">
-                                <img src="{{ asset('asset_main/img/Groom.jpg')}}" class="img-fluid img-border" alt="">
+                                <img src="{{ asset('storage/' . $wedding->groom_photo) }}" class="img-fluid img-border" alt="">
                                 <div class="my-auto ps-4">
                                     <h3 class="text-primary mb-3">{{ $wedding->groom_name }}</h3>
                                     <p class="text-dark mb-0" style="line-height: 30px;">{{ $wedding->message}}
@@ -302,20 +302,25 @@
                 <h1 class="display-4">Our Love Story</h1>
             </div>
             <div class="story-timeline">
-                @foreach ($love_storys as $index => $love_storys)
+                @foreach ($love_storys as $index => $love_story)
+                @php
+                    \Carbon\Carbon::setLocale('id');
+                    $love_storyDate = \Carbon\Carbon::parse($love_story->date_story);
+                    $love_storyDateFormatted = $love_storyDate->translatedFormat('d F Y');
+                @endphp
                 @if($index % 2 == 0)
                 <!-- Even index: Image on the left, Text on the right -->
                 <div class="row wow fadeInUp" data-wow-delay="0.2s">
                     <div class="col-md-6 border-0 border-top border-end border-secondary p-4 text-end">
                         <div class="d-inline-flex align-items-center h-100">
-                            <img src="{{ asset('asset_main/img/story-1.jpg')}}" class="img-fluid w-100 img-border" alt="">
+                            <img src="{{ asset('storage/' . $love_story->photo_url) }}" class="img-fluid w-100 img-border" alt=""  style="height: 200px; object-fit: cover;">
                         </div>
                     </div>
                     <div class="col-md-6 border-start border-top border-secondary p-4 pe-0">
                         <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
-                            <h4 class="mb-2 text-dark">{{ $love_storys->tittle_story }}</h4>
-                            <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</p>
-                            <p class="m-0 fs-5">{{ $love_storys->description_story }}</p>
+                            <h4 class="mb-2 text-dark">{{ $love_story->tittle_story }}</h4>
+                            <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">{{ $love_storyDateFormatted }}</p>
+                            <p class="m-0 fs-5">{{ $love_story->description_story }}</p>
                         </div>
                     </div>
                 </div>
@@ -324,14 +329,14 @@
                 <div class="row wow fadeInUp" data-wow-delay="0.3s">
                     <div class="col-md-6 border-end border-top border-secondary p-4 ps-0">
                         <div class="h-100 d-flex flex-column justify-content-center bg-secondary p-4">
-                            <h4 class="text-dark mb-2">{{ $love_storys->tittle_story }}</h4>
-                            <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</p>
-                            <p class="m-0 fs-5">{{ $love_storys->description_story }}</p>
+                            <h4 class="text-dark mb-2">{{ $love_story->tittle_story }}</h4>
+                            <p class="text-uppercase text-primary mb-2" style="letter-spacing: 3px;">{{ $love_storyDateFormatted }}</p>
+                            <p class="m-0 fs-5">{{ $love_story->description_story }}</p>
                         </div>
                     </div>
                     <div class="col-md-6 border-start border-top border-secondary p-4">
                         <div class="d-inline-flex align-items-center h-100">
-                            <img src="{{ asset('asset_main/img/story-1.jpg') }}" class="img-fluid w-100 img-border" alt="">
+                            <img src="{{ asset('storage/' . $love_story->photo_url) }}" class="img-fluid w-100 img-border" alt=""  style="height: 200px; object-fit: cover;">
                         </div>
                     </div>
                 </div>
@@ -734,6 +739,12 @@
             }
         }, 1000);
     </script>
+    @if (session('success'))
+        <script type="text/javascript">
+            // Menampilkan pesan sukses menggunakan alert
+            alert("{{ session('success') }}");
+        </script>
+    @endif
 </body>
 
 </html>
