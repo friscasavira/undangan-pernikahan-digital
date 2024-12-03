@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('email',50)->unique();
             $table->string('phone',15);
             $table->string('message',255);
-            $table->enum('is invited', ['Ya' ,'Tidak']);
+            $table->enum('is_invited', ['Ya' ,'Tidak']);
             $table->enum('attendance_status', ['Belum Konfirmasi','Hadir','Tidak Hadir']);
             $table->integer('total_guests');
 

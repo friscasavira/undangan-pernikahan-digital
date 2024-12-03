@@ -80,9 +80,9 @@ class PhotoController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id_wedding, $id)
     {
-        $photos = photos::where('id_wedding', $id)->get();
+        $photos = photos::where('id_wedding', $id_wedding)->where('id_photo', $id)->first();
         // $photo = photos::find($id);
         $request->validate([
             'id_wedding' => 'required',
@@ -90,22 +90,22 @@ class PhotoController
             'caption' => 'required',
         ]);
 
-        $foto = $photos->foto;
-        if($request->hasFile('foto')){
-            if ('foto'){
+        $foto = $photos->photo_url;
+        if($request->hasFile('photo_url')){
+            if ($foto){
                 Storage::disk('public')->delete($foto);
             }
-            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
+            $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
 
-            $request->file('foto')->storeAs('foto_pernikahan',  $uniqueField, 'public');
+            $request->file('photo_url')->storeAs('photo_pernikahan',  $uniqueField, 'public');
 
-            $foto = 'foto_pernikahan/' . $uniqueField;
+            $foto = 'photo_pernikahan/' . $uniqueField;
         }
 
 
         $photos->update([
             'id_wedding'=> $request->id_wedding,
-            'photo_url' => $request->photo_url,
+            'photo_url' => $foto,
             'caption' => $request->caption,
         ]);
 

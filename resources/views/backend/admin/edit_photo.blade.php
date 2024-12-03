@@ -9,7 +9,7 @@
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">Edit Photo</h6>
-                <form action="{{route('admin.photo_store', ['id_wedding' => $photo->id_wedding, 'id' => $photo->id_photo])}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.photo_update', ['id_wedding' => $photo->id_wedding, 'id' => $photo->id_photo])}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

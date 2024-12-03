@@ -120,6 +120,21 @@ class WeddingController
         $counter++;
     }
 
+    $bride_photo = null;
+         $groom_photo = null;
+
+         if ($request->hasFile('bride_photo')) {
+             $uniqueField = uniqid() . '_' . $request->file('bride_photo')->getClientOriginalName();
+             $request->file('bride_photo')->storeAs('bride_photo', $uniqueField, 'public');
+             $bride_photo = 'bride_photo/' . $uniqueField;
+         }
+
+         if ($request->hasFile('groom_photo')) {
+            $uniqueField = uniqid() . '_' . $request->file('groom_photo')->getClientOriginalName();
+            $request->file('groom_photo')->storeAs('groom_photo', $uniqueField, 'public');
+            $groom_photo = 'groom_photo/' . $uniqueField;
+        }
+
         $wedding->update([
             'id_user' => $id_user,
             'title' => $request->title,
@@ -129,6 +144,8 @@ class WeddingController
             'wedding_time' => $request->wedding_time,
             'location' => $request->location,
             'message' => $request->message,
+            'bride_photo' => $bride_photo,
+            'groom_photo' => $groom_photo,
             'unique_url' => $unique_url,
         ]);
 

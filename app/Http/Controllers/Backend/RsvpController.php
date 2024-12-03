@@ -34,6 +34,8 @@ class RsvpController
             'email' => 'required',
             'phone' => 'required',
             'attendance_status' => 'required',
+            'total_guests' => 'required',
+            'is_invited' => 'required',
         ]);
 
         rsvp::create([
@@ -42,6 +44,8 @@ class RsvpController
             'email' => $request->email,
             'phone' => $request->phone,
             'attendance_status' => $request->attendance_status,
+            'total_guests' => $request->total_guests,
+            'is_invited' => $request->is_invited,            
         ]);
 
         return redirect()->route('admin.rsvp')->with('success','Data rsvp Berhasil di Tambah');

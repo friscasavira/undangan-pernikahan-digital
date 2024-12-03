@@ -13,9 +13,13 @@
                         <div class="col-lg-4">
                             <div class="card overflow-hidden hover-img">
                                 <div class="position-relative">
-                                    <a href="{{route('admin.photo', $wedding->id_wedding)}}">
-                                        <img src="{{ asset('storage/' . $wedding->photos->first()->photo_url)}}" class="card-img-top" alt="matdash-img">
+                                    @if ($wedding->photos->isNotEmpty() && $wedding->photos->first()->photo_url)
+                                    <a href="{{ route('admin.photo', $wedding->id_wedding) }}">
+                                        <img src="{{ asset('storage/' . $wedding->photos->first()->photo_url) }}" class="card-img-top" alt="matdash-img">
                                     </a>
+                                    @else
+                                    <p>Belum ada foto</p>
+                                    @endif
                                 </div>
                                 <div class="card-body p-4">
                                     <a class="d-block my-4 fs-5 text-dark fw-semibold link-primary" href="{{route('admin.detail', $wedding->id_wedding)}}">{{$wedding->title}}</a>
@@ -34,7 +38,7 @@
                                         <div class="d-flex align-items-center gap-2">
                                             <a class="ti ti-message-2 text-dark fs-5 link-primary" href="{{route('admin.weddings')}}"></a>
                                         </div>
-                                        
+
                                         <div class="d-flex align-items-center gap-2">
                                             <a class="ti ti-message-2 text-dark fs-5 link-primary" href="{{route('admin.rsvp', $wedding->id_wedding)}}">RSVP</a>
                                         </div>
