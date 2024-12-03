@@ -20,6 +20,8 @@ class weddings extends Model
         'wedding_time',
         'location',
         'message',
+        'bride_photo',
+        'groom_photo',
         'unique_url'
 
     ];
@@ -50,6 +52,7 @@ class weddings extends Model
     {
     return $this->hasMany(settings::class, 'id_wedding', 'id_wedding');
     }
+    
 
 
 }

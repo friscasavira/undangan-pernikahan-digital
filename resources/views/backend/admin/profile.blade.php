@@ -12,51 +12,48 @@
                 {{ session('success')}}
             </div>
             @endif
-            <div class="d-flex align-items-center justify-content-center ms-4 mb-4">
-                <div class="position-relative">
-                    <img class="rounded-circle" src="{{asset('storage/'. $profile->foto)}}" alt="" style="width: 100px; height: 100px;">
-                    <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{route('admin.profile_update')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('put')
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" value="{{old ('username', $profile ->username)}}">
+                            <div class="text-danger">
+                                @error('username')
+                                {{$message}}
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                            <div class="text-danger">
+                                @error('password')
+                                {{$message}}
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{old ('name', $profile ->name)}}">
+                            <div class="text-danger">
+                                @error('name')
+                                {{$message}}
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">SAVE</button>
+                        </div>
+
+                    </form>
                 </div>
-               
             </div>
-            <form action="{{route('admin.profile_update')}}" method="post" enctype="multipart/form-data">
-                @csrf
-                @method('put')
-                <div class="mb-3">
-                    <label for="username" class="form-label">username</label>
-                    <input type="text" class="form-control" id="username" name="username" value="{{old ('username', $profile ->username)}}">
-                    <div class="text-danger">
-                        @error('username')
-                        {{$message}}
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="password" class="form-label">password</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                    <div class="text-danger">
-                        @error('password')
-                        {{$message}}
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="name" class="form-label">NAMA ADMIN</label>
-                    <input type="text" class="form-control" id="name" name="name" value="{{old ('name', $profile ->name)}}">
-                    <div class="text-danger">
-                        @error('name')
-                        {{$message}}
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="text-center">
-                <button type="submit" class="btn btn-primary">SAVE</button>
-                </div>
-
-            </form>
         </div>
     </div>
 

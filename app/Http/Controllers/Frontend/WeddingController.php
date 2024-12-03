@@ -32,7 +32,7 @@ class WeddingController
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:rsvp,email',
             'phone' => 'required',
             'message' => 'required',
             'attendance_status' => 'required',
@@ -55,6 +55,35 @@ class WeddingController
 
         return redirect()->route('home')->with('success', 'RSVP Anda berhasil dikirim!');
     }
+
+    public function updateWeddingPhotos(Request $request)
+{
+    $wedding = weddings::first();  // Mengambil wedding pertama, bisa disesuaikan jika lebih dari 1 wedding
+
+    // Validasi file foto yang diupload
+    $request->validate([
+        'bride_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        'groom_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
+
+    // Upload foto bride
+    if ($request->hasFile('bride_photo')) {
+        $bridePhoto = $request->file('bride_photo')->store('images/bride', 'public');
+        $wedding->bride_photo = $bridePhoto;
+    }
+    if ($request->hasFile('groom_photo')) {
+        $groomPhoto = $request->file('groom_photo')->store('images/groom', 'public');
+        $wedding->groom_photo = $groomPhoto;
+    }    
+
+    // Simpan perubahan di database
+    $wedding->save();
+
+    return redirect()->route('home')->with('success', 'Foto pengantin berhasil diperbarui!');
+}
+
+
+
 }
 
 
