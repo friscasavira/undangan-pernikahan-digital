@@ -90,15 +90,29 @@
                                 @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="photo_weddings" class="form-label">Foto</label>
-                                <input type="file" class="form-control" id="photo_weddings" name="photo_weddings">
-                                @if ($wedding->photo_weddings)
+                                <label for="bride_photo" class="form-label">Bride Photo</label>
+                                <input type="file" class="form-control" id="bride_photo" name="bride_photo">
+                                @if ($wedding->bride_photo)
                                     <div class="mt-2">
-                                        <img src="{{ asset('storage/' . $wedding->photo_weddings) }}" alt="Foto Saat Ini" height="100">
+                                        <img src="{{ asset('storage/' . $wedding->bride_photo) }}" alt="Foto Saat Ini" height="100">
                                     </div>
                                 @endif
                                 <div class="text-danger">
-                                    @error('photo_weddings')
+                                    @error('bride_photo')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="groom_photo" class="form-label">Groom Photo</label>
+                                <input type="file" class="form-control" id="groom_photo" name="groom_photo">
+                                @if ($wedding->groom_photo)
+                                    <div class="mt-2">
+                                        <img src="{{ asset('storage/' . $wedding->groom_photo) }}" alt="Foto Saat Ini" height="100">
+                                    </div>
+                                @endif
+                                <div class="text-danger">
+                                    @error('groom_photo')
                                         {{ $message }}
                                     @enderror
                                 </div>

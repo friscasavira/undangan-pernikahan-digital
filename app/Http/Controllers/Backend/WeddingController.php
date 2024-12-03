@@ -179,13 +179,20 @@ class WeddingController
              $counter++;
          }
 
-         $photo_url = null;
+         $bride_photo = null;
+         $groom_photo = null;
 
-         if ($request->hasFile('photo_url')) {
-             $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
-             $request->file('photo_url')->storeAs('photo_weddings', $uniqueField, 'public');
-             $photo_url = 'photo_weddings/' . $uniqueField;
+         if ($request->hasFile('bride_photo')) {
+             $uniqueField = uniqid() . '_' . $request->file('bride_photo')->getClientOriginalName();
+             $request->file('bride_photo')->storeAs('bride_photo', $uniqueField, 'public');
+             $bride_photo = 'bride_photo/' . $uniqueField;
          }
+
+         if ($request->hasFile('groom_photo')) {
+            $uniqueField = uniqid() . '_' . $request->file('groom_photo')->getClientOriginalName();
+            $request->file('groom_photo')->storeAs('groom_photo', $uniqueField, 'public');
+            $groom_photo = 'groom_photo/' . $uniqueField;
+        }
 
          // Simpan data
          Weddings::create([
@@ -197,7 +204,8 @@ class WeddingController
              'wedding_time' => $request->wedding_time,
              'location' => $request->location,
              'message' => $request->message,
-             'photo_url' => $photo_url,
+             'bride_photo' => $bride_photo,
+             'groom_photo' => $groom_photo,
              'unique_url' => $unique_url,
          ]);
 
@@ -233,35 +241,40 @@ class WeddingController
         'wedding_time' => 'required',
         'location' => 'required',
         'message' => 'required',
-        'photo_url' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+        'bride_photo' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+        'groom_photo' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
     ]);
 
     // Generate unique URL dari title
     $unique_url = Str::slug($request->title);
-
-    // Pastikan unique_url tidak duplikat di database, kecuali milik record yang sedang diedit
     $counter = 1;
-    $base_url = $unique_url; // Simpan URL dasar
+    $base_url = $unique_url;
     while (weddings::where('unique_url', $unique_url)->where('id_wedding', '!=', $wedding->id_wedding)->exists()) {
         $unique_url = $base_url . '-' . $counter;
         $counter++;
     }
 
-    $foto = $wedding->photo_url;
+    $bridePhoto = $wedding->bride_photo;
+    $groomPhoto = $wedding->groom_photo;
 
-    // Jika ada file baru diunggah
-    if ($request->hasFile('photo_url')) {
-        // Hapus foto lama jika ada
-        if ($foto && Storage::disk('public')->exists($foto)) {
-            Storage::disk('public')->delete($foto);
+    // Jika ada file bride_photo baru diunggah
+    if ($request->hasFile('bride_photo')) {
+        if ($bridePhoto && Storage::disk('public')->exists($bridePhoto)) {
+            Storage::disk('public')->delete($bridePhoto);
         }
+        $uniqueFileName = uniqid() . '_' . $request->file('bride_photo')->getClientOriginalName();
+        $request->file('bride_photo')->storeAs('bride_photo', $uniqueFileName, 'public');
+        $bridePhoto = 'bride_photo/' . $uniqueFileName;
+    }
 
-        // Simpan foto baru
-        $uniqueFileName = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
-        $request->file('photo_url')->storeAs('foto_weddings', $uniqueFileName, 'public');
-
-        // Update path foto
-        $foto = 'foto_weddings/' . $uniqueFileName;
+    // Jika ada file groom_photo baru diunggah
+    if ($request->hasFile('groom_photo')) {
+        if ($groomPhoto && Storage::disk('public')->exists($groomPhoto)) {
+            Storage::disk('public')->delete($groomPhoto);
+        }
+        $uniqueFileName = uniqid() . '_' . $request->file('groom_photo')->getClientOriginalName();
+        $request->file('groom_photo')->storeAs('groom_photo', $uniqueFileName, 'public');
+        $groomPhoto = 'groom_photo/' . $uniqueFileName;
     }
 
     // Update data
@@ -274,7 +287,8 @@ class WeddingController
         'wedding_time' => $request->wedding_time,
         'location' => $request->location,
         'message' => $request->message,
-        'photo_url' => $foto,
+        'bride_photo' => $bridePhoto,
+        'groom_photo' => $groomPhoto,
         'unique_url' => $unique_url,
     ]);
 

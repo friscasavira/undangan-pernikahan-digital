@@ -89,10 +89,19 @@
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="photo_weddings" class="form-label">Photo</label>
-                                <input type="file" class="form-control" id="photo_weddings" name="photo_weddings">
+                                <label for="bride_photo" class="form-label">Bride Photo</label>
+                                <input type="file" class="form-control" id="bride_photo" name="bride_photo">
                                 <div class="text-danger">
-                                    @error('photo_weddings')
+                                    @error('bride_photo')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="groom_photo" class="form-label">Groom Photo</label>
+                                <input type="file" class="form-control" id="groom_photo" name="groom_photo">
+                                <div class="text-danger">
+                                    @error('groom_photo')
                                         {{ $message }}
                                     @enderror
                                 </div>
