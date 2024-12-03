@@ -9,6 +9,7 @@ use App\Models\photos;
 use App\Models\weddings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class WeddingController
@@ -152,46 +153,57 @@ class WeddingController
      * Store a newly created resource in storage.
      */
 
-    public function storeUser(Request $request)
-    {
-        $id_user = Auth::user()->id_user;
+     public function storeUser(Request $request)
+     {
+         $id_user = Auth::user()->id_user;
 
-        // Validasi data
-        $request->validate([
-            'title' => 'required',
-            'bride_name' => 'required',
-            'groom_name' => 'required',
-            'wedding_date' => 'required',
-            'wedding_time' => 'required',
-            'location' => 'required',
-            'message' => 'required',
-        ]);
+         // Validasi data
+         $request->validate([
+             'title' => 'required',
+             'bride_name' => 'required',
+             'groom_name' => 'required',
+             'wedding_date' => 'required',
+             'wedding_time' => 'required',
+             'location' => 'required',
+             'message' => 'required',
+             'photo_url' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+         ]);
 
-        // Generate unique URL dari title
-        $unique_url = Str::slug($request->title);
+         // Generate unique URL dari title
+         $unique_url = Str::slug($request->title);
 
-        // Pastikan unique_url tidak duplikat di database
-        $counter = 1;
-        while (weddings::where('unique_url', $unique_url)->exists()) {
-            $unique_url = Str::slug($request->title) . '-' . $counter;
-            $counter++;
-        }
+         // Pastikan unique_url tidak duplikat di database
+         $counter = 1;
+         while (Weddings::where('unique_url', $unique_url)->exists()) {
+             $unique_url = Str::slug($request->title) . '-' . $counter;
+             $counter++;
+         }
 
-        // Simpan data
-        weddings::create([
-            'id_user' => $id_user,
-            'title' => $request->title,
-            'bride_name' => $request->bride_name,
-            'groom_name' => $request->groom_name,
-            'wedding_date' => $request->wedding_date,
-            'wedding_time' => $request->wedding_time,
-            'location' => $request->location,
-            'message' => $request->message,
-            'unique_url' => $unique_url,
-        ]);
+         $photo_url = null;
 
-        return redirect()->route('user.weddings')->with('success', 'Data Weddings Berhasil di Tambah');
-    }
+         if ($request->hasFile('photo_url')) {
+             $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
+             $request->file('photo_url')->storeAs('photo_weddings', $uniqueField, 'public');
+             $photo_url = 'photo_weddings/' . $uniqueField;
+         }
+
+         // Simpan data
+         Weddings::create([
+             'id_user' => $id_user,
+             'title' => $request->title,
+             'bride_name' => $request->bride_name,
+             'groom_name' => $request->groom_name,
+             'wedding_date' => $request->wedding_date,
+             'wedding_time' => $request->wedding_time,
+             'location' => $request->location,
+             'message' => $request->message,
+             'photo_url' => $photo_url,
+             'unique_url' => $unique_url,
+         ]);
+
+         return redirect()->route('user.weddings')->with('success', 'Data Weddings Berhasil Ditambah');
+     }
+
 
     public function editUser(string $id)
     {
@@ -221,6 +233,7 @@ class WeddingController
         'wedding_time' => 'required',
         'location' => 'required',
         'message' => 'required',
+        'photo_url' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
     ]);
 
     // Generate unique URL dari title
@@ -234,6 +247,23 @@ class WeddingController
         $counter++;
     }
 
+    $foto = $wedding->photo_url;
+
+    // Jika ada file baru diunggah
+    if ($request->hasFile('photo_url')) {
+        // Hapus foto lama jika ada
+        if ($foto && Storage::disk('public')->exists($foto)) {
+            Storage::disk('public')->delete($foto);
+        }
+
+        // Simpan foto baru
+        $uniqueFileName = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
+        $request->file('photo_url')->storeAs('foto_weddings', $uniqueFileName, 'public');
+
+        // Update path foto
+        $foto = 'foto_weddings/' . $uniqueFileName;
+    }
+
     // Update data
     $wedding->update([
         'id_user' => $id_user,
@@ -244,6 +274,7 @@ class WeddingController
         'wedding_time' => $request->wedding_time,
         'location' => $request->location,
         'message' => $request->message,
+        'photo_url' => $foto,
         'unique_url' => $unique_url,
     ]);
 

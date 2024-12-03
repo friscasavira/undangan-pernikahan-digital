@@ -88,7 +88,15 @@
                                 @enderror
                                 </div>
                             </div>
-
+                            <div class="mb-3">
+                                <label for="photo_weddings" class="form-label">Photo</label>
+                                <input type="file" class="form-control" id="photo_weddings" name="photo_weddings">
+                                <div class="text-danger">
+                                    @error('photo_weddings')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-primary">SAVE</button>
 
                         </form>

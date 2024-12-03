@@ -88,7 +88,20 @@
                                 @error('unique_url')
                                 {{$message}}
                                 @enderror
-
+                            </div>
+                            <div class="mb-3">
+                                <label for="photo_weddings" class="form-label">Foto</label>
+                                <input type="file" class="form-control" id="photo_weddings" name="photo_weddings">
+                                @if ($wedding->photo_weddings)
+                                    <div class="mt-2">
+                                        <img src="{{ asset('storage/' . $wedding->photo_weddings) }}" alt="Foto Saat Ini" height="100">
+                                    </div>
+                                @endif
+                                <div class="text-danger">
+                                    @error('photo_weddings')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
                             </div>
 
                             <button type="submit" class="btn btn-primary">SAVE</button>
