@@ -29,7 +29,7 @@ Route::middleware(['guest:admin', 'guest:user'])->group(function(){
 Route::middleware(['role:admin'])->group(function() {
     Route::get('/admin/dashboard', [SettingController::class, 'dashboardAdmin'])->name('admin.dashboard');
     Route::get('/admin/profile', [SettingController::class, 'profileAdmin'])->name('admin.profile');
-    Route::post('/admin/profile/update', [SettingController::class, 'update'])->name('admin.profile_update');
+    Route::put('/admin/profile/update', [SettingController::class, 'update'])->name('admin.profile_update');
     Route::get('/admin/logout', [SettingController::class, 'logoutAdmin'])->name('admin.logout');
 
     Route::get('/admin/weddings', [weddingController::class, 'weddings'])->name('admin.weddings');
