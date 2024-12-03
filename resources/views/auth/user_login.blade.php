@@ -31,6 +31,11 @@
 						{{ $errors->first('login_error')}}
 					</div>
 					@endif
+					@if (session('success'))
+					<div class="alert alert-success" style="border-radius:40px 40px 40px 40px;">
+						{{ session('success')}}
+					</div>
+					@endif
 				</div>
 			</div>
 			<div class="row justify-content-center">

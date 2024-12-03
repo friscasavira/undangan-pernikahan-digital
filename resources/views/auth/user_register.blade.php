@@ -31,10 +31,9 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-6">
 					<div class="login-wrap p-3">
-						<h3 class="mb-4 text-center">Pengguna register</h3>
-						<form action="{{route('admin.submit')}}" method="post" class="signin-form">
+						<h3 class="mb-4 text-center">Pengguna Register</h3>
+						<form action="{{route('register.submit')}}" method="post" class="signin-form">
 							@csrf
-
                             <div class="form-group">
 								<input type="text" class="form-control" name="name" placeholder="name">
 								<div class="text-danger">
@@ -73,7 +72,7 @@
 							</div>
 
 							<div class="form-group">
-								<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+								<button type="submit" class="form-control btn btn-primary submit px-3">Sign Up</button>
 							</div>
 
 							<div class="w-100 text-center mt-3">
@@ -92,5 +91,4 @@
     <script src="{{ asset('login/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('login/js/main.js') }}"></script>
 </body>
-
 </html>
