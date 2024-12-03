@@ -52,6 +52,7 @@ class weddings extends Model
     {
     return $this->hasMany(settings::class, 'id_wedding', 'id_wedding');
     }
+    
 
 
 }
