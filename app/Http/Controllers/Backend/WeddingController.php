@@ -105,9 +105,20 @@ class WeddingController
             'wedding_time' => 'required',
             'location' => 'required',
             'message' => 'required',
-            'unique_url' => 'required|unique:weddings,unique_url,' . $wedding->id_wedding . ',id_wedding'
-
+            
         ]);
+
+         // Generate unique URL dari title
+    $unique_url = Str::slug($request->title);
+
+    // Pastikan unique_url tidak duplikat di database, kecuali milik record yang sedang diedit
+    $counter = 1;
+    $base_url = $unique_url; // Simpan URL dasar
+    while (weddings::where('unique_url', $unique_url)->where('id_wedding', '!=', $wedding->id_wedding)->exists()) {
+        $unique_url = $base_url . '-' . $counter;
+        $counter++;
+    }
+
         $wedding->update([
             'id_user' => $id_user,
             'title' => $request->title,
@@ -117,7 +128,7 @@ class WeddingController
             'wedding_time' => $request->wedding_time,
             'location' => $request->location,
             'message' => $request->message,
-            'unique_url' => $request->unique_url,
+            'unique_url' => $unique_url,
         ]);
 
         return redirect()->route('admin.weddings')->with('success', 'Data Weddings Berhasil di Edit');

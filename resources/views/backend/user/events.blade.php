@@ -23,6 +23,7 @@
                                 <th scope="col" class="text-center">Tanggal Acara</th>
                                 <th scope="col" class="text-center">Waktu Acara</th>
                                 <th scope="col" class="text-center">Lokasi Acara</th>
+                                <th scope="col" class="text-center">Deskripsi</th>
                                 <th scope="col" class="text-center">Actions</th>
 
                             </tr>
@@ -37,6 +38,7 @@
                         <td>{{$event->event_date}}</td>
                         <td>{{$event->event_time}}</td>
                         <td>{{$event->event_location}}</td>
+                        <td>{{$event->event_description}}</td>
                         <td>
                             <a href="{{route('user.edit_events', $event->id_event)}}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{route('user.delete_events', $event->id_event)}}" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>

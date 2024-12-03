@@ -1,6 +1,6 @@
 @extends('backend.admin.layout.app')
 
-@section('tittle','Edit photo')
+@section('title','Admin Edit photo')
 
 @section('content')
 

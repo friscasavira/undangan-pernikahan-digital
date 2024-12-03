@@ -37,32 +37,14 @@
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('admin.dashboard')}}" aria-expanded="false">
-                <span>
-                  <iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu">Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
-              <span class="hide-menu">MENU</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('admin.weddings')}}" aria-expanded="false">
-                <span>
+              <span>
                     <i class="ti ti-flower"></i>
                 </span>
                 <span class="hide-menu">Weddings</span>
               </a>
             </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('admin.rsvp')}}" aria-expanded="false">
-                <span>
-                  <iconify-icon icon="solar:file-text-bold-duotone" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu">Rsvp</span>
-              </a>
-            </li>
+            
+            
                     
         </nav>
         <!-- End Sidebar navigation -->
