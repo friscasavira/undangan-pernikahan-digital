@@ -10,6 +10,7 @@
             {{ session('success') }}
         </div>
         @endif
+        <h4 class="mb-4">Events</h4>
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">

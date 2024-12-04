@@ -71,8 +71,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
-                            <input type="text" class="form-control" id="description_story" name="description_story"
-                                   value="{{ old('description_story', $love_story->description_story) }}">
+                            <textarea name="description_story" id="description_story" rows="5" class="form-control">{{ $love_story->description_story }}</textarea>
                             <div class="text-danger">
                                 @error('description_story')
                                     {{ $message }}
