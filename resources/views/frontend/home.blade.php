@@ -163,7 +163,7 @@
                                     <p class="text-dark mb-0" style="line-height: 30px;">{{ $wedding->message}}
                                     </p>
                                 </div>
-                                <img src="{{ asset('storage/' . $wedding->bride_photo) }}" class="img-fluid img-border" alt="">
+                                <img src="{{ asset('storage/' . $wedding->bride_photo) }}" class="img-fluid w-100 img-border" alt=""  style="height: 200px; object-fit: cover;">
                             </div>
                         </div>
                         <div class="col-lg-2 wow fadeIn" data-wow-delay="0.5s">
@@ -173,7 +173,7 @@
                         </div>
                         <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.3s">
                             <div class="d-flex">
-                                <img src="{{ asset('storage/' . $wedding->groom_photo) }}" class="img-fluid img-border" alt="">
+                                <img src="{{ asset('storage/' . $wedding->groom_photo) }}" class="img-fluid w-100 img-border" alt=""  style="height: 200px; object-fit: cover;">
                                 <div class="my-auto ps-4">
                                     <h3 class="text-primary mb-3">{{ $wedding->groom_name }}</h3>
                                     <p class="text-dark mb-0" style="line-height: 30px;">{{ $wedding->message}}

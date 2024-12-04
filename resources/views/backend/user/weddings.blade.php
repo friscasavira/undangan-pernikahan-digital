@@ -25,6 +25,8 @@
                                 <th scope="col" class="text-center">Waktu Pernikahan</th>
                                 <th scope="col" class="text-center">Lokasi Pernikahan</th>
                                 <th scope="col" class="text-center">Pesan</th>
+                                <th scope="col">Bride Photo</th>
+                                <th scope="col">Groom Photo</th>
                                 <th scope="col" class="text-center">Link</th>
                                 <th scope="col" class="text-center">Actions</th>
                             </tr>
@@ -41,6 +43,18 @@
                         <td>{{$wedding->wedding_time}}</td>
                         <td>{{$wedding->location}}</td>
                         <td>{{$wedding->message}}</td>
+                        <td>
+                            <img src="{{ asset('storage/' . $wedding->bride_photo) }}"
+                                 alt="Bride Photo"
+                                 class="img-thumbnail"
+                                 style="max-width: 100px; max-height: 100px; object-fit: cover;">
+                        </td>
+                        <td>
+                            <img src="{{ asset('storage/' . $wedding->groom_photo) }}"
+                                 alt="Groom Photo"
+                                 class="img-thumbnail"
+                                 style="max-width: 100px; max-height: 100px; object-fit: cover;">
+                        </td>
                         <td>{{$wedding->unique_url}}</td>
                         <td>
                             <a href="{{route('user.edit_weddings', $wedding->id_wedding)}}" class="btn btn-warning btn-sm">Edit</a>

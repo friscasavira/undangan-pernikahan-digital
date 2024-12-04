@@ -68,17 +68,13 @@ class WeddingController
 
     // Upload foto bride
     if ($request->hasFile('bride_photo')) {
-        $bridePhoto = $request->file('bride_photo');
-        $bridePhotoPath = $bridePhoto->store('images/bride', 'public');
-        $wedding->bride_photo = $bridePhotoPath;
+        $bridePhoto = $request->file('bride_photo')->store('images/bride', 'public');
+        $wedding->bride_photo = $bridePhoto;
     }
-
-    // Upload foto groom
     if ($request->hasFile('groom_photo')) {
-        $groomPhoto = $request->file('groom_photo');
-        $groomPhotoPath = $groomPhoto->store('images/groom', 'public');
-        $wedding->groom_photo = $groomPhotoPath;
-    }
+        $groomPhoto = $request->file('groom_photo')->store('images/groom', 'public');
+        $wedding->groom_photo = $groomPhoto;
+    }    
 
     // Simpan perubahan di database
     $wedding->save();

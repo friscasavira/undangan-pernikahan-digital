@@ -1,6 +1,6 @@
 @extends('backend.admin.layout.app')
 
-@section('title','responsive')
+@section('title','Admin responsive')
 
 @section('content')
 <div class="col-lg-12">

@@ -88,7 +88,33 @@
                                 @enderror
                                 </div>
                             </div>
+                            <div class="mb-3">
+                                <label for="bride_photo" class="form-label">Bride Photo</label>
+                                <input type="file" class="form-control" id="bride_photo" name="bride_photo" onchange="previewImage('bride_photo_preview', event)">
+                                <div class="mt-2">
+                                    <img id="bride_photo_preview" src="#" alt="Bride Photo Preview"
+                                         style="max-width: 150px; max-height: 150px; display: none; object-fit: cover;">
+                                </div>
+                                <div class="text-danger">
+                                    @error('bride_photo')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
 
+                            <div class="mb-3">
+                                <label for="groom_photo" class="form-label">Groom Photo</label>
+                                <input type="file" class="form-control" id="groom_photo" name="groom_photo" onchange="previewImage('groom_photo_preview', event)">
+                                <div class="mt-2">
+                                    <img id="groom_photo_preview" src="#" alt="Groom Photo Preview"
+                                         style="max-width: 150px; max-height: 150px; display: none; object-fit: cover;">
+                                </div>
+                                <div class="text-danger">
+                                    @error('groom_photo')
+                                        {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
                             <button type="submit" class="btn btn-primary">SAVE</button>
 
                         </form>
