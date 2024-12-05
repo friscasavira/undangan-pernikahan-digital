@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\WeddingController as FrontendWeddingController
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendWeddingController::class, 'home'])->name('home');
+Route::get('/view/awal', [FrontendWeddingController::class, 'view'])->name('view');
 Route::get('/home/photo', [FrontendWeddingController::class, 'photo'])->name('home.photo');
 Route::post('/home/rsvp', [FrontendWeddingController::class, 'rsvp'])->name('home.rsvp');
 Route::post('/home', [FrontendWeddingController::class, 'updateWeddingPhotos'])->name('wedding.updatePhotos');

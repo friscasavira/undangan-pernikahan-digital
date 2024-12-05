@@ -32,6 +32,11 @@
 				<div class="col-md-6 col-lg-6">
 					<div class="login-wrap p-3">
 						<h3 class="mb-4 text-center">Pengguna Register</h3>
+						<div class="d-flex flex-column align-items-center justify-content-center mb-3">
+							<a href="{{route('view')}}" class="">
+								<i class="fa fa-home" style="font-size: 30px;"></i>
+							</a>
+						</div>
 						<form action="{{route('register.submit')}}" method="post" class="signin-form">
 							@csrf
                             <div class="form-group">
