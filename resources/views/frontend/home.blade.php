@@ -368,7 +368,7 @@
                         <h4 class="text-dark text-uppercase fw-bold mb-0" style="letter-spacing: 3px;">{{ $weddingDateFormatted }}</h4>
                     </div>
                     <h1 class="display-4">{{ $wedding->title }}</h1>
-                    <p class="text-dark fs-5">Niloy Hotel New York , 123 West 23th Street, NY</p>
+                    <p class="text-dark fs-5">{{ $wedding->location }}</p>
                     <div class="d-flex align-items-center justify-content-center mb-5">
                         <div class="text-dark fs-2 me-4">
                             <div id="days">00</div>
@@ -526,7 +526,7 @@
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="form-group">
                                     <label for="name" class="form-label text-dark">Name</label>
-                                    <input type="text" name="name" class="form-control py-3 border-0" id="name" placeholder="Name">
+                                    <input type="text" name="name" class="form-control py-3 border-0" id="name" placeholder="Name"style="color: black;">
                                     <div class="text-danger">
                                         @error('name')
                                         {{$message}}
@@ -537,7 +537,7 @@
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="form-group">
                                     <label for="email" class="form-label text-dark">Email</label>
-                                    <input type="email" name="email" class="form-control py-3 border-0" id="email" placeholder="Email">
+                                    <input type="email" name="email" class="form-control py-3 border-0" id="email" placeholder="Email" style="color: black;">
                                     <div class="text-danger">
                                         @error('email')
                                         {{$message}}
@@ -548,7 +548,7 @@
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="form-group">
                                     <label for="phone" class="form-label text-dark">Phone</label>
-                                    <input type="text" name="phone" class="form-control py-3 border-0" id="phone" placeholder="Phone">
+                                    <input type="text" name="phone" class="form-control py-3 border-0" id="phone" placeholder="Phone" style="color: black;">
                                     <div class="text-danger">
                                         @error('phone')
                                         {{$message}}
@@ -559,7 +559,7 @@
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="form-group">
                                     <label for="total_guests" class="form-label text-dark">Total Guests</label>
-                                    <input type="number" name="total_guests" class="form-control py-3 border-0" id="total_guests" placeholder="Total Guests">
+                                    <input type="number" name="total_guests" class="form-control py-3 border-0" id="total_guests" placeholder="Total Guests" style="color: black;">
                                     <div class="text-danger">
                                         @error('total_guests')
                                         {{$message}}
@@ -570,7 +570,7 @@
                             <div class="col-12 wow fadeIn" data-wow-delay="0.1s">
                                 <div class="form-group">
                                     <label for="message" class="form-label text-dark">Message</label>
-                                    <textarea name="message" class="form-control border-0" id="message" cols="30" rows="5" placeholder="Message"></textarea>
+                                    <textarea name="message" class="form-control border-0" id="message" cols="30" rows="5" placeholder="Message" style="color: black;"></textarea>
                                     <div class="text-danger">
                                         @error('message')
                                         {{$message}}
