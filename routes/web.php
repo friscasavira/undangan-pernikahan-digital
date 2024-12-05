@@ -116,16 +116,16 @@ Route::middleware(['role:user'])->group(function() {
     Route::get('/user/photo', [photoController::class, 'photoUser'])->name('user.photo');
     Route::get('/user/wedding/photo/tambah/{id_wedding}', [photoController::class, 'createUser'])->name('user.photo_tambah');
     Route::post('/user/wedding/photo/tambah/{id_wedding}', [photoController::class, 'storeUser'])->name('user.photo_store');
-    Route::get('/user/wedding/photo/{id_wedding}/edit/{id_wedding}', [photoController::class, 'editUser'])->name('user.edit_photo');
-    Route::put('/user/wedding/photo/{id_wedding}/update/{id_wedding}', [photoController::class, 'updateUser'])->name('user.photo_update');
-    Route::get('/user/wedding/photo/{id_wedding}/delete/{id_wedding}', [photoController::class, 'deleteUser'])->name('user.delete_photo');
+    Route::get('/user/wedding/photo/{id_wedding}/edit/{id_photo}', [photoController::class, 'editUser'])->name('user.edit_photo');
+    Route::put('/user/wedding/photo/{id_wedding}/update/{id_photo}', [photoController::class, 'updateUser'])->name('user.photo_update');
+    Route::get('/user/wedding/photo/{id_wedding}/delete/{id_photo}', [photoController::class, 'deleteUser'])->name('user.delete_photo');
 
     Route::get('/user/love_story', [Love_storyController::class, 'love_storyUser'])->name('user.love_story');
     Route::get('/user/wedding/love_story/tambah/{id_wedding}', [Love_storyController::class, 'createUser'])->name('user.love_story_tambah');
     Route::post('/user/wedding/love_story/tambah/{id_wedding}', [Love_storyController::class, 'storeUser'])->name('user.love_story_store');
-    Route::get('/user/wedding/love_story/{id_wedding}/edit/{id_wedding}', [Love_storyController::class, 'editUser'])->name('user.edit_love_story');
-    Route::put('/user/wedding/love_story/{id_wedding}/update/{id_wedding}', [Love_storyController::class, 'updateUser'])->name('user.love_story_update');
-    Route::get('/user/wedding/love_story/{id_wedding}/delete/{id_wedding}', [Love_storyController::class, 'deleteUser'])->name('user.delete_love_story');
+    Route::get('/user/wedding/love_story/{id_wedding}/edit/{id_story}', [Love_storyController::class, 'editUser'])->name('user.edit_love_story');
+    Route::put('/user/wedding/love_story/{id_wedding}/update/{id_story}', [Love_storyController::class, 'updateUser'])->name('user.love_story_update');
+    Route::get('/user/wedding/love_story/{id_wedding}/delete/{id_story}', [Love_storyController::class, 'deleteUser'])->name('user.delete_love_story');
 
     Route::get('/user/comment', [CommentController::class, 'commentUser'])->name('user.comment');
 
