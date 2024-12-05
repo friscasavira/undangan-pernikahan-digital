@@ -55,8 +55,7 @@ class SettingController
         }
 
         $weddings = $query->get();
-        $comments = comments::all();
-        return view('backend.admin.dashboard', compact('weddings', 'comments'));
+        return view('backend.admin.dashboard', compact('weddings'));
     }
 
     public function logoutAdmin(Request $request)
@@ -70,8 +69,7 @@ class SettingController
     public function dashboardUser()
     {
         $weddings = weddings::all();
-        $comments = comments::all();
-        return view('backend.user.dashboard', compact('weddings', 'comments'));
+        return view('backend.user.dashboard', compact('weddings'));
     }
 
     public function profileUser(Request $request)
