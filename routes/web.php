@@ -73,13 +73,6 @@ Route::middleware(['role:admin'])->group(function() {
     Route::put('/admin/wedding/love_story/{id_wedding}/update/{id}', [Love_storyController::class, 'update'])->name('admin.love_story_update');
     Route::get('/admin/wedding/love_story/{id_wedding}/delete/{id}', [Love_storyController::class, 'delete'])->name('admin.delete_love_story');
 
-    Route::get('/admin/comment', [CommentController::class, 'comment'])->name('admin.comment');
-    Route::get('/admin/comment/tambah', [CommentController::class, 'create'])->name('admin.comment_tambah');
-    Route::post('/admin/comment/tambah', [CommentController::class, 'store'])->name('admin.comment_store');
-    Route::get('/admin/wedding/comment/{id_wedding}/edit/{id}', [CommentController::class, 'edit'])->name('admin.edit_comment');
-    Route::put('/admin/wedding/comment/{id_wedding}/update/{id}', [CommentController::class, 'update'])->name('admin.comment_update');
-    Route::get('/admin/wedding/comment/{id_wedding}/delete/{id}', [CommentController::class, 'delete'])->name('admin.delete_comment');
-
     Route::get('/admin/setting', [SettingController::class, 'setting'])->name('admin.setting');
     Route::get('/admin/setting/tambah', [SettingController::class, 'create'])->name('admin.setting_tambah');
     Route::post('/admin/setting/tambah', [SettingController::class, 'store'])->name('admin.setting_store');
@@ -126,8 +119,6 @@ Route::middleware(['role:user'])->group(function() {
     Route::get('/user/wedding/love_story/{id_wedding}/edit/{id_story}', [Love_storyController::class, 'editUser'])->name('user.edit_love_story');
     Route::put('/user/wedding/love_story/{id_wedding}/update/{id_story}', [Love_storyController::class, 'updateUser'])->name('user.love_story_update');
     Route::get('/user/wedding/love_story/{id_wedding}/delete/{id_story}', [Love_storyController::class, 'deleteUser'])->name('user.delete_love_story');
-
-    Route::get('/user/comment', [CommentController::class, 'commentUser'])->name('user.comment');
 
     Route::get('/user/setting', [SettingController::class, 'settingUser'])->name('user.setting');
     Route::get('/user/setting/tambah', [SettingController::class, 'createUser'])->name('user.setting_tambah');

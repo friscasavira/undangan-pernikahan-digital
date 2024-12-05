@@ -168,22 +168,22 @@ class PhotoController
         return redirect()->route('user.detail', $id_wedding)->with('success','Data Photo Berhasil di Tambah');
     }
 
-    public function editUser(string $id_wedding)
+    public function editUser(string $id_wedding, $id_photo)
     {
 
-        $photo = photos::find($id_wedding);
+        $photo = photos::find($id_photo);
         if(!$photo){
             return back();
         }
-        return view('backend.user.edit_photo', compact('id_wedding'));
+        return view('backend.user.edit_photo', compact('photo'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function updateUser(Request $request, string $id_wedding)
+    public function updateUser(Request $request, string $id_wedding, $id_photo)
     {
-        $photo = photos::find($id_wedding);
+        $photo = photos::find($id_photo);
         $request->validate([
             'photo_url' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'caption' => 'required',
@@ -208,12 +208,12 @@ class PhotoController
             'caption' => $request->caption,
         ]);
 
-        return redirect()->route('user.photo')->with('success', 'Data photo Berhasil di Edit');
+        return redirect()->route('user.detail' , $id_wedding)->with('success', 'Data photo Berhasil di Edit');
     }
 
-    public function deleteUser($id_wedding)
+    public function deleteUser($id_wedding, $id_photo)
     {
-        $photo = photos::find($id_wedding);
+        $photo = photos::find($id_photo);
 
         $photo->delete();
 

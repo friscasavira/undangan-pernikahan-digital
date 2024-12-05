@@ -92,9 +92,9 @@
                                                 <td>{{ $love_story->date_story }}</td>
                                                 <td>{{ $love_story->description_story }}</td>
                                                 <td>
-                                                    <a href="{{ route('user.edit_love_story', $love_story->id_wedding) }}"
+                                                    <a href="{{ route('user.edit_love_story', ['id_wedding' => $love_story->id_wedding,'id_story' => $love_story->id_story])}}"
                                                         class="btn btn-warning btn-sm">Edit</a>
-                                                    <a href="{{ route('user.delete_love_story', $love_story->id_wedding) }}"
+                                                    <a href="{{ route('user.delete_love_story', ['id_wedding' => $love_story->id_wedding,'id_story' => $love_story->id_story])}}"
                                                         onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')"
                                                         class="btn btn-danger btn-sm">delete</a>
                                                 </td>
@@ -186,9 +186,9 @@
                                                 </td>
                                                 <td>{{ $photo->caption }}</td>
                                                 <td>
-                                                    <a href="{{ route('user.edit_photo', $photo->id_photo) }}"
+                                                    <a href="{{ route('user.edit_photo', ['id_wedding' => $photo->id_wedding,'id_photo' => $photo->id_photo])}}"
                                                         class="btn btn-warning btn-sm">Edit</a>
-                                                    <a href="{{ route('user.delete_photo', $photo->id_photo) }}"
+                                                    <a href="{{ route('user.delete_photo',['id_wedding' => $photo->id_wedding,'id_photo' => $photo->id_photo])}}"
                                                         onclick="return confirm('Yakin ingin hapus data?')"
                                                         class="btn btn-danger btn-sm">Hapus</a>
                                                 </td>

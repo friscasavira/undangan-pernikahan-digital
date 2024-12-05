@@ -150,22 +150,22 @@ class Love_storyController
         return redirect()->route('user.detail', $id_wedding)->with('success','Data Love Story Berhasil di Tambah');
     }
 
-    public function editUser(string $id_wedding)
+    public function editUser(string $id_wedding, $id_story)
     {
-        $love_story = love_story::find($id_wedding);
+        $love_story = love_story::find($id_story);
         if(!$love_story){
             return back();
         }
-        return view('backend.user.edit_love_story', compact('id_wedding'));
+        return view('backend.user.edit_love_story', compact('love_story'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function updateUser(Request $request, string $id_wedding)
+    public function updateUser(Request $request, string $id_wedding, $id_story)
     {
     // Ambil data love story berdasarkan ID
-    $love_story = love_story::findOrFail($id_wedding);
+    $love_story = love_story::findOrFail($id_story);
 
     // Validasi input
     $request->validate([
@@ -204,9 +204,9 @@ class Love_storyController
     return redirect()->route('user.detail', $id_wedding)->with('success', 'Data Love Story berhasil diedit!');
     }
 
-    public function deleteUser($id_wedding)
+    public function deleteUser($id_wedding, $id_story)
     {
-        $love_story = love_story::find($id_wedding);
+        $love_story = love_story::find($id_story);
 
          $love_story->delete();
 

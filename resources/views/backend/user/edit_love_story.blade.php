@@ -15,7 +15,7 @@
             <h6 class="mb-4">Edit Love Story</h6>
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('user.love_story_update', $love_story->id_wedding) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('user.love_story_update', ['id_wedding' => $love_story->id_wedding, 'id_story' => $love_story->id_story])}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">

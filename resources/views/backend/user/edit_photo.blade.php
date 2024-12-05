@@ -15,7 +15,7 @@
             <h6 class="mb-4">Edit Photo</h6>
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('user.photo_update', $photo->id_wedding) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('user.photo_update',['id_wedding' => $photo->id_wedding, 'id_photo' => $photo->id_photo])}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
