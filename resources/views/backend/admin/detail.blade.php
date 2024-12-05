@@ -88,7 +88,10 @@
                         <tr>
                             <th scope="row">{{$loop->iteration}}</th>
                             <td class="text-center">{{$love_story->wedding->title}}</td>
-                            <td class="text-center">{{$love_story->photo_url}}</td>
+                            <td class="text-center">
+                                <img src="{{ asset('storage/' . $love_story->photo_url) }}"
+                                    alt="" height="30">
+                            </td>
                             <td class="text-center">{{$love_story->date_story}}</td>
                             <td class="text-center">{{$love_story->tittle_story}}</td>
                             <td class="text-center">{{$love_story->description_story}}</td>
@@ -113,63 +116,7 @@
 
 
 
-<div class="col-lg-12">
-    <div class="card">
-        <div class="card shadow">
-            <div class="card-header bg-primary">
-                <h4 class=" text-white mb-0">Komentar</h4>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <div class="table-responsive">
-                    <table class="table table-hover align-middle mb-0">
-                        <thead class="table-primary text-center">
-                            <tr>
-                                <th scope="col" class="ps-3">#</th>
-                                <th scope="col">Judul</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Pesan</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($comments as $comment)
-                            <tr>
-                                <th scope="row" class="text-center">{{$loop->iteration}}</th>
 
-
-
-                                <td class="text-center">{{$comment->wedding->title}}</td>
-                                <td class="text-center">{{$comment->name_tamu}}</td>
-                                <td class="text-center">{{$comment->message}}</td>
-                                <td class="text-center">
-                                    <a href="{{route('admin.edit_comment', ['id_wedding' => $comment->id_wedding, 'id' => $comment->id_comments])}}"
-                                        class="btn btn-warning btn-sm me-2">
-                                        <i class="bi bi-pencil-square"></i> Edit
-                                    </a>
-                                    <a href="{{route('admin.delete_comment', ['id_wedding' => $comment->id_wedding, 'id' => $comment->id_comments])}}"
-                                        onclick="return confirm('Yakin ingin menghapus data ini?')"
-                                        class="btn btn-danger btn-sm">
-                                        <i class="bi bi-trash"></i> Hapus
-                                    </a>
-                                </td>
-                            </tr>
-
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(document).ready(function() {
-        $('#').DataTable();
-    });
-</script>
 
 
 

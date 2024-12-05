@@ -27,10 +27,11 @@
                             @enderror
                         </div>
                     </div>
-
+                
                     <div class="mb-3">
                         <label for="photo_url" class="form-label">FOTO</label>
                         <input type="file" class="form-control" id="photo_url" name="photo_url">
+                        <br>
                         <img src="{{asset('storage/' . $photo->photo_url)}}" class="card-img-top" alt="matdash-img" style="width: 120px;">
                         <div class="text-danger">
                         @error('photo_url')
