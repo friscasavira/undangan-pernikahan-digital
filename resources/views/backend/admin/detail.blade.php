@@ -192,7 +192,7 @@
                             <p class="card-text text-center">{{$photo->caption}}</p>
                         </div>
                     </div>
-                    @endforeach 
+                    @endforeach
                 </table>
             </div>
         </div>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UNDANGAN - @yield('title', '')</title>
+  <title>UNDANGAN - @yield('title')</title>
   <link rel="shortcut icon" type="image/png" href="{{ asset('asset_admin/images/logos/seodashlogo.png') }}" />
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
@@ -45,7 +45,7 @@
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
-              <span class="hide-menu">UI COMPONENTS</span>
+              <span class="hide-menu">MENU</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('user.weddings')}}" aria-expanded="false">
@@ -53,46 +53,6 @@
                     <i class="ti ti-flower"></i>
                 </span>
                 <span class="hide-menu">Weddings</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('user.events')}}" aria-expanded="false">
-                <span>
-                <i class="ti ti-select"></i>
-                </span>
-                <span class="hide-menu">Events</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('user.rsvp')}}" aria-expanded="false">
-                <span>
-                  <iconify-icon icon="solar:file-text-bold-duotone" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu">Rsvp</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('user.photo')}}" aria-expanded="false">
-                <span>
-                <i class="ti ti-photo"></i>
-                </span>
-                <span class="hide-menu">Photos</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('user.love_story')}}" aria-expanded="false">
-                <span>
-                <i class="ti ti-heart-plus"></i>
-                </span>
-                <span class="hide-menu">Love_story</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{route('user.comment')}}" aria-expanded="false">
-                <span>
-                    <i class="ti ti-messages"></i>
-                </span>
-                <span class="hide-menu">Comments</span>
               </a>
             </li>
             <li class="sidebar-item">

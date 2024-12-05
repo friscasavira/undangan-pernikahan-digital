@@ -15,22 +15,8 @@
             <h6 class="mb-4">Tambah Photo</h6>
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('user.photo_store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('user.photo_store', $id_wedding ) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="mb-3">
-                            <label for="id_wedding" class="form-label">Judul</label>
-                            <select name="id_wedding" id="id_wedding" class="form-select">
-                            <option value="">Pilih</option>
-                            @foreach($weddings as $wedding)
-                            <option value="{{ $wedding->id_wedding }}">{{$wedding->title}}</option>
-                            @endforeach
-                            </select>
-                            <div class="text-danger">
-                                @error('id_wedding')
-                                {{$message}}
-                                @enderror
-                            </div>
-                        </div>
                         <div class="mb-3">
                             <label for="foto" class="form-label">Foto</label>
                             <input type="file" class="form-control" id="photo_url" name="photo_url">

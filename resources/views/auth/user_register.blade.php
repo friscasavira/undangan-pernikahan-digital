@@ -40,7 +40,7 @@
 						<form action="{{route('register.submit')}}" method="post" class="signin-form">
 							@csrf
                             <div class="form-group">
-								<input type="text" class="form-control" name="name" placeholder="name">
+								<input type="text" class="form-control" name="name" placeholder="Name">
 								<div class="text-danger">
 									@error('name')
 									{{$message}}
@@ -58,7 +58,7 @@
 							</div>
 
                             <div class="form-group">
-								<input type="text" class="form-control" name="email" placeholder="email">
+								<input type="text" class="form-control" name="email" placeholder="Email">
 								<div class="text-danger">
 									@error('email')
 									{{$message}}

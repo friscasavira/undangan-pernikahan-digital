@@ -1,6 +1,6 @@
 @extends('backend.user.layout.app')
 
-@section('tittle','Tambah Wedding')
+@section('title','Tambah Wedding')
 
 @section('content')
 
@@ -81,7 +81,7 @@
 
                             <div class="mb-3">
                                 <label for="message" class="form-label">Pesan</label>
-                                <input type="text" class="form-control" id="message" name="message">
+                                <textarea name="message" id="message" class="form-control" rows="5"></textarea>
                                 <div class="text-danger">
                                 @error('message')
                                 {{$message}}

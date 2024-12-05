@@ -22,7 +22,6 @@ return new class extends Migration
 
             $table->string('cover_photo', 255);
             $table->string('background_music',255);
-            $table->string('theme',50);
             $table->timestamps();
         });
     }

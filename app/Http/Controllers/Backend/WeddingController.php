@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\comments;
 use App\Models\events;
 use App\Models\love_story;
 use App\Models\photos;
@@ -26,9 +25,8 @@ class WeddingController
         $details = weddings::all();
         $events = events::all();
         $love_storys = love_story::all();
-        $comments = comments::all();
         $photos = photos::all();
-        return view('backend.admin.detail', compact('details', 'events', 'love_storys', 'comments', 'photos'));
+        return view('backend.admin.detail', compact('details', 'events', 'love_storys','photos'));
     }
 
     /**
@@ -106,7 +104,7 @@ class WeddingController
             'wedding_time' => 'required',
             'location' => 'required',
             'message' => 'required',
-            
+
         ]);
 
          // Generate unique URL dari title
@@ -175,6 +173,15 @@ class WeddingController
     public function createUser()
     {
         return view('backend.user.weddings_tambah');
+    }
+
+    public function detailUser($id)
+    {
+        $details = weddings::all();
+        $events = events::all();
+        $love_storys = love_story::all();
+        $photos = photos::all();
+        return view('backend.user.detail', compact('id', 'details', 'events', 'love_storys','photos'));
     }
 
     /**

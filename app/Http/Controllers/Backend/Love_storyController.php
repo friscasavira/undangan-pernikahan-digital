@@ -113,18 +113,16 @@ class Love_storyController
     /**
      * Show the form for creating a new resource.
      */
-    public function createUser()
+    public function createUser($id_wedding)
     {
-    $weddings = weddings::all();
-    return view('backend.user.tambah_love_story', compact('weddings'));
+    return view('backend.user.tambah_love_story', compact('id_wedding'));
     }
     /**
      * Store a newly created resource in storage.
      */
-    public function storeUser(Request $request)
+    public function storeUser(Request $request, $id_wedding)
     {
         $request->validate([
-            'id_wedding' => 'required',
             'photo_url' => 'required',
             'date_story' => 'required',
             'tittle_story' => 'required',
@@ -142,37 +140,35 @@ class Love_storyController
         }
 
         love_story::create([
-            'id_wedding'=> $request->id_wedding,
+            'id_wedding'=> $id_wedding,
             'photo_url' => $photo_url,
             'date_story' => $request->date_story,
             'tittle_story' => $request->tittle_story,
             'description_story' => $request->description_story,
         ]);
 
-        return redirect()->route('user.love_story')->with('success','Data Love Story Berhasil di Tambah');
+        return redirect()->route('user.detail', $id_wedding)->with('success','Data Love Story Berhasil di Tambah');
     }
 
-    public function editUser(string $id)
+    public function editUser(string $id_wedding, $id_story)
     {
-        $weddings = weddings::all();
-        $love_story = love_story::find($id);
+        $love_story = love_story::find($id_story);
         if(!$love_story){
             return back();
         }
-        return view('backend.user.edit_love_story', compact('love_story','weddings'));
+        return view('backend.user.edit_love_story', compact('love_story'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function updateUser(Request $request, string $id)
+    public function updateUser(Request $request, string $id_wedding, $id_story)
     {
     // Ambil data love story berdasarkan ID
-    $love_story = love_story::findOrFail($id);
+    $love_story = love_story::findOrFail($id_story);
 
     // Validasi input
     $request->validate([
-        'id_wedding' => 'required',
         'photo_url' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
         'date_story' => 'required|date',
         'tittle_story' => 'required|string|max:255',
@@ -198,22 +194,21 @@ class Love_storyController
     }
 
     $love_story->update([
-        'id_wedding' => $request->id_wedding,
+        'id_wedding' => $id_wedding,
         'photo_url' => $foto,
         'date_story' => $request->date_story,
         'tittle_story' => $request->tittle_story,
         'description_story' => $request->description_story,
     ]);
 
-    return redirect()->route('user.love_story')->with('success', 'Data Love Story berhasil diedit!');
+    return redirect()->route('user.detail', $id_wedding)->with('success', 'Data Love Story berhasil diedit!');
     }
 
-    public function deleteUser($id)
+    public function deleteUser($id_wedding, $id_story)
     {
-        $photo = love_story::find($id);
+        $love_story = love_story::find($id_story);
 
-
-         $photo->delete();
+         $love_story->delete();
 
         return redirect()->back()->with('success', 'Data photo Berhasil diHapus');
 
