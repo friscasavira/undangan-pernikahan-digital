@@ -82,7 +82,10 @@ class WeddingController
     return redirect()->route('home')->with('success', 'Foto pengantin berhasil diperbarui!');
 }
 
-
+public function view()
+{
+    return view('frontend.tampilan_awal');
+}
 
 }
 
