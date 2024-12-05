@@ -80,9 +80,9 @@ class PhotoController
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id_wedding, $id)
     {
-        $photos = photos::where('id_wedding', $id)->get();
+        $photos = photos::where('id_wedding', $id_wedding)->where('id_photo', $id)->first();
         // $photo = photos::find($id);
         $request->validate([
             'id_wedding' => 'required',
@@ -90,22 +90,22 @@ class PhotoController
             'caption' => 'required',
         ]);
 
-        $foto = $photos->foto;
-        if($request->hasFile('foto')){
-            if ('foto'){
+        $foto = $photos->photo_url;
+        if($request->hasFile('photo_url')){
+            if ($foto){
                 Storage::disk('public')->delete($foto);
             }
-            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
+            $uniqueField = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
 
-            $request->file('foto')->storeAs('foto_pernikahan',  $uniqueField, 'public');
+            $request->file('photo_url')->storeAs('photo_pernikahan',  $uniqueField, 'public');
 
-            $foto = 'foto_pernikahan/' . $uniqueField;
+            $foto = 'photo_pernikahan/' . $uniqueField;
         }
 
 
         $photos->update([
             'id_wedding'=> $request->id_wedding,
-            'photo_url' => $request->photo_url,
+            'photo_url' => $foto,
             'caption' => $request->caption,
         ]);
 
@@ -133,19 +133,17 @@ class PhotoController
     /**
      * Show the form for creating a new resource.
      */
-    public function createUser()
+    public function createUser($id_wedding)
     {
-        $weddings = weddings::all();
-        return view('backend.user.photo_tambah',compact('weddings'));
+        return view('backend.user.photo_tambah',compact('id_wedding'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function storeUser(Request $request)
+    public function storeUser(Request $request, $id_wedding)
     {
         $request->validate([
-            'id_wedding' => 'required',
             'photo_url' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
             'caption' => 'required',
 
@@ -162,32 +160,31 @@ class PhotoController
         }
 
         photos::create([
-            'id_wedding'=> $request->id_wedding,
+            'id_wedding'=> $id_wedding,
             'photo_url' => $photo_url,
             'caption' => $request->caption,
         ]);
 
-        return redirect()->route('user.photo')->with('success','Data Photo Berhasil di Tambah');
+        return redirect()->route('user.detail', $id_wedding)->with('success','Data Photo Berhasil di Tambah');
     }
 
-    public function editUser(string $id)
+    public function editUser(string $id_wedding)
     {
-        $weddings = weddings::all();
-        $photo = photos::find($id);
+
+        $photo = photos::find($id_wedding);
         if(!$photo){
             return back();
         }
-        return view('backend.user.edit_photo', compact('photo','weddings'));
+        return view('backend.user.edit_photo', compact('id_wedding'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function updateUser(Request $request, string $id)
+    public function updateUser(Request $request, string $id_wedding)
     {
-        $photo = photos::find($id);
+        $photo = photos::find($id_wedding);
         $request->validate([
-            'id_wedding' => 'required',
             'photo_url' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'caption' => 'required',
         ]);
@@ -206,7 +203,7 @@ class PhotoController
 
 
         $photo->update([
-            'id_wedding'=> $request->id_wedding,
+            'id_wedding'=> $id_wedding,
             'photo_url' => $foto,
             'caption' => $request->caption,
         ]);
@@ -214,9 +211,9 @@ class PhotoController
         return redirect()->route('user.photo')->with('success', 'Data photo Berhasil di Edit');
     }
 
-    public function deleteUser($id)
+    public function deleteUser($id_wedding)
     {
-        $photo = photos::find($id);
+        $photo = photos::find($id_wedding);
 
         $photo->delete();
 

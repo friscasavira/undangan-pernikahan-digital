@@ -106,9 +106,35 @@ class WeddingController
             'wedding_time' => 'required',
             'location' => 'required',
             'message' => 'required',
-            'unique_url' => 'required|unique:weddings,unique_url,' . $wedding->id_wedding . ',id_wedding'
 
         ]);
+
+         // Generate unique URL dari title
+    $unique_url = Str::slug($request->title);
+
+    // Pastikan unique_url tidak duplikat di database, kecuali milik record yang sedang diedit
+    $counter = 1;
+    $base_url = $unique_url; // Simpan URL dasar
+    while (weddings::where('unique_url', $unique_url)->where('id_wedding', '!=', $wedding->id_wedding)->exists()) {
+        $unique_url = $base_url . '-' . $counter;
+        $counter++;
+    }
+
+    $bride_photo = null;
+         $groom_photo = null;
+
+         if ($request->hasFile('bride_photo')) {
+             $uniqueField = uniqid() . '_' . $request->file('bride_photo')->getClientOriginalName();
+             $request->file('bride_photo')->storeAs('bride_photo', $uniqueField, 'public');
+             $bride_photo = 'bride_photo/' . $uniqueField;
+         }
+
+         if ($request->hasFile('groom_photo')) {
+            $uniqueField = uniqid() . '_' . $request->file('groom_photo')->getClientOriginalName();
+            $request->file('groom_photo')->storeAs('groom_photo', $uniqueField, 'public');
+            $groom_photo = 'groom_photo/' . $uniqueField;
+        }
+
         $wedding->update([
             'id_user' => $id_user,
             'title' => $request->title,
@@ -118,7 +144,9 @@ class WeddingController
             'wedding_time' => $request->wedding_time,
             'location' => $request->location,
             'message' => $request->message,
-            'unique_url' => $request->unique_url,
+            'bride_photo' => $bride_photo,
+            'groom_photo' => $groom_photo,
+            'unique_url' => $unique_url,
         ]);
 
         return redirect()->route('admin.weddings')->with('success', 'Data Weddings Berhasil di Edit');
@@ -147,6 +175,16 @@ class WeddingController
     public function createUser()
     {
         return view('backend.user.weddings_tambah');
+    }
+
+    public function detailUser($id)
+    {
+        $details = weddings::all();
+        $events = events::all();
+        $love_storys = love_story::all();
+        $comments = comments::all();
+        $photos = photos::all();
+        return view('backend.user.detail', compact('id', 'details', 'events', 'love_storys', 'comments', 'photos'));
     }
 
     /**

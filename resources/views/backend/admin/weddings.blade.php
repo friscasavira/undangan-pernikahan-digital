@@ -1,6 +1,6 @@
 @extends('backend.admin.layout.app')
 
-@section('title','Weddings')
+@section('title','Admin Weddings')
 
 @section('content')
 <div class="col-lg-12">
@@ -39,6 +39,7 @@
                         <td>
                             <a href="{{route('admin.edit_weddings', $wedding->id_wedding)}}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{route('admin.detail', $wedding->id_wedding)}}" class="btn btn-primary btn-sm">Detail</a>
+                            <a href="{{route('admin.rsvp', $wedding->id_wedding)}}" class="btn btn-primary btn-sm">RSVP</a>
                             <a href="{{route('admin.delete_weddings', $wedding->id_wedding)}}" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>
                         </td>
 

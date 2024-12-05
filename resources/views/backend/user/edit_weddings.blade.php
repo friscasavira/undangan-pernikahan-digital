@@ -1,6 +1,6 @@
 @extends('backend.user.layout.app')
 
-@section('tittle','Edit Wedding')
+@section('title','Edit Wedding')
 
 @section('content')
 
@@ -21,7 +21,7 @@
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
-                                <label for="title" class="form-label">title</label>
+                                <label for="title" class="form-label">Title</label>
                                 <input type="text" class="form-control" id="title" name="title" value="{{old('title', $wedding->title)}}">
                                 <div class="text-danger">
                                     @error('title')
@@ -75,19 +75,12 @@
 
                             <div class="mb-3">
                                 <label for="message" class="form-label">Pesan</label>
-                                <input type="text" class="form-control" id="message" name="message" value="{{old('message', $wedding->message)}}">
+                                <textarea name="message" id="message" class="form-control" rows="5">{{ $wedding->message }}</textarea>
                                 <div class="text-danger">
                                 @error('message')
                                 {{$message}}
                                 @enderror
 
-                            <div class="mb-3">
-                                <label for="unique_url" class="form-label">Link</label>
-                                <input type="text" class="form-control" id="unique_url" name="unique_url" value="{{old('unique_url', $wedding->unique_url)}}">
-                                <div class="text-danger">
-                                @error('unique_url')
-                                {{$message}}
-                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="bride_photo" class="form-label">Bride Photo</label>

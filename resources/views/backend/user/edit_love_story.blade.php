@@ -15,26 +15,9 @@
             <h6 class="mb-4">Edit Love Story</h6>
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('user.love_story_update', $love_story->id_story) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('user.love_story_update', $love_story->id_wedding) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="mb-3">
-                            <label for="id_wedding" class="form-label">Judul</label>
-                            <select name="id_wedding" id="id_wedding" class="form-select">
-                                <option value="">Pilih</option>
-                                @foreach($weddings as $wedding)
-                                <option value="{{ $wedding->id_wedding }}"
-                                    {{ $wedding->id_wedding == $love_story->id_wedding ? 'selected' : '' }}>
-                                    {{ $wedding->title }}
-                                </option>
-                                @endforeach
-                            </select>
-                            <div class="text-danger">
-                                @error('id_wedding')
-                                    {{ $message }}
-                                @enderror
-                            </div>
-                        </div>
                         <div class="mb-3">
                             <label for="photo_url" class="form-label">Foto</label>
                             <input type="file" class="form-control" id="photo_url" name="photo_url">
@@ -71,8 +54,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
-                            <input type="text" class="form-control" id="description_story" name="description_story"
-                                   value="{{ old('description_story', $love_story->description_story) }}">
+                            <textarea name="description_story" id="description_story" rows="5" class="form-control">{{ $love_story->description_story }}</textarea>
                             <div class="text-danger">
                                 @error('description_story')
                                     {{ $message }}

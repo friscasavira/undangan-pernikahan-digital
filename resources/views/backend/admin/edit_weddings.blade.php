@@ -1,6 +1,6 @@
 @extends('backend.admin.layout.app')
 
-@section('tittle','Edit Wedding')
+@section('title','Admin Edit Wedding')
 
 @section('content')
 
@@ -72,16 +72,6 @@
                         @error('message')
                         {{$message}}
                         @enderror
-
-                    <div class="mb-3">
-                        <label for="unique_url" class="form-label">LINK</label>
-                        <input type="text" class="form-control" id="unique_url" name="unique_url" value="{{old('unique_url', $wedding->unique_url)}}">
-                        <div class="text-danger">
-                        @error('unique_url')
-                        {{$message}}
-                        @enderror
-
-                    </div>
                     
                     <button type="submit" class="btn btn-primary">SAVE</button>
 
