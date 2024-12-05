@@ -29,12 +29,6 @@ class weddings extends Model
     {
     return $this->hasMany(events::class, 'id_wedding', 'id_wedding');
     }
-
-    public function comments()
-    {
-    return $this->hasMany(comments::class, 'id_wedding', 'id_wedding');
-    }
-
     public function rsvp()
     {
     return $this->hasOne(rsvp::class, 'id_wedding', 'id_wedding');
@@ -52,7 +46,7 @@ class weddings extends Model
     {
     return $this->hasMany(settings::class, 'id_wedding', 'id_wedding');
     }
-    
+
 
 
 }
