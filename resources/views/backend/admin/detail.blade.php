@@ -39,7 +39,7 @@
                             <td class="text-center">{{$event->event_description}}</td>
                             <td>
                                 <a href="{{route('admin.edit_events', ['id_wedding' => $event->id_wedding, 'id' => $event->id_event])}}" class="btn btn-warning btn-sm">Edit</a>
-                                <a href="{{~route('admin.delete_events', ['id_wedding' => $event->id_wedding, 'id' => $event->id_event])}}" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>
+                                <a href="{{route('admin.delete_events', ['id_wedding' => $event->id_wedding, 'id' => $event->id_event])}}" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>
                             </td>
 
                         </tr>
@@ -192,7 +192,7 @@
                             <p class="card-text text-center">{{$photo->caption}}</p>
                         </div>
                     </div>
-                    @endforeach 
+                    @endforeach
                 </table>
             </div>
         </div>

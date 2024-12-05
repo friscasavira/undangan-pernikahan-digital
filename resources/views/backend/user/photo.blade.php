@@ -38,8 +38,8 @@
                                     </td>
                                     <td>{{ $photo->caption}}</td>
                                     <td>
-                                        <a href="{{ route('user.edit_photo', $photo->id_photo) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('user.delete_photo', $photo->id_photo) }}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Hapus</a>
+                                        <a href="{{ route('user.edit_photo', $photo->id_wedding) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ route('user.delete_photo', $photo->id_wedding) }}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-danger btn-sm">Hapus</a>
                                     </td>
                                 </tr>
                                 @endforeach

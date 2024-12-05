@@ -106,7 +106,7 @@ class WeddingController
             'wedding_time' => 'required',
             'location' => 'required',
             'message' => 'required',
-            
+
         ]);
 
          // Generate unique URL dari title
@@ -175,6 +175,16 @@ class WeddingController
     public function createUser()
     {
         return view('backend.user.weddings_tambah');
+    }
+
+    public function detailUser($id)
+    {
+        $details = weddings::all();
+        $events = events::all();
+        $love_storys = love_story::all();
+        $comments = comments::all();
+        $photos = photos::all();
+        return view('backend.user.detail', compact('id', 'details', 'events', 'love_storys', 'comments', 'photos'));
     }
 
     /**

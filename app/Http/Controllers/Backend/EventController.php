@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController
 {
-   
+
 
     /**
      * Show the form for creating a new resource.
@@ -117,19 +117,17 @@ class EventController
     /**
      * Show the form for creating a new resource.
      */
-    public function createUser()
+    public function createUser($id_wedding)
     {
-        $weddings = weddings::all();
-        return view('backend.user.events_tambah',compact('weddings'));
+        return view('backend.user.events_tambah',compact('id_wedding'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function storeUser(Request $request)
+    public function storeUser(Request $request, $id_wedding)
     {
         $request->validate([
-            'id_wedding' => 'required',
             'event_name' => 'required',
             'event_date' => 'required',
             'event_time' => 'required',
@@ -138,7 +136,7 @@ class EventController
         ]);
 
         events::create([
-            'id_wedding'=> $request->id_wedding,
+            'id_wedding'=> $id_wedding,
             'event_name' => $request->event_name,
             'event_date' => $request->event_date,
             'event_time' => $request->event_time,
@@ -146,27 +144,25 @@ class EventController
             'event_description' => $request->event_description,
         ]);
 
-        return redirect()->route('user.events')->with('success','Data Events Berhasil di Tambah');
+        return redirect()->route('user.detail', $id_wedding)->with('success','Data Events Berhasil di Tambah');
     }
 
-    public function editUser(string $id)
+    public function editUser(string $id_wedding, $id_event)
     {
-        $weddings = weddings::all();
-        $event = events::find($id);
+        $event = events::find($id_event);
         if(!$event){
             return back();
         }
-        return view('backend.user.edit_events', compact('event','weddings'));
+        return view('backend.user.edit_events', compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function updateUser(Request $request, string $id)
+    public function updateUser(Request $request, string $id_wedding, $id_event)
     {
-        $event = events::find($id);
+        $event = events::find($id_event);
         $request->validate([
-            'id_wedding' => 'required',
             'event_name' => 'required',
             'event_date' => 'required',
             'event_time' => 'required',
@@ -176,7 +172,7 @@ class EventController
 
 
         $event->update([
-            'id_wedding'=> $request->id_wedding,
+            'id_wedding'=> $id_wedding,
             'event_name' => $request->event_name,
             'event_date' => $request->event_date,
             'event_time' => $request->event_time,
@@ -184,16 +180,15 @@ class EventController
             'event_description' => $request->event_description,
         ]);
 
-        return redirect()->route('user.events')->with('success', 'Data Events Berhasil di Edit');
+        return redirect()->route('user.detail', $id_wedding)->with('success', 'Data Events Berhasil di Edit');
     }
 
 
-    public function deleteUser($id)
+    public function deleteUser($id_wedding, $id_event)
     {
-        $event = events::find($id);
+        $event = events::find($id_event);
 
-
-         $event->delete();
+        $event->delete();
 
         return redirect()->back()->with('success', 'Data Events Berhasil diHapus');
 

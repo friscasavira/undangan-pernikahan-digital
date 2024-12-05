@@ -17,22 +17,8 @@
                     <h6 class="mb-4">Tambah event</h6>
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{route('user.events_store')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('user.events_store', $id_wedding)}}" method="post" enctype="multipart/form-data">
                                 @csrf
-                                <div class="mb-3">
-                                    <label for="id_wedding" class="form-label">Judul</label>
-                                    <select name="id_wedding" id="id_wedding" class="form-select">
-                                        <option value="">Pilih</option>
-                                        @foreach($weddings as $wedding)
-                                        <option value="{{ $wedding->id_wedding }}">{{$wedding->title}}</option>
-                                        @endforeach
-                                    </select>
-                                    <div class="text-danger">
-                                        @error('id_wedding')
-                                        {{$message}}
-                                        @enderror
-                                    </div>
-                                </div>
 
                                 <div class="mb-3">
                                     <label for="event_name" class="form-label">Nama Acara</label>

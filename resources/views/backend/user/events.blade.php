@@ -19,7 +19,6 @@
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0">
                                 <th scope="col" class="ps-0">No</th>
-                                <th scope="col">Tittle</th>
                                 <th scope="col" class="text-center">Nama Acara</th>
                                 <th scope="col" class="text-center">Tanggal Acara</th>
                                 <th scope="col" class="text-center">Waktu Acara</th>
