@@ -55,8 +55,8 @@
                     <div class="col-lg-4">
                         <div class="card overflow-hidden hover-img">
                             <div class="position-relative">
-                                @if ($wedding->photos->isNotEmpty() && $wedding->photos->first()->photo_url)
-                                <img src="{{ asset('storage/' . $wedding->photos->first()->photo_url) }}" class="card-img-top" alt="matdash-img">
+                                @if ($wedding->setting->isNotEmpty() && $wedding->setting->first()->cover_photo)
+                                <img src="{{ asset('storage/' . $wedding->setting->first()->cover_photo) }}" class="card-img-top" alt="matdash-img">
                                 @else
                                 <p>Belum ada foto</p>
                                 @endif

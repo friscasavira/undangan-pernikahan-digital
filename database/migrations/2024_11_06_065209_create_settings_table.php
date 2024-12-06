@@ -21,7 +21,7 @@ return new class extends Migration
                   ->onUpdate('cascade');
 
             $table->string('cover_photo', 255);
-            $table->string('background_music',255);
+            $table->string('background_music',255)->nullable();
             $table->timestamps();
         });
     }
