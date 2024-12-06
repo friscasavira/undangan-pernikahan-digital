@@ -330,14 +330,4 @@ class WeddingController
     return redirect()->route('user.weddings')->with('success', 'Data Weddings Berhasil di Edit');
 }
 
-
-    public function deleteUser($id)
-    {
-        $wedding = weddings::find($id);
-
-
-        $wedding->delete();
-
-        return redirect()->back()->with('success', 'Data Weddings Berhasil diHapus');
-    }
 }
