@@ -30,6 +30,12 @@
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navBar" id="weddingHome">
+    @if($setting && $setting->background_music)
+        <audio autoplay>
+            <source src="{{ asset('storage/' . $setting->background_music) }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    @endif
 
     <!-- Spinner Start -->
     <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
