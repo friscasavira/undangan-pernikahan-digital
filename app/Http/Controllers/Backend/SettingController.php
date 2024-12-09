@@ -66,9 +66,21 @@ class SettingController
         return redirect()->route('admin.login');
     }
 
-    public function dashboardUser()
+    public function dashboardUser(Request $request)
     {
-        $weddings = weddings::all();
+        $query = Weddings::query();
+
+        // Filter berdasarkan judul
+        if ($request->has('search') && $request->search) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        // Filter berdasarkan tanggal
+        if ($request->has('date') && $request->date) {
+            $query->whereDate('wedding_date', $request->date);
+        }
+
+        $weddings = $query->get();
         return view('backend.user.dashboard', compact('weddings'));
     }
 
