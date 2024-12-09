@@ -14,7 +14,10 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <a href="{{ route('user.weddings_tambah') }}" class="btn btn-primary btn-sm">Tambah</a>
+                        {{-- Kondisi untuk memeriksa apakah pengguna belum memiliki data wedding --}}
+                        @if ($weddings->isEmpty())
+                            <a href="{{ route('user.weddings_tambah') }}" class="btn btn-primary btn-sm">Tambah</a>
+                        @endif
                         <table class="table text-nowrap align-middle mb-0" id="weddings">
                             <thead>
                                 <tr class="border-2 border-bottom border-primary border-0">
@@ -59,11 +62,7 @@
                                                 class="btn btn-warning btn-sm">Edit</a>
                                             <a href="{{ route('user.detail', $wedding->id_wedding) }}"
                                                 class="btn btn-primary btn-sm">Detail</a>
-                                            <a href="{{ route('user.delete_weddings', $wedding->id_wedding) }}"
-                                                onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')"
-                                                class="btn btn-danger btn-sm">delete</a>
                                         </td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -77,5 +76,4 @@
                 $('#weddings').DataTable();
             });
         </script>
-
     @endsection
