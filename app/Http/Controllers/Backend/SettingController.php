@@ -66,9 +66,22 @@ class SettingController
         return redirect()->route('admin.login');
     }
 
-    public function dashboardUser()
+    public function dashboardUser(Request $request)
     {
-        $weddings = weddings::all();
+        $id_user = Auth::user()->id_user;
+        $query = weddings::where('id_user', $id_user)->get();
+
+        // Filter berdasarkan judul
+        if ($request->has('search') && $request->search) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        // Filter berdasarkan tanggal
+        if ($request->has('date') && $request->date) {
+            $query->whereDate('wedding_date', $request->date);
+        }
+
+        $weddings = $query->get();
         return view('backend.user.dashboard', compact('weddings'));
     }
 
@@ -111,7 +124,9 @@ class SettingController
 
     public function settingUser()
     {
-        $settings = settings::all();
+        $id_user = Auth::user()->id_user;
+        $wedding = weddings::where('id_user', $id_user)->first();
+        $settings = settings::where('id_wedding', $wedding->id_wedding)->get();
         return view('backend.user.setting', compact('settings'));
     }
 
@@ -130,9 +145,8 @@ class SettingController
     public function storeUser(Request $request)
     {
         $request->validate([
-            'id_wedding' => 'required',
             'cover_photo' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-            'background_music' => 'nullable|file|max:10240',
+            'background_music' => 'required|file|max:10240',
         ]);
 
         // Proses upload cover photo
@@ -151,9 +165,12 @@ class SettingController
             $background_music = 'music_setting/' . $uniqueMusicName;
         }
 
+        $id_user = Auth::user()->id_user;
+        $wedding = weddings::where('id_user', $id_user)->first();
+
         // Simpan data ke database
         settings::create([
-            'id_wedding' => $request->id_wedding,
+            'id_wedding' => $wedding->id_wedding,
             'cover_photo' => $cover_photo,
             'background_music' => $background_music,
         ]);
@@ -180,7 +197,6 @@ class SettingController
         $setting = settings::find($id);
 
         $request->validate([
-            'id_wedding' => 'required',
             'cover_photo' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
             'background_music' => 'nullable|file|max:10240',
         ]);
@@ -202,8 +218,12 @@ class SettingController
         }
 
         // Update data lainnya
+
+        $id_user = Auth::user()->id_user;
+        $wedding = weddings::where('id_user', $id_user)->first();
+
         $setting->update([
-            'id_wedding' => $request->id_wedding,
+            'id_wedding' => $wedding->id_wedding,
             'cover_photo' => $cover_photo,
             'background_music' => $background_music,
         ]);
@@ -211,9 +231,7 @@ class SettingController
         return redirect()->route('user.setting')->with('success', 'Data setting berhasil di edit');
     }
 
-
-
-    public function delete($id)
+    public function deleteUser($id)
     {
         $setting = settings::find($id);
 
