@@ -20,9 +20,9 @@
     <aside class="left-sidebar">
       <!-- Sidebar scroll-->
       <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
+        <div class="brand-logo d-flex align-items-center justify-content-center">
           <a href="{{route('admin.dashboard')}}" class="text-nowrap logo-img">
-            <img src="#" alt="BELUM ADA LOGO" />
+            <h2 style="color: #2952ff; font-weight: 700;">WEDDINGS</h2>
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -95,9 +95,9 @@
       <div class="container-fluid">
         @yield('content')
         <div class="py-6 px-6 text-center">
-          <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank"
-              class="pe-1 text-primary text-decoration-underline">AdminMart.com</a>Distributed by <a href="https://themewagon.com/" target="_blank"
-              class="pe-1 text-primary text-decoration-underline">ThemeWagon</a></p>
+          <p class="mb-0 fs-4">Design and Developed by <a href="#"
+              class="pe-1 text-primary text-decoration-underline">Kelompok 2</a>Distributed by <a href="#"
+              class="pe-1 text-primary text-decoration-underline">Kelompok 2</a></p>
         </div>
       </div>
     </div>
