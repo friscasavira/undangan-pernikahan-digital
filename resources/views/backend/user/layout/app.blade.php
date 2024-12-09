@@ -20,9 +20,9 @@
     <aside class="left-sidebar">
       <!-- Sidebar scroll-->
       <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
-            <img src="{{ asset('asset_admin/images/logos/logo-light.svg')}}" alt="" />
+        <div class="brand-logo d-flex align-items-center justify-content-center">
+          <a href="{{route('user.dashboard')}}" class="text-nowrap logo-img">
+            <h2 style="color: #2952ff; font-weight: 700;">WEDDINGS</h2>
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -50,7 +50,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('user.weddings')}}" aria-expanded="false">
                 <span>
-                    <i class="ti ti-flower"></i>
+                  <i class="ti ti-flower"></i>
                 </span>
                 <span class="hide-menu">Weddings</span>
               </a>
@@ -58,7 +58,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{route('user.setting')}}" aria-expanded="false">
                 <span>
-                <i class="ti ti-settings"></i>
+                  <i class="ti ti-settings"></i>
                 </span>
                 <span class="hide-menu">Settings</span>
               </a>
@@ -113,9 +113,9 @@
       <div class="container-fluid">
         @yield('content')
         <div class="py-6 px-6 text-center">
-          <p class="mb-0 fs-4">Design and Developed by <a href="Frisca Savira" target="_blank"
-              class="pe-1 text-primary text-decoration-underline">Frisca Savira</a>Distributed by <a href="https://themewagon.com/" target="_blank"
-              class="pe-1 text-primary text-decoration-underline">ThemeWagon</a></p>
+          <p class="mb-0 fs-4">Design and Developed by <a href="#"
+              class="pe-1 text-primary text-decoration-underline">Kelompok 2</a>Distributed by <a href="#"
+              class="pe-1 text-primary text-decoration-underline">Kelompok 2</a></p>
         </div>
       </div>
     </div>

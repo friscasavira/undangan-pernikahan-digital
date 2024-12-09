@@ -38,38 +38,6 @@ class WeddingController
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $id_user = Auth::user()->id_user;
-        $request->validate([
-            'title' => 'required',
-            'bride_name' => 'required',
-            'groom_name' => 'required',
-            'wedding_date' => 'required',
-            'wedding_time' => 'required',
-            'location' => 'required',
-            'message' => 'required',
-            'unique_url' => 'required|unique:weddings,unique_url'
-        ]);
-
-        weddings::create([
-            'id_user' => $id_user,
-            'title' => $request->title,
-            'bride_name' => $request->bride_name,
-            'groom_name' => $request->groom_name,
-            'wedding_date' => $request->wedding_date,
-            'wedding_time' => $request->wedding_time,
-            'location' => $request->location,
-            'message' => $request->message,
-            'unique_url' => $request->unique_url,
-        ]);
-
-        return redirect()->route('admin.weddings')->with('success', 'Data Weddings Berhasil di Tambah');
-    }
-
-    /**
      * Display the specified resource.
      */
     public function show(string $id)
@@ -104,7 +72,6 @@ class WeddingController
             'wedding_time' => 'required',
             'location' => 'required',
             'message' => 'required',
-
         ]);
 
          // Generate unique URL dari title

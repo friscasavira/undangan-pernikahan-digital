@@ -65,7 +65,7 @@ class UserLoginController extends RoutingController
             }
         }
 
-        return back()->withErrors(['login_error' => 'username atau Password Salah.']) ->onlyInput('username');
+        return back()->withErrors(['login_error' => 'Username atau Password Salah.']) ->onlyInput('username');
     }
 
     public function registerUser()
