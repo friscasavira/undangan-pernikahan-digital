@@ -6,6 +6,7 @@ use App\Models\events;
 use App\Models\love_story;
 use App\Models\photos;
 use App\Models\rsvp;
+use App\Models\settings;
 use App\Models\weddings;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class WeddingController
         $events = events::all();
         $photos = photos::where('id_wedding', $id_wedding)->take(8)->get();
         $photosThree = photos::where('id_wedding', $id_wedding)->take(3)->get();
-        return view('frontend.home', compact('wedding', 'love_storys', 'events', 'photos', 'photosThree'));
+        $setting = settings::first();
+        return view('frontend.home', compact('wedding', 'love_storys', 'events', 'photos', 'photosThree', 'setting'));
     }
 
     public function photo()

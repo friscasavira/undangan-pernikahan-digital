@@ -62,7 +62,7 @@
                                 @endif
                             </div>
                             <div class="card-body p-4">
-                                <a class="d-block my-4 fs-5 text-dark fw-semibold link-primary" href="">{{$wedding->title}}</a>
+                                <a class="d-block my-4 fs-5 text-dark fw-semibold link-primary" href="{{route('user.detail', $wedding->id_wedding)}}">{{$wedding->title}}</a>
                                 <div class="d-flex align-items-center gap-4">
 
                                     <div class="d-flex align-items-center gap-2">
