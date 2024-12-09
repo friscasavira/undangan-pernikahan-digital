@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UNDANGAN - @yield('tittle')</title>
+  <title>UNDANGAN - @yield('title')</title>
   <link rel="shortcut icon" type="image/png" href="{{ asset('asset_admin/images/logos/seodashlogo.png') }}" />
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
