@@ -130,7 +130,8 @@ class WeddingController
 
     public function weddingsUser()
     {
-        $weddings = weddings::all();
+        $id_user = Auth::user()->id_user;
+        $weddings = weddings::where('id_user', $id_user)->get();
         return view('backend.user.weddings', compact('weddings'));
     }
 

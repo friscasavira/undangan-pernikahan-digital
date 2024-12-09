@@ -16,7 +16,9 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <a href="{{ route('user.setting_tambah') }}" class="btn btn-primary btn-sm mb-3">Tambah</a>
+                        @if ($settings->isEmpty())
+                            <a href="{{ route('user.setting_tambah') }}" class="btn btn-primary btn-sm mb-3">Tambah</a>
+                        @endif
                         <table class="table" id="photo">
                             <thead>
                                 <tr>
@@ -45,9 +47,6 @@
                                     <td>
                                         <a href="{{ route('user.edit_setting', $setting->id_settings) }}"
                                             class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('user.delete_setting', $setting->id_settings) }}"
-                                            onclick="return confirm('Yakin ingin hapus data?')"
-                                            class="btn btn-danger btn-sm">Hapus</a>
                                     </td>
                                 </tr>
                                 @endforeach
