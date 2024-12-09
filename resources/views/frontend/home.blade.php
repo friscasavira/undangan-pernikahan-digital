@@ -31,7 +31,7 @@
 
 <body data-bs-spy="scroll" data-bs-target="#navBar" id="weddingHome">
     @if($setting && $setting->background_music)
-        <audio autoplay>
+        <audio id="backgroundAudio" autoplay loop>
             <source src="{{ asset('storage/' . $setting->background_music) }}" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
@@ -116,11 +116,34 @@
                                 </div>
                                 <!-- RSVP Button -->
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
+                                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" id="audioButton{{ $photo->id_photo }}" href="#">
+                                        <i class="fa fa-music me-2"></i> MUSIC
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const audio = document.getElementById('backgroundAudio');
+                            if (audio) {
+                                audio.play().catch(error => {
+                                    console.error('Autoplay tidak diizinkan:', error);
+                                });
+                            }
+
+                            // Tombol Play/Pause
+                            document.getElementById('audioButton<?php echo $photo->id_photo ?>').addEventListener('click', function(event) {
+                                event.preventDefault();
+                                const audio = document.getElementById('backgroundAudio');
+                                if (audio.paused) {
+                                    audio.play();
+                                } else {
+                                    audio.pause();
+                                }
+                            });
+                        });
+                    </script>
                     @endforeach 
                 </div>
             </div>
