@@ -98,19 +98,6 @@ class RsvpController
         return redirect()->route('admin.rsvp')->with('success', 'Data rsvp Berhasil di Edit');
     }
 
-
-    public function delete($id)
-    {
-        $rsvp = rsvp::find($id);
-
-
-         $rsvp->delete();
-
-        return redirect()->back()->with('success', 'Data rsvp Berhasil diHapus');
-
-
-    }
-
     public function rsvpUser()
     {
         $rsvps = rsvp::all();

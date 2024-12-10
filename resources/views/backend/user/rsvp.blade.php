@@ -39,12 +39,8 @@
                                     <td class="text-center">{{$rsvp->email}}</td>
                                     <td class="text-center">{{$rsvp->phone}}</td>
                                     <td class="text-center">{{$rsvp->message}}</td>
-                                    <td class="text-center">{{$rsvp->total_guest}}</td>
-                                    <td>
-                                        <a href="" class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="" onclick="return confirm('Yakin Ingin Menghapus Data Tersebut')" class="btn btn-danger btn-sm">delete</a>
-                                    </td>
-
+                                    <td class="text-center">{{$rsvp->attendance_status}}</td>
+                                    <td class="text-center">{{$rsvp->total_guests}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>

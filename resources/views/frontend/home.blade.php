@@ -549,7 +549,7 @@
                     <div class="fw-bold text-primary bg-white d-flex align-items-center justify-content-center position-absolute border-secondary p-2 wow fadeIn" data-wow-delay="0.1s" style="width: 75%; border-style: double; top: 0; left: 50%; transform: translate(-50%, -50%);">
                         Harap tanggapi sebelum {{ $weddingDateFormatted }}, Kami menantikan untuk merayakan bersama Anda!
                     </div>
-                    <form method="POST" action="{{ route('home.rsvp') }}">
+                    <form method="POST" action="{{ route('home.rsvp', $unique_url) }}">
                         @csrf
                         <div class="row gx-4 gy-3">
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
