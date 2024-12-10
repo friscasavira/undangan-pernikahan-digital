@@ -528,7 +528,7 @@
                 @endforeach
                
                 <div class="col-12 text-center wow fadeIn" data-wow-delay="0.2s">
-                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5 me-2" href="{{ route('home.photo') }}">View All <i class="fas fa-arrow-right"></i></a>
+                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5 me-2" href="{{ route('home.photo', $unique_url) }}">View All <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
