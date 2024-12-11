@@ -67,11 +67,11 @@
 
                                     <div class="d-flex align-items-center gap-2">
                                         <a class="ti ti-eye text-dark fs-5 link-primary" href="{{route('user.weddings')}}">
-                                            @if($wedding->rsvp == null)
-                                            0
-                                            @else
-                                            {{$wedding->rsvp->sum('total_guests')}}
-                                            @endif
+                                            @php
+                                            $totalGuests = \App\Models\RSVP::where('id_wedding', $wedding->id_wedding)->sum('total_guests');
+                                            @endphp
+
+                                            {{ $totalGuests > 0 ? $totalGuests : 0 }}
                                         </a>
                                     </div>
 

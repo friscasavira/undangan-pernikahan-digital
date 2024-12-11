@@ -27,6 +27,9 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('asset_main/css/style.css')}}" rel="stylesheet">
+
+	<link rel="shortcut icon" type="image/avif" href="{{ asset('asset_main/img/logohome2.avif') }}" />
+
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navBar" id="weddingHome">
@@ -49,7 +52,7 @@
         <div class="container-fluid">
             <div class="container px-0">
                 <nav class="navbar navbar-light navbar-expand-xl" id="navBar">
-                    <a href="index.html" class="navbar-brand">
+                    <a href="#" class="navbar-brand">
                         <h4 class="text-primary display-6 fw-bold mb-0">Mr<strong class="text-secondary">&</strong>Mrs</h4>
                     </a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -658,24 +661,21 @@
         <div class="container">
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Wedding Site</a>, All right reserved.</span>
                 </div>
                 <div class="col-md-6 text-center text-md-end text-white">
                     <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                     <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                     <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                    Designed By <a class="border-bottom" href="">Kelompok 2</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Copyright End -->
 
-
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

@@ -39,7 +39,7 @@ class WeddingController
         $wedding = weddings::where('unique_url', $unique_url)->first();
         $id_wedding = $wedding->id_wedding;
         $photos = photos::where('id_wedding', $id_wedding)->get();
-        return view('frontend.photo', compact('photos'));
+        return view('frontend.photo', compact('photos', 'unique_url'));
     }
 
     public function rsvp(Request $request, $unique_url)
@@ -54,7 +54,7 @@ class WeddingController
             'is_invited' => 'required',
         ]);
 
-        $wedding = weddings::first();
+        $wedding = weddings::where('unique_url', $unique_url)->first();
 
         rsvp::create([
             'id_wedding' => $wedding->id_wedding,
