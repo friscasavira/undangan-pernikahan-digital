@@ -187,10 +187,10 @@ class Love_storyController
 
         // Simpan foto baru
         $uniqueFileName = uniqid() . '_' . $request->file('photo_url')->getClientOriginalName();
-        $request->file('photo_url')->storeAs('foto_love_story', $uniqueFileName, 'public');
+        $request->file('photo_url')->storeAs('photo_love_story', $uniqueFileName, 'public');
 
         // Update path foto
-        $foto = 'foto_love_story/' . $uniqueFileName;
+        $foto = 'photo_love_story/' . $uniqueFileName;
     }
 
     $love_story->update([
@@ -210,7 +210,7 @@ class Love_storyController
 
          $love_story->delete();
 
-        return redirect()->back()->with('success', 'Data photo Berhasil diHapus');
+        return redirect()->back()->with('success', 'Data Love Story Berhasil diHapus');
 
     }
 

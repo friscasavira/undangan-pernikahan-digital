@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\rsvp;
 use App\Models\weddings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RsvpController
 {
@@ -98,22 +99,11 @@ class RsvpController
         return redirect()->route('admin.rsvp')->with('success', 'Data rsvp Berhasil di Edit');
     }
 
-
-    public function delete($id)
-    {
-        $rsvp = rsvp::find($id);
-
-
-         $rsvp->delete();
-
-        return redirect()->back()->with('success', 'Data rsvp Berhasil diHapus');
-
-
-    }
-
     public function rsvpUser()
     {
-        $rsvps = rsvp::all();
+        $id_user = Auth::user()->id_user;
+        $wedding = weddings::where('id_user', $id_user)->first();
+        $rsvps = rsvp::where('id_wedding', $wedding->id_wedding)->get();
         return view('backend.user.rsvp', compact('rsvps'));
     }
 

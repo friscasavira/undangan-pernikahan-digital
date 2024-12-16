@@ -55,8 +55,8 @@
                     <div class="col-lg-4">
                         <div class="card overflow-hidden hover-img">
                             <div class="position-relative">
-                                @if ($wedding->photos->isNotEmpty() && $wedding->photos->first()->photo_url)
-                                <img src="{{ asset('storage/' . $wedding->photos->first()->photo_url) }}" class="card-img-top" alt="matdash-img">
+                                @if ($wedding->setting->isNotEmpty() && $wedding->setting->first()->cover_photo)
+                                <img src="{{ asset('storage/' . $wedding->setting->first()->cover_photo) }}" class="card-img-top" alt="matdash-img">
                                 @else
                                 <p>Belum ada foto</p>
                                 @endif
@@ -67,11 +67,11 @@
 
                                     <div class="d-flex align-items-center gap-2">
                                         <a class="ti ti-eye text-dark fs-5 link-primary" href="{{route('user.weddings')}}">
-                                            @if($wedding->rsvp == null)
-                                            0
-                                            @else
-                                            {{$wedding->rsvp->sum('total_guests')}}
-                                            @endif
+                                            @php
+                                            $totalGuests = \App\Models\RSVP::where('id_wedding', $wedding->id_wedding)->sum('total_guests');
+                                            @endphp
+
+                                            {{ $totalGuests > 0 ? $totalGuests : 0 }}
                                         </a>
                                     </div>
 

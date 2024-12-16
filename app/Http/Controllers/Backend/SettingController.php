@@ -104,7 +104,7 @@ class SettingController
         ]);
 
         $user->update([
-            'name' => $request->username,
+            'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => $request->filled('password') ? Hash::make($request->password) : $user->password,

@@ -36,7 +36,7 @@
                                     <td>{{ $setting->wedding->title }}</td>
                                     <td>
                                         <img src="{{ asset('storage/' . $setting->cover_photo) }}"
-                                            alt="Cover Photo" height="30">
+                                            alt="Cover Photo" height="50">
                                     </td>
                                     <td>
                                         <audio controls>

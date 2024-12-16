@@ -27,11 +27,14 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('asset_main/css/style.css')}}" rel="stylesheet">
+
+	<link rel="shortcut icon" type="image/avif" href="{{ asset('asset_main/img/logohome2.avif') }}" />
+
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navBar" id="weddingHome">
     @if($setting && $setting->background_music)
-        <audio autoplay>
+        <audio id="backgroundAudio" autoplay loop>
             <source src="{{ asset('storage/' . $setting->background_music) }}" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
@@ -49,7 +52,7 @@
         <div class="container-fluid">
             <div class="container px-0">
                 <nav class="navbar navbar-light navbar-expand-xl" id="navBar">
-                    <a href="index.html" class="navbar-brand">
+                    <a href="#" class="navbar-brand">
                         <h4 class="text-primary display-6 fw-bold mb-0">Mr<strong class="text-secondary">&</strong>Mrs</h4>
                     </a>
                     <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -116,11 +119,34 @@
                                 </div>
                                 <!-- RSVP Button -->
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" href="#">RSVP Now</a>
+                                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5" id="audioButton{{ $photo->id_photo }}" href="#">
+                                        <i class="fa fa-music me-2"></i> MUSIC
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const audio = document.getElementById('backgroundAudio');
+                            if (audio) {
+                                audio.play().catch(error => {
+                                    console.error('Autoplay tidak diizinkan:', error);
+                                });
+                            }
+
+                            // Tombol Play/Pause
+                            document.getElementById('audioButton<?php echo $photo->id_photo ?>').addEventListener('click', function(event) {
+                                event.preventDefault();
+                                const audio = document.getElementById('backgroundAudio');
+                                if (audio.paused) {
+                                    audio.play();
+                                } else {
+                                    audio.pause();
+                                }
+                            });
+                        });
+                    </script>
                     @endforeach 
                 </div>
             </div>
@@ -505,7 +531,7 @@
                 @endforeach
                
                 <div class="col-12 text-center wow fadeIn" data-wow-delay="0.2s">
-                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5 me-2" href="{{ route('home.photo') }}">View All <i class="fas fa-arrow-right"></i></a>
+                    <a class="btn btn-primary btn-primary-outline-0 py-3 px-5 me-2" href="{{ route('home.photo', $unique_url) }}">View All <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -526,7 +552,7 @@
                     <div class="fw-bold text-primary bg-white d-flex align-items-center justify-content-center position-absolute border-secondary p-2 wow fadeIn" data-wow-delay="0.1s" style="width: 75%; border-style: double; top: 0; left: 50%; transform: translate(-50%, -50%);">
                         Harap tanggapi sebelum {{ $weddingDateFormatted }}, Kami menantikan untuk merayakan bersama Anda!
                     </div>
-                    <form method="POST" action="{{ route('home.rsvp') }}">
+                    <form method="POST" action="{{ route('home.rsvp', $unique_url) }}">
                         @csrf
                         <div class="row gx-4 gy-3">
                             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
@@ -635,24 +661,21 @@
         <div class="container">
             <div class="row g-4 align-items-center">
                 <div class="col-md-6 text-center text-md-start mb-md-0">
-                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your Site Name</a>, All right reserved.</span>
+                    <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Wedding Site</a>, All right reserved.</span>
                 </div>
                 <div class="col-md-6 text-center text-md-end text-white">
                     <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                     <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                     <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                    Designed By <a class="border-bottom" href="">Kelompok 2</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Copyright End -->
 
-
-
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary btn-primary-outline-0 btn-md-square back-to-top"><i class="fa fa-arrow-up"></i></a>
-
 
     <!-- JavaScript Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

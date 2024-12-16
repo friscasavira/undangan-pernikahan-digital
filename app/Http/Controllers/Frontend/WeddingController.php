@@ -12,25 +12,37 @@ use Illuminate\Http\Request;
 
 class WeddingController
 {
-    public function home()
+    public function home($unique_url)
     {
-        $wedding = weddings::all()->first();
+        // Cari wedding berdasarkan unique_url
+        $wedding = weddings::where('unique_url', $unique_url)->first();
+
+        // Jika tidak ditemukan, redirect atau tampilkan halaman 404
+        if (!$wedding) {
+            abort(404, 'Wedding not found');
+        }
+
+        // Ambil data lainnya berdasarkan id_wedding dari wedding yang ditemukan
         $id_wedding = $wedding->id_wedding;
-        $love_storys = love_story::all();
-        $events = events::all();
+        $love_storys = love_story::where('id_wedding', $id_wedding)->get();
+        $events = events::where('id_wedding', $id_wedding)->get();
         $photos = photos::where('id_wedding', $id_wedding)->take(8)->get();
         $photosThree = photos::where('id_wedding', $id_wedding)->take(3)->get();
         $setting = settings::first();
-        return view('frontend.home', compact('wedding', 'love_storys', 'events', 'photos', 'photosThree', 'setting'));
+
+        // Kirim data ke view
+        return view('frontend.home', compact('wedding', 'love_storys', 'events', 'photos', 'photosThree', 'setting', 'unique_url'));
     }
 
-    public function photo()
+    public function photo($unique_url)
     {
-        $photos = photos::all();
-        return view('frontend.photo', compact('photos'));
+        $wedding = weddings::where('unique_url', $unique_url)->first();
+        $id_wedding = $wedding->id_wedding;
+        $photos = photos::where('id_wedding', $id_wedding)->get();
+        return view('frontend.photo', compact('photos', 'unique_url'));
     }
 
-    public function rsvp(Request $request)
+    public function rsvp(Request $request, $unique_url)
     {
         $request->validate([
             'name' => 'required',
@@ -42,7 +54,7 @@ class WeddingController
             'is_invited' => 'required',
         ]);
 
-        $wedding = weddings::first();
+        $wedding = weddings::where('unique_url', $unique_url)->first();
 
         rsvp::create([
             'id_wedding' => $wedding->id_wedding,
@@ -52,43 +64,14 @@ class WeddingController
             'message' => $request->message,
             'attendance_status' => $request->attendance_status,
             'total_guests' => $request->total_guests,
-            'is_invited' => $request->is_invited,            
+            'is_invited' => $request->is_invited,
         ]);
 
-        return redirect()->route('home')->with('success', 'RSVP Anda berhasil dikirim!');
+        return redirect()->route('home', $unique_url)->with('success', 'RSVP Anda berhasil dikirim!');
     }
 
-    public function updateWeddingPhotos(Request $request)
-{
-    $wedding = weddings::first();  // Mengambil wedding pertama, bisa disesuaikan jika lebih dari 1 wedding
-
-    // Validasi file foto yang diupload
-    $request->validate([
-        'bride_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        'groom_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-    ]);
-
-    // Upload foto bride
-    if ($request->hasFile('bride_photo')) {
-        $bridePhoto = $request->file('bride_photo')->store('images/bride', 'public');
-        $wedding->bride_photo = $bridePhoto;
+    public function view()
+    {
+        return view('frontend.tampilan_awal');
     }
-    if ($request->hasFile('groom_photo')) {
-        $groomPhoto = $request->file('groom_photo')->store('images/groom', 'public');
-        $wedding->groom_photo = $groomPhoto;
-    }    
-
-    // Simpan perubahan di database
-    $wedding->save();
-
-    return redirect()->route('home')->with('success', 'Foto pengantin berhasil diperbarui!');
 }
-
-public function view()
-{
-    return view('frontend.tampilan_awal');
-}
-
-}
-
-
