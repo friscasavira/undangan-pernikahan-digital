@@ -69,7 +69,7 @@ class SettingController
     public function dashboardUser(Request $request)
     {
         $id_user = Auth::user()->id_user;
-        $query = weddings::where('id_user', $id_user)->get();
+        $query = weddings::where('id_user', $id_user);
 
         // Filter berdasarkan judul
         if ($request->has('search') && $request->search) {
